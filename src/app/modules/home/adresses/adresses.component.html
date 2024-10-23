@@ -1,1 +1,8 @@
-<p>adresses works!</p>
+
+<form [formGroup]="formGroup">
+    <p-autoComplete
+        formControlName="selectedCountry"
+        [suggestions]="filteredCountries"
+        (completeMethod)="filterCountry($event)"
+        optionLabel="name" />
+</form>

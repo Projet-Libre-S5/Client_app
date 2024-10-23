@@ -28,7 +28,7 @@
 
 
           <ng-container *ngIf="route.item===item" >
-            <a   class="flex pl-4  space-x-2 items-center py-2 rounded-lg bg-neutral shadow-lg "  [routerLink]='route.route_path' (click)="clicked(i)" ><div>
+            <a   class="flex pl-4  space-x-2 items-center py-2 rounded-lg bg-neutral shadow-md "  [routerLink]='route.route_path' (click)="clicked(i)" ><div>
 
                 <img *ngIf="route?.svg_light" [src]="route?.svg_light"
                      class="relative z-10 mr-3 text-teal-400 -amber-400 flex-shrink-0 flex " alt=""

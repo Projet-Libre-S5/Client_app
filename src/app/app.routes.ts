@@ -5,7 +5,7 @@ import { AnalysesComponent } from './modules/home/analyses/analyses.component';
 import { AdressesComponent } from './modules/home/adresses/adresses.component';
 
 export const routes: Routes = [
-    { path: '', component: DashboardComponent },
+    { path: 'Dashboard', component: DashboardComponent },
     { path: 'Laboratories', component: LaboratoriesComponent },
     { path: 'Analyses', component: AnalysesComponent },
     { path: 'Adresses', component: AdressesComponent },

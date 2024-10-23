@@ -1,45 +1,38 @@
 
-<div class="w-full flex h-svh max-h-svh">
+<div class="w-full flex h-svh max-h-svh    text-[16px] ">
 
-    <div class="hidden h-full flex-[0.3] md:block">
+    <div class="hidden h-full flex-[0.2] shadow-lg rounded-md border-2  md:block">
         <app-sidebar></app-sidebar>
     </div>
 
-    <div class="h-full flex-1">
-
-        <div class="h-full flex-1">
-            <!-- Main Content Area-->
-            <div class="flex h-full flex-col justify-between overflow-y-scroll">
-              <div class="sticky top-0 w-full">
-                <!-- Header -->
-                <div class="bg-orange-500 py-5">
-                <h1 class="text-center text-xl">Header</h1>
-              </div>
-            </div>
-            
-            <div>
-              <!-- Content -->
-              <h1 class="text-center text-xl">
-                
-                <ng-content></ng-content>
-              </h1>
-            </div>
-            
-            <div class="w-full">
-              <!-- Footer -->
-              <div class="bg-yellow-600 py-12">
-                <h1 class="text-center text-xl">Footer</h1>
-              </div>
-              </div>
-            </div>
-            <div class="sticky top-0 block bg-pink-500 py-5 md:hidden">
-                <h1 class="text-center text-xl">Bottom Navigation</h1>
-              </div>
+    <div class="flex h-full flex-1 flex-col bg-slate-100">
+        <!-- Main Content Area-->
+        <div class="flex h-full flex-col justify-between overflow-y-scroll">
+         <div class="flex sticky top-0 w-full ">
+          <!-- Header -->
+          <div class="w-1/2 py-5 mx-auto">
+            <app-navbar></app-navbar>
           </div>
-          
-
-
-
-      
-    </div>
-</div>
+         </div>
+    
+         <div>
+          <!-- Content -->
+          <h1 class="text-center ">
+            <ng-content> </ng-content>
+          </h1>
+         </div>
+    
+         <div class="w-full">
+          <!-- Footer
+          <div class="bg-secondary py-12">
+           <h1 class="text-center  ">Footer</h1>
+          </div>
+         </div>
+        </div> -->
+    
+        <div class="sticky top-0 block bg-secondary py-5 md:hidden">
+         <h1 class="text-center ">Bottom Navigation</h1>
+        </div>
+       </div>
+       </div>
+    

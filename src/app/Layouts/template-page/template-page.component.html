@@ -1,13 +1,13 @@
 
-<div class="w-full flex h-svh max-h-svh    text-[16px] ">
+<div class="w-full flex h-svh max-h-svh font-normal   text-[16px] ">
 
-    <div class="hidden h-full flex-[0.2] shadow-lg rounded-md border-2  md:block">
+    <div class="hidden h-full flex-[0.4] lg:flex-[0.2] shadow-lg rounded-md border-2  md:block">
         <app-sidebar></app-sidebar>
     </div>
 
     <div class="flex h-full flex-1 flex-col bg-slate-100">
         <!-- Main Content Area-->
-        <div class="flex h-full flex-col justify-between overflow-y-scroll">
+        <div class="flex h-full flex-col  overflow-y-scroll">
          <div class="flex sticky top-0 w-full ">
           <!-- Header -->
           <div class="w-1/2 py-5 mx-auto">
@@ -15,24 +15,22 @@
           </div>
          </div>
     
-         <div>
+         <div class="p-12 h-full">
           <!-- Content -->
-          <h1 class="text-center ">
             <ng-content> </ng-content>
-          </h1>
          </div>
     
-         <div class="w-full">
-          <!-- Footer
+         <!--<div class="w-full">
+           Footer
           <div class="bg-secondary py-12">
            <h1 class="text-center  ">Footer</h1>
           </div>
          </div>
         </div> -->
     
-        <div class="sticky top-0 block bg-secondary py-5 md:hidden">
+       <!-- <div class="sticky top-0 block bg-secondary py-5 md:hidden">
          <h1 class="text-center ">Bottom Navigation</h1>
         </div>
-       </div>
+       </div>-->
        </div>
     

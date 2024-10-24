@@ -11,10 +11,12 @@
 
          
 
-          <ng-container *ngFor="let route of sidebar_elements; index as i" >
+          <ng-container *ngFor="let route of sidebar_elements;"  >
 
-            <ng-container *ngIf="route.item!==item" >
-            <a   class="flex pl-4  space-x-2 items-center hover:py-2 rounded-md hover:bg-neutral  group"  [routerLink]='route.route_path' (click)="clicked(i)" ><div>
+            <a   class="flex pl-4  space-x-2 items-center py-2 rounded-md hover:bg-neutral   group  #itemEl"  
+            [routerLink]='route.route_path' routerLinkActive="active"
+            (click)="route.isOpen=!route.isOpen" 
+             ><div>
 
 
               <img *ngIf="route?.svg_dark" [src]="route?.svg_dark"
@@ -24,24 +26,29 @@
                      class="relative z-10 mr-3 text-teal-400 -amber-400 flex-shrink-0 group-hover:transition-opacity group-hover:flex hidden " alt=""
                      height="20" width="20">
                 
-            </div><div class=" text-gray-900 group-hover:text-white ">{{route.label}}</div></a>
-          </ng-container>
+            </div><div class=" text-gray-900 group-hover:text-white " >{{route.label}}</div>      
+            <div *ngIf="route.childs.length > 0">{{ route.isOpen ? '−' : '+' }}</div>
+          </a>
 
-
-          <ng-container *ngIf="route.item===item" >
-            <a   class="flex pl-4  space-x-2 items-center py-2 rounded-md bg-gray-200 shadow-sm "  [routerLink]='route.route_path' (click)="clicked(i)" ><div>
-
-              <img *ngIf="route?.svg_dark" [src]="route?.svg_dark"
-              class="relative z-10 mr-3 text-teal-400 -amber-400 flex-shrink-0 group-hover:hidden" alt=""
-              height="20" width="20">
-                
-            </div><div class=" text-gray-900">{{route.label}}</div></a>
-          </ng-container>
+            <div class="flex-col p-x-1 space-y-4">
+            <div *ngIf="route.isOpen" class="pl-8">
+              <ng-container *ngFor="let child of route.childs">
+                <a class="flex items-center pl-4 space-x-2 py-2 rounded-md hover:bg-neutral group"
+                   [routerLink]="child.route_path" 
+                   routerLinkActive="active_child"
+                   >
+                   
+                  <div class="text-gray-700 group-hover:text-white">{{ child.label }}</div>
+                </a>
+              </ng-container>
+            </div>
+            </div>
           
           </ng-container>
 
 
 
         </div>
+        
 
 </div>

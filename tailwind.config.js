@@ -10,7 +10,7 @@ module.exports = {
       colors : {
         primary : "#F6F7FB",
         secondary:"#f1f5f9",
-        neutral:"#008DB9",
+        neutral:"#7894CF",
         neutral_sec :"#F07158"
      },
      fontFamily: {

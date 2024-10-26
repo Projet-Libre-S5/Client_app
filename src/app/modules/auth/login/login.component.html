@@ -1,1 +1,52 @@
-<p>login works!</p>
+<div class="w-full flex h-svh min-h-svh  items-center justify-center  font-normal bg-slate-100  text-[16px] ">
+    <div class="flex flex-col bg-white  shadow-md rounded-lg ">
+        <div class="w-full filter relative">
+            <img class="object-cover h-[150px] w-[700px] rounded-t-lg   " src="/assets/Lab.jpg"/>
+            <p class="absolute text-[34px] text-center font-medium left-60 top-14 text-white ">SE CONNECTER</p>
+        </div>
+
+           <form class="flex flex-col px-20 pt-12 pb-28 space-y-4 " [formGroup]="loginForm" (ngSubmit)="submitForm()">
+            <div class="space-x-2" >
+            <label  class="text-neutral" for="Username"> Username </label>
+            <input type="text" formControlName="username" name="Username" required minlength="3">
+            <div *ngIf="loginForm?.get('username')?.invalid && loginForm?.get('username')?.touched" class="text-danger">
+                Username is required.
+              </div> 
+            </div>
+
+            
+           
+
+
+
+
+            <div class="space-x-2">
+                <div class="col-sm-6 form-group">
+                    <label class="text-neutral" for="Password">Password </label>
+                    <input type="text" formControlName="password" name="Password" >
+                    <div *ngIf="loginForm?.get('password')?.invalid && loginForm?.get('password')?.touched" class="text-danger">
+                        Password is required.
+                      </div> 
+                 
+                </div>    
+            </div>
+            
+            <button type="submit">SE CONNECTER</button>
+            
+            
+
+
+
+
+
+           </form>
+
+    </div>
+    
+
+
+
+</div>
+
+
+

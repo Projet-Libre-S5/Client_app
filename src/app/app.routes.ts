@@ -6,6 +6,10 @@ import { LoginComponent } from './modules/auth/login/login.component';
 import { NgModule } from '@angular/core';
 
 export const routes: Routes = [  
+    {
+        path: 'login',
+        component: LoginComponent
+      },
    
     {
         path: '',
@@ -16,12 +20,9 @@ export const routes: Routes = [
             loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule),
           },
         ]
-      },
-   
-      {
-        path: 'login',
-        component: LoginComponent
       }
+   
+      
 ];
 
 @NgModule({

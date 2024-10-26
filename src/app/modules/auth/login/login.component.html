@@ -1,38 +1,92 @@
 <div class="w-full flex h-svh min-h-svh  items-center justify-center  font-normal bg-slate-100  text-[16px] ">
     <div class="flex flex-col bg-white  shadow-md rounded-lg ">
         <div class="w-full filter relative">
-            <img class="object-cover h-[150px] w-[700px] rounded-t-lg   " src="/assets/Lab.jpg"/>
-            <p class="absolute text-[34px] text-center font-medium left-60 top-14 text-white ">SE CONNECTER</p>
+            <img class="object-cover h-[170px] w-[650px] rounded-t-lg   " src="/assets/Lab.jpg"/>
+            <p class="absolute text-[28px] text-center font-medium left-56 top-16 text-white">CONNEXION</p>
         </div>
 
-           <form class="flex flex-col px-20 pt-12 pb-28 space-y-4 " [formGroup]="loginForm" (ngSubmit)="submitForm()">
-            <div class="space-x-2" >
-            <label  class="text-neutral" for="Username"> Username </label>
-            <input type="text" formControlName="username" name="Username" required minlength="3">
-            <div *ngIf="loginForm?.get('username')?.invalid && loginForm?.get('username')?.touched" class="text-danger">
-                Username is required.
+           <form class="flex flex-col px-20 pt-12 pb-20 space-y-4 " [formGroup]="loginForm" (ngSubmit)="submitForm()">
+           
+            <div class="flex-col space-y-1 ">
+            <div class="flex items-center space-x-3">
+                <label for="username" class="w-20 inline-block text-right mr-4 text-gray-500">Username</label>
+                <input   type="text" formControlName="username" name="Username" required 
+                [class]="submitted && loginForm?.get('username')?.invalid
+                    ? 'border-red-500 animate__headShake animate__animated  animate__faster'
+                    : 'border-gray-300'
+                "
+                placeholder="Enter Username"
+                name="username"
+                type="email"
+                required="" class="border-b-[1.2px] border-gray-400 flex-1 py-2 placeholder-gray-300 outline-none focus:border-primary">
+            </div>
+            <div *ngIf="loginForm?.get('username')?.invalid && loginForm?.get('username')?.touched" class="text-red-400 text-[12px] ml-28">
+                *Invalid Username
               </div> 
             </div>
-
             
+
+              <div class="flex items-center space-x-3 py-2 ">
+                <label for="password" class="w-20 inline-block text-right mr-4 text-gray-500">Password</label>
+                <div class="relative flex-1 "
+                [class]="submitted && loginForm?.get('password')?.invalid
+                ? 'border-red-500 animate__headShake animate__animated  animate__faster'
+                : 'border-gray-300' "
+                >
+
+                <input type="text" name="password" id="password" 
+                placeholder="Enter Password" 
+                [type]="showPassword ? 'text' : 'password'"
+                class=" py-2 placeholder-gray-300 outline-none w-full border-b-[1.2px] border-gray-400  focus:border-primary ">
+                <div
+                (click)="toggleShowPassword()"
+                class="cursor-pointer absolute inset-y-0 right-0 flex items-center pr-3"
+              >
+               
+                <i [class]="showPassword ? 'pi pi-eye':'pi pi-eye-slash'" class="text-gray-400 text-lg"></i>
+
+
+              </div>
+               
+            </div>
+
+
+            </div>
            
 
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <input
+                    id="remember-me"
+                    name="remember-me"
+                    type="checkbox"
+                    class="h-4 w-4 ml-[108px] text-primary-color focus:ring-primary-color checked:bg-primary border-gray-200 rounded"
+                  />
+                  <label
+                    for="remember-me"
+                    class="ml-2 block text-sm text-gray-400"
+                  >
+                    Remember me
+                  </label>
+                </div>
+  
+                <div class="text-sm">
+                  <a
+                    href="#"
+                    class="font-medium text-primary hover:text-primary-color"
+                  >
+                    Mot de passe oublié ?
+                  </a>
+                </div>
+              </div>
 
+           
 
+       
 
-            <div class="space-x-2">
-                <div class="col-sm-6 form-group">
-                    <label class="text-neutral" for="Password">Password </label>
-                    <input type="text" formControlName="password" name="Password" >
-                    <div *ngIf="loginForm?.get('password')?.invalid && loginForm?.get('password')?.touched" class="text-danger">
-                        Password is required.
-                      </div> 
-                 
-                </div>    
+            <div class="pt-12 text-start">
+            <button type="submit" class="rounded-md  ml-10 p-2 bg-primary text-white drop-shadow-sm">SE CONNECTER</button>
             </div>
-            
-            <button type="submit">SE CONNECTER</button>
-            
             
 
 

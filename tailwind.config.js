@@ -8,9 +8,9 @@ module.exports = {
   theme: {
     extend: {
       colors : {
-        primary : "#F6F7FB",
+        primary : "#7894CF",
         secondary:"#f1f5f9",
-        neutral:"#7894CF",
+        neutral:"#817A6E",
         neutral_sec :"#F07158"
      },
      fontFamily: {

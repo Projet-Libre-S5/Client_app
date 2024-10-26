@@ -11,6 +11,7 @@ import { InputTextModule } from 'primeng/inputtext';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
+  showPassword:boolean=false;
   loginForm:any;
   submitted:boolean=false;
   constructor(private formBuilder:FormBuilder){}
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required,Validators.email],
-      password: ['', Validators.required,Validators.pattern]
+      password: ['', Validators.required]
     });
   }
 
@@ -29,5 +30,9 @@ export class LoginComponent implements OnInit {
     } else {
       console.log("Error: Form is invalid");
     }
+  }
+
+  toggleShowPassword(): void {
+    this.showPassword = !this.showPassword;
   }
 }

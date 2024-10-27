@@ -4,14 +4,10 @@ import { NotFoundPageComponent } from './Layouts/not-found-page/not-found-page.c
 import { HomeComponent } from './modules/home/home.component';
 import { LoginComponent } from './modules/auth/login/login.component';
 import { NgModule } from '@angular/core';
+import { AuthGuard } from './cors/guard/auth.guard';
 
 export const routes: Routes = [  
  
-    { 
-    path: '', 
-    redirectTo: 'login', 
-    pathMatch: 'full' }, // Redirect root to /home
-
     {
         path: 'login',
         component: LoginComponent
@@ -25,7 +21,7 @@ export const routes: Routes = [
             path: '',
             loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule),
           },
-        ]
+        ],canActivate: [AuthGuard]
       },
 
       {

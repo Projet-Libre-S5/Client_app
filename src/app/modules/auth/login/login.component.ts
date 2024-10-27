@@ -8,6 +8,7 @@ import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
 import { MessageService } from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
+import { AuthService } from '../../../services/auth/auth.service';
 
 
 
@@ -17,7 +18,7 @@ import { PrimeNGConfig } from 'primeng/api';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule,FormsModule,CommonModule,InputTextModule,ToastModule,ButtonModule,],
+  imports: [ReactiveFormsModule,FormsModule,CommonModule,InputTextModule,ToastModule,ButtonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -25,9 +26,10 @@ export class LoginComponent implements OnInit {
   showPassword:boolean=false;
   loginForm:any;
   submitted:boolean=false;
-  constructor(private formBuilder:FormBuilder,private http: HttpClient, private router: Router ,
-    private messageService: MessageService,
-    private primengConfig: PrimeNGConfig
+  constructor(private formBuilder:FormBuilder,
+    private authService :AuthService,
+    private primengConfig: PrimeNGConfig,
+
 ){}
   
   ngOnInit(): void {
@@ -54,39 +56,15 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.http.get<any>("http://localhost:3000/Users")
-    .subscribe(res=>{
-      const user = res.find((a:any)=>{
-        return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password 
-      });
-      if(user){
-      this.router.navigate(["home"])
-      }else{
-        this.showWarningToast();
-      }
-    },err=>{
-      this.showErrorToast();
-    })
+    this.authService.login(this.loginForm.value.email,this.loginForm.value.password);
+
+
+
+   
   }
 
 
-  showWarningToast() {
-    this.messageService.add({
-        severity: 'warn',
-        summary: 'Erreur de connexion',
-        detail: 'Utilisateur non trouvé',
-        key: 'tl'
-    });
-}
-
-showErrorToast() { 
-    this.messageService.add({
-        severity: 'error',
-        summary: 'Erreur de connexion',
-        detail: 'Problème de connexion au serveur',
-        key: 'tl'
-    });
-  }
+ 
 
 
   

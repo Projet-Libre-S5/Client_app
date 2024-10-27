@@ -7,15 +7,11 @@ import { AdressesComponent } from './adresses/adresses.component';
 import { NotFoundPageComponent } from '../../Layouts/not-found-page/not-found-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/Dashboard', pathMatch: 'full' }, // Redirect root to /home
+  { path: 'home', redirectTo: '/Dashboard', pathMatch: 'full' }, // Redirect root to /home
   { path: 'Dashboard', component: DashboardComponent },
   { path: 'Laboratories', component: LaboratoriesComponent },
   { path: 'Analyses', component: AnalysesComponent },
-  { path: 'Adresses', component: AdressesComponent },
-  {
-    path:'**',
-    component:NotFoundPageComponent
-  }
+  { path: 'Adresses', component: AdressesComponent }
 ]
 
 @NgModule({

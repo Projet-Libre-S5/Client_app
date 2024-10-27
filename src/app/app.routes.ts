@@ -6,6 +6,12 @@ import { LoginComponent } from './modules/auth/login/login.component';
 import { NgModule } from '@angular/core';
 
 export const routes: Routes = [  
+ 
+    { 
+    path: '', 
+    redirectTo: 'login', 
+    pathMatch: 'full' }, // Redirect root to /home
+
     {
         path: 'login',
         component: LoginComponent
@@ -20,6 +26,11 @@ export const routes: Routes = [
             loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule),
           },
         ]
+      },
+
+      {
+        path:'**',
+        component:NotFoundPageComponent
       }
    
       

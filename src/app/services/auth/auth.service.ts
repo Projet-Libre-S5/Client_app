@@ -25,6 +25,8 @@ export class AuthService {
     });
     if(user){
       this.Authenticated=true;
+      localStorage.setItem('isLoggedIn', "true");  
+      localStorage.setItem('token', user.id);  
     this.router.navigate(["home"])
     }else{
       this.showWarningToast();
@@ -35,9 +37,15 @@ export class AuthService {
 }
 
 
+logout() {
+  localStorage.setItem('isLoggedIn',"false");    
+  localStorage.removeItem('token');  
+  this.router.navigate(['/login']);   
+}
+
 
 isAuthenticated(): boolean {
-  return this.Authenticated;
+  return localStorage.getItem('isLoggedIn') == "true";
 }
 
 showWarningToast() {

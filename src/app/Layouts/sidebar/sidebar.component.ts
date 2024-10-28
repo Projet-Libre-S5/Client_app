@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
 
 
 @Component({
@@ -11,8 +12,11 @@ import { RouterModule } from '@angular/router';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
-
-
+   
+  constructor(private authService:AuthService){
+        
+  }
+  
   public readonly sidebar_elements = [
     { label: "Dashboard", route_path: "/Dashboard", icon:"pi pi-th-large",isOpen:false, childs: [] },
     { label: "Adresses",route_path: "/Adresses" ,icon:"pi pi-map",isOpen:false,childs: []},
@@ -25,6 +29,12 @@ export class SidebarComponent {
       { label: "Tests", route_path: "/Analyses/Tests"},
     ]},
     ]
+
+
+
+    logout(){
+        this.authService.logout();
+    }
   
    
 

@@ -21,14 +21,14 @@ jobs:
            password: ${{ secrets.DOCKER_PASS }}
 
      
-     - name: Build Docker image
-       run: |
-          docker build -t clientapp .
+     - name: Build and push to dockerhub
+       uses: docker/build-push-action@v5
+       with:
+           push: true
+           tags: kicsipixel/githubaction:latest
 
-     - name: Push Docker image
-       run: |
-          docker push clientapp
 
-         
+          
+    
 
           

@@ -9,6 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { MessageService } from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
 import { AuthService } from '../../../services/auth/auth.service';
+import { TemplatePageComponent } from "../../../Layouts/template-page/template-page.component";
 
 
 
@@ -18,7 +19,7 @@ import { AuthService } from '../../../services/auth/auth.service';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule,FormsModule,CommonModule,InputTextModule,ToastModule,ButtonModule],
+  imports: [ReactiveFormsModule, FormsModule, CommonModule, InputTextModule, ToastModule, ButtonModule, TemplatePageComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

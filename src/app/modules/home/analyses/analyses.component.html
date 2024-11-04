@@ -1,3 +1,40 @@
-<div class="h-full flex-col space-y-4 justify-center items-center animate__fadeIn animate__animated ">
-<p>analyses works!</p>
+<div class="analysis-management">
+  <h2>Gestion des Analyses</h2>
+  <form #analyseForm="ngForm" (ngSubmit)="onSubmit(analyseForm)">
+    <div class="form-group">
+      <label for="laboratoireId">ID Laboratoire :</label>
+      <input
+        id="laboratoireId"
+        name="laboratoireId"
+        ngModel
+        required
+        type="number"
+      />
+    </div>
+    <div class="form-group">
+      <label for="nom">Nom de l'analyse :</label>
+      <input id="nom" name="nom" ngModel required type="text" />
+    </div>
+    <div class="form-group">
+      <label for="description">Description :</label>
+      <textarea id="description" name="description" ngModel required></textarea>
+    </div>
+    <button type="submit" [disabled]="analyseForm.invalid">
+      Ajouter Analyse
+    </button>
+  </form>
+</div>
+
+<div class="analysis-list">
+  <h2>Liste des Analyses</h2>
+  <div *ngFor="let analyse of analyses" class="analysis-card">
+    <div>
+      <h3>{{ analyse.nom }}</h3>
+      <p>{{ analyse.description }}</p>
+      <p><strong>ID Laboratoire :</strong> {{ analyse.laboratoireId }}</p>
+      <p><strong>Date de Création :</strong> {{ analyse.dateCreation }}</p>
+    </div>
+    <button (click)="editAnalyse(analyse)">Éditer</button>
+    <button (click)="deleteAnalyse(analyse.id)">Supprimer</button>
+  </div>
 </div>

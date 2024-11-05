@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 import { TableModule } from 'primeng/table';
 import { UpdateModalComponent } from "./subpages/update-modal/update-modal.component";
 import { DeleteModalComponent } from "./subpages/delete-modal/delete-modal.component";
+import { InputTextModule } from "primeng/inputtext"; 
+
 
 //import * as citiesData from '../../../../assets/data/moroccan-cities.json';
 
@@ -20,14 +22,17 @@ import { DeleteModalComponent } from "./subpages/delete-modal/delete-modal.compo
     ReactiveFormsModule,
     CommonModule,
     PaginatorModule,
-    TableModule, UpdateModalComponent, DeleteModalComponent],
+    TableModule, UpdateModalComponent, DeleteModalComponent,InputTextModule
+  ],
   templateUrl: './adresses.component.html',
   styleUrl: './adresses.component.css'
 })
 export class AdressesComponent implements OnInit {
 
+  FormSubmitted:boolean=false;
   updateModal:boolean=false;
   deleteModal:boolean=false;
+  adresseForm:any;
 
 
 
@@ -41,7 +46,15 @@ export class AdressesComponent implements OnInit {
 
   }
 
+
   ngOnInit(): void {
+
+    this.adresseForm=this.fb.group({
+      street:['',Validators.required],
+      city:['',Validators.required],
+      code:['',Validators.required],
+      region:['',Validators.required]
+    })
    
   }
 
@@ -54,6 +67,18 @@ export class AdressesComponent implements OnInit {
   ]
 
   selected_adresses=[]
+
+  
+
+  OnSubmit(){
+    this.FormSubmitted=true;
+       if(this.adresseForm.valid){
+        console.log("here")
+       }
+       else {
+        console.log("problem")
+       }
+  }
 
 
 

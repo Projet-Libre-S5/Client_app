@@ -10,8 +10,8 @@ module.exports = {
       colors : {
         primary : "#7894CF",
         secondary:"#f1f5f9",
-        neutral:"#cfb378",
-        neutral_sec :"#F5A281"
+        neutral:"#cf9b63",
+        neutral_sec :"#e4f3ff"
      },
      fontFamily: {
         Museo:'Museo'

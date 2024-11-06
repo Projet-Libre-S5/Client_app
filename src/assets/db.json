@@ -1,14 +1,37 @@
 {
-    "Users": [
-        { 
-          "id":1,
-          "email": "user@email.com",
-          "password": "user"
-        },
-        { 
-          "id":2,
-          "email": "admin@email.com",
-          "password": "admin"
-        }
-      ]
+  "users": [
+    {
+      "id": 1,
+      "email": "user@email.com",
+      "password": "user"
+    },
+    {
+      "id": 2,
+      "email": "admin@email.com",
+      "password": "admin"
+    }
+  ],
+  "adresses": [
+    {
+      "id": "6996",
+      "street": "Hay almostaqbal",
+      "city": "Khouribga",
+      "code": "25015",
+      "region": "Souss"
+    },
+    {
+      "id": "4c15",
+      "street": "Hay almostaqbal",
+      "city": "Tetouan",
+      "code": "60000",
+      "region": "Tanger-Tetouan"
+    },
+    {
+      "id": "1b4c",
+      "street": "Hay almassira",
+      "city": "Inezegan",
+      "code": "60000",
+      "region": "Souss"
+    }
+  ]
 }

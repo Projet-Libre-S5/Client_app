@@ -9,6 +9,8 @@ import { TableModule } from 'primeng/table';
 import { UpdateModalComponent } from "./subpages/update-modal/update-modal.component";
 import { DeleteModalComponent } from "./subpages/delete-modal/delete-modal.component";
 import { InputTextModule } from "primeng/inputtext"; 
+import { AdressService } from '../../../services/home/adress/adress.service';
+import { SweetAlertService } from '../../../shared/services/sweet-alert/sweet-alert.service';
 
 
 //import * as citiesData from '../../../../assets/data/moroccan-cities.json';
@@ -29,10 +31,10 @@ import { InputTextModule } from "primeng/inputtext";
 })
 export class AdressesComponent implements OnInit {
 
-  FormSubmitted:boolean=false;
   updateModal:boolean=false;
   deleteModal:boolean=false;
   adresseForm:any;
+  adresses:any;
 
 
 
@@ -42,6 +44,8 @@ export class AdressesComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private service:AdressService,
+    private AlertService:SweetAlertService
   ) {
 
   }
@@ -55,28 +59,57 @@ export class AdressesComponent implements OnInit {
       code:['',Validators.required],
       region:['',Validators.required]
     })
+
+    this.getAdresses();
+   
    
   }
 
+
+
+  getAdresses():void{
+    this.service.getAll().subscribe((data: any) => {
+      this.adresses=data
+    },
+      (err) => {
+        console.log(err)
+
+      }
+    )
+  }
+
  
-  adresses=[{"adresse":"RUE MOHAMMED 5","code":444,"city":"Agadir","region":"Souss Massa Daraa"},
-    {"adresse":"RUE MOHAMMED 5","code":444,"city":"Agadir","region":"Souss Massa Daraa"},
-    {"adresse":"RUE MOHAMMED 5","code":444,"city":"Agadir","region":"Souss Massa Daraa"}
 
-
-  ]
 
   selected_adresses=[]
 
   
 
-  OnSubmit(){
-    this.FormSubmitted=true;
+  OnSubmit():void{
+  
        if(this.adresseForm.valid){
-        console.log("here")
+
+        let adress:any=
+      { 
+        street:this.adresseForm.value.street,
+      city:this.adresseForm.value.city,
+      code:this.adresseForm.value.code,
+      region:this.adresseForm.value.region
+      }
+      
+      console.log(adress)
+        this.service.create(adress).subscribe(
+          () => {
+            this.AlertService.showSuccessAlert("Succès" , "adresse ajoutée") 
+            this.getAdresses();
+          } , 
+          (err) =>{
+            return this.AlertService.showErrorAlert("Erreur", err?.error?.message);
+          }
+        )
        }
        else {
-        console.log("problem")
+        console.log("invalid form")
        }
   }
 

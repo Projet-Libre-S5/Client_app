@@ -18,7 +18,7 @@ export class AuthService {
 
 
   login(email:string,password:string){
-    this.http.get<any>(`${this.ApiUrl}/Users`)
+    this.http.get<any>(`${this.ApiUrl}/users`)
   .subscribe(res=>{
     const user = res.find((a:any)=>{
       return a.email === email && a.password ===password

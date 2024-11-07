@@ -10,12 +10,16 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ModalComponent {
   @Input() isVisible :boolean =false;
-  @Input() Title :string ="";
+  @Input() title :string ="";
   @Input() ConfirmationLabel :string ="";
   @Output() closeMeEvent = new EventEmitter();
+  @Output() confirmEvent = new EventEmitter();
 
   closeMe() {
     this.closeMeEvent.emit();
+  }
+  confirm(){
+    this.confirmEvent.emit();
   }
 
 }

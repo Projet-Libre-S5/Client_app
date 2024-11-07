@@ -11,7 +11,10 @@ import { ModalComponent } from "../../../../../shared/components/modal/modal.com
 })
 export class DeleteModalComponent {
 
+
+  
   @Input() isVisible :boolean =false;
+  @Input() item:any={};
    @Output() closeMeEvent = new EventEmitter();
    @Output() confirmEvent = new EventEmitter();
    closeMe() {
@@ -20,4 +23,8 @@ export class DeleteModalComponent {
   confirm() {
     this.confirmEvent.emit();
   } 
+
+
+
+
 }

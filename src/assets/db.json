@@ -1,12 +1,12 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "email": "user@email.com",
       "password": "user"
     },
     {
-      "id": 2,
+      "id": "2",
       "email": "admin@email.com",
       "password": "admin"
     }
@@ -17,7 +17,7 @@
       "street": "Hay almostaqbal",
       "city": "Khouribga",
       "code": "25015",
-      "region": "Souss"
+      "region": "Beni-Mellal Khouribga"
     },
     {
       "id": "4c15",

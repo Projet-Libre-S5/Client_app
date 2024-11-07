@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AutoCompleteModule } from 'primeng/autocomplete';
-import { CommonModule, JsonPipe } from '@angular/common';
+import { CommonModule} from '@angular/common';
 import { Observable } from 'rxjs';
 import { TableModule } from 'primeng/table';
 import { UpdateModalComponent } from "./subpages/update-modal/update-modal.component";
@@ -35,6 +35,12 @@ export class AdressesComponent implements OnInit {
   deleteModal:boolean=false;
   adresseForm:any;
   adresses:any;
+  selected_item:any={
+    street:'',
+    city:'',
+    code:'',
+    region:''
+  };
 
 
 
@@ -115,7 +121,22 @@ export class AdressesComponent implements OnInit {
 
 
 
-  
+  OnUpdate(value:any) {
+    console.log(value.id);
+    console.log(value.street);
+    this.service.update(value.id,value).subscribe (
+      ()=> {
+        this.AlertService.showSuccessAlert("Succès" , "adresse modifiée") 
+        this.getAdresses();
+        this.updateModal=false;
+      } , 
+      (err) =>{
+        console.log(err)
+        return this.AlertService.showErrorAlert("Erreur", err?.error?.message);
+      }
+    )
+
+  }
 
 
   

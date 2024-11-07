@@ -1,5 +1,5 @@
-<app-update-modal [isVisible]="updateModal" (closeMeEvent)="updateModal=false"></app-update-modal>
-<app-delete-modal [isVisible]="deleteModal" (closeMeEvent)="deleteModal=false"></app-delete-modal>
+<app-update-modal [item]="selected_item" [isVisible]="updateModal" (closeMeEvent)="updateModal=false" (confirmEvent)="OnUpdate($event)"></app-update-modal>
+<app-delete-modal [item]="selected_item" [isVisible]="deleteModal" (closeMeEvent)="deleteModal=false"></app-delete-modal>
 
 
 
@@ -9,16 +9,16 @@
 </div>
 
 <!--First Card-->
-<div class="grid lg:grid-cols-2 gap-4 grid-rows-2  ">
+<div class="grid lg:grid-cols-2 gap-4 grid-rows-2 h-auto ">
    <div class="bg-white   rounded-lg p-4 drop-shadow-sm  flex-col flex">
    
-            <div class="p-10 text-sm poppins-light ">
+            <div class="p-10 text-sm poppins-light  ">
 
               <form [formGroup]="adresseForm" (ngSubmit)="OnSubmit()">
 
-              <div class="grid grid-cols-3 grid-rows-3 gap-4">
+              <div class="grid grid-cols-3 grid-rows-3 gap-4 h-60 ">
                 <div class="col-span-2">
-                  <div class="relative mb-4" >
+                  <div class="relative " >
                     <input
                       type="text"
                       class="peer block min-h-[auto] w-full  rounded bg-secondary border-[1.5px]   focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
@@ -42,7 +42,7 @@
                     </div></div>
 
 
-                <div class="col-start-3"> <div class="relative mb-4" >
+                <div class="col-start-3"> <div class="relative " >
                   <input
                     type="text"
                     class="peer block min-h-[auto] w-full rounded bg-secondary  border-[1.5px]   focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
@@ -66,7 +66,7 @@
 
 
                
-                <div class="col-span-3 row-start-2">  <div class="relative mb-4" >
+                <div class="col-span-3 row-start-2">  <div class="relative " >
                   <input
                     type="text"
                     class="peer block min-h-[auto] w-[90%] rounded bg-secondary border-[1.5px]   focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
@@ -87,7 +87,7 @@
                  </p>
                   </div></div>
                  
-                  <div class=""> <div class="relative mb-4" >
+                  <div class=""> <div class="relative" >
                     <input
                       type="text"
                       class="peer block min-h-[auto] w-full rounded bg-secondary border-[1.5px]   focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
@@ -115,7 +115,7 @@
             <div class="flex justify-end">
             <button
             type="submit"
-            class="rounded-sm bg-primary px-6 py-2 text-xs font-medium   text-white ">
+            class="bg-primary  text-sm font-medium rounded-sm px-6 py-2  text-white ">
             Sauvegarder
           </button>
            </div>
@@ -157,11 +157,11 @@
             <td>{{ item.city }}</td>
             <td>{{ item.region }}</td>
             <td class="flex justify-center items-center w-3/4 text-slate-300 ">
-              <button class="h-14 w-9 object-contain  text-slate-500 hover:text-slate-500" (click)="updateModal=true">
+              <button class="h-14 w-9 object-contain  text-slate-500 hover:text-slate-500" (click)="updateModal=true;selected_item=item">
                 <i class="pi pi-pencil"></i>
 
               </button>
-              <button class="h-14 w-9 object-contain text-red-300 hover:text-red-500" (click)="deleteModal=true">
+              <button class="h-14 w-9 object-contain text-red-300 hover:text-red-500" (click)="deleteModal=true;selected_item=item">
                 <i class="pi pi-trash"></i>
               </button>
             </td>

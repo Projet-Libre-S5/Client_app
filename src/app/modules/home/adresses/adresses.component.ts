@@ -42,6 +42,12 @@ export class AdressesComponent implements OnInit {
     region:''
   };
 
+  pagination:any;
+
+  paginatedAdresses: any[] = []; 
+
+
+
 
 
   readonly isLoading$?: Observable<boolean>;
@@ -66,6 +72,12 @@ export class AdressesComponent implements OnInit {
       region:['',Validators.required]
     })
 
+    this.pagination = {
+      current_page: 1,  
+      per_page: 3,     
+      total: 0    
+    };
+
     this.getAdresses();
    
    
@@ -75,7 +87,10 @@ export class AdressesComponent implements OnInit {
 
   getAdresses():void{
     this.service.getAll().subscribe((data: any) => {
-      this.adresses=data
+      this.adresses = data;             // Store all data
+      this.pagination.total = data.length; // Update total items based on fetched data
+      this.updatePaginatedAdresses();  
+     
     },
       (err) => {
         console.log(err)
@@ -84,10 +99,11 @@ export class AdressesComponent implements OnInit {
     )
   }
 
- 
-
-
-  selected_adresses=[]
+  updatePaginatedAdresses(): void {
+    const startIndex = this.pagination.current_page * this.pagination.per_page;
+    const endIndex = startIndex + this.pagination.per_page;
+    this.paginatedAdresses = this.adresses.slice(startIndex, endIndex); // Slice data for current page
+  }
 
   
 
@@ -138,6 +154,27 @@ export class AdressesComponent implements OnInit {
 
   }
 
+  OnDelete(value:any){
+    this.service.delete(value.id).subscribe(
+      ()=> {
+        this.AlertService.showSuccessAlert("Succès" , "adresse supprimée") 
+        this.getAdresses();
+        this.deleteModal=false;
+      }, 
+      (err) =>{
+        console.log(err)
+        return this.AlertService.showErrorAlert("Erreur", err?.error?.message);
+      }
+    )
+  }
+
+
+  
+
+  onPageChange(event: any) {
+    this.pagination.current_page = event.page; // Update current page
+    this.updatePaginatedAdresses();            // Update the paginated addresses displayed
+  }
 
   
   

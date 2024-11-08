@@ -1,6 +1,9 @@
 
-<app-modal ConfirmationLabel="Supprimer" title="Supprimer l'adresse" [isVisible]="isVisible" (closeMeEvent)="closeMe()" >
+<app-modal ConfirmationLabel="Supprimer" title="Supprimer l'adresse" [isVisible]="isVisible" (closeMeEvent)="closeMe()" (confirmEvent)="confirm()" >
   
-    <h1>Voulez vous supprimer cette Adresse</h1>
+    <div class="p-8">
+    <h1 class="font-semibold  text-2xl">Voulez vous supprimer cette adresse ?</h1>
+    </div>
+
 
 </app-modal>

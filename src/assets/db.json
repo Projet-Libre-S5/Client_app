@@ -13,27 +13,6 @@
   ],
   "adresses": [
     {
-      "id": "6996",
-      "street": "Hay almostaqbal",
-      "city": "Agadir",
-      "code": "25015",
-      "region": "Beni-Mellal Khouribga"
-    },
-    {
-      "id": "4c15",
-      "street": "Hay almostaqbal",
-      "city": "Tetouan",
-      "code": "60000",
-      "region": "Tanger-Tetouan"
-    },
-    {
-      "id": "1b4c",
-      "street": "Hay almassira",
-      "city": "Inezegan",
-      "code": "60000",
-      "region": "Souss"
-    },
-    {
       "id": "a312",
       "street": "Hay almostaqbal",
       "city": "Khouribga",
@@ -46,6 +25,20 @@
       "city": "Agadir",
       "code": "25015",
       "region": "Souss"
+    },
+    {
+      "id": "4f9e",
+      "street": "Hay almostaqbal",
+      "city": "Elhoceima",
+      "code": "25015",
+      "region": "Tanger-Tetouan"
+    },
+    {
+      "id": "02f6",
+      "street": "Rabat",
+      "city": "Rabat",
+      "code": "3000",
+      "region": "Rabat"
     }
   ]
 }

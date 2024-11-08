@@ -21,7 +21,7 @@ export class DeleteModalComponent {
     this.closeMeEvent.emit();
   }
   confirm() {
-    this.confirmEvent.emit();
+    this.confirmEvent.emit(this.item);
   } 
 
 

@@ -15,13 +15,13 @@ import { HttpClientModule } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
-  ngOnInit(): void {
-    if (isDevMode()) {
+export class AppComponent {
+   /*ngOnInit(): void {
+   if (isDevMode()) {
       console.log('Development!');
     } else {
       console.log('Production!');
     }
-  }
+  }*/
   title = 'ClientApp';
 }

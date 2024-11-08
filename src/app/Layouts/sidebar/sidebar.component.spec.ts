@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideRouter } from '@angular/router';
 import { SidebarComponent } from './sidebar.component';
+import { provideHttpClient } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
 
 describe('SidebarComponent', () => {
   let component: SidebarComponent;
@@ -8,7 +10,9 @@ describe('SidebarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SidebarComponent]
+      imports: [SidebarComponent],
+      providers: [provideHttpClient(),MessageService,provideRouter([])]
+
     })
     .compileComponents();
     

@@ -39,6 +39,13 @@
       "city": "Khouribga",
       "code": "25015",
       "region": "Souss"
+    },
+    {
+      "id": "c5d6",
+      "street": "Hay almostaqbal",
+      "city": "Agadir",
+      "code": "25015",
+      "region": "Souss"
     }
   ]
 }

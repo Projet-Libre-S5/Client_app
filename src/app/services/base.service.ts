@@ -10,7 +10,8 @@ export class BaseService {
   
   private baseUrl = environment.serverUrl;
 
-  constructor(private http: HttpClient, @Inject(String) private url: string) { }
+
+  constructor(private http: HttpClient, @Inject('url') private url: string) { }
 
 
 

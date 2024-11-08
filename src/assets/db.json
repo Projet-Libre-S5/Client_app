@@ -15,7 +15,7 @@
     {
       "id": "6996",
       "street": "Hay almostaqbal",
-      "city": "Khouribga",
+      "city": "Agadir",
       "code": "25015",
       "region": "Beni-Mellal Khouribga"
     },
@@ -31,6 +31,13 @@
       "street": "Hay almassira",
       "city": "Inezegan",
       "code": "60000",
+      "region": "Souss"
+    },
+    {
+      "id": "a312",
+      "street": "Hay almostaqbal",
+      "city": "Khouribga",
+      "code": "25015",
       "region": "Souss"
     }
   ]

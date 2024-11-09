@@ -1,0 +1,1632 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>client-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">client-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  LaboratoriesComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/home/laboratories/laboratories.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-laboratories</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>PaginatorModule</code>
+                            <code>FormsModule</code>
+                            <code>ReactiveFormsModule</code>
+                            <code>AutoCompleteModule</code>
+                            <code>CommonModule</code>
+                            <code>ReactiveFormsModule</code>
+                            <code>CommonModule</code>
+                            <code>PaginatorModule</code>
+                            <code>TableModule</code>
+                                <code><a href="../components/UpdateModalComponent.html" target="_self" >UpdateModalComponent</a></code>
+                                <code><a href="../components/DeleteModalComponent.html" target="_self" >DeleteModalComponent</a></code>
+                            <code>InputTextModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./laboratories.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./laboratories.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#deleteModal" >deleteModal</a>
+                            </li>
+                            <li>
+                                <a href="#imageSource" >imageSource</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#isLoading$" >isLoading$</a>
+                            </li>
+                            <li>
+                                <a href="#laboratories" >laboratories</a>
+                            </li>
+                            <li>
+                                <a href="#laboratoryForm" >laboratoryForm</a>
+                            </li>
+                            <li>
+                                <a href="#logoPreview" >logoPreview</a>
+                            </li>
+                            <li>
+                                <a href="#paginatedLaboratories" >paginatedLaboratories</a>
+                            </li>
+                            <li>
+                                <a href="#pagination" >pagination</a>
+                            </li>
+                            <li>
+                                <a href="#selected_item" >selected_item</a>
+                            </li>
+                            <li>
+                                <a href="#updateModal" >updateModal</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getLaboratories" >getLaboratories</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#OnDelete" >OnDelete</a>
+                            </li>
+                            <li>
+                                <a href="#onFileSelected" >onFileSelected</a>
+                            </li>
+                            <li>
+                                <a href="#onPageChange" >onPageChange</a>
+                            </li>
+                            <li>
+                                <a href="#OnSubmit" >OnSubmit</a>
+                            </li>
+                            <li>
+                                <a href="#OnUpdate" >OnUpdate</a>
+                            </li>
+                            <li>
+                                <a href="#updatePaginatedLaboratories" >updatePaginatedLaboratories</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(fb: FormBuilder, service: LaboratoryService, AlertService: SweetAlertService, sanitizer: DomSanitizer)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/modules/home/laboratories/laboratories.component.ts:56</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>service</td>
+                                                  
+                                                        <td>
+                                                                    <code>LaboratoryService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>AlertService</td>
+                                                  
+                                                        <td>
+                                                                    <code>SweetAlertService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>sanitizer</td>
+                                                  
+                                                        <td>
+                                                                    <code>DomSanitizer</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getLaboratories"></a>
+                    <span class="name">
+                        <span ><b>getLaboratories</b></span>
+                        <a href="#getLaboratories"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getLaboratories()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/modules/home/laboratories/laboratories.component.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/app/modules/home/laboratories/laboratories.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="OnDelete"></a>
+                    <span class="name">
+                        <span ><b>OnDelete</b></span>
+                        <a href="#OnDelete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>OnDelete(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="167"
+                                    class="link-to-prism">src/app/modules/home/laboratories/laboratories.component.ts:167</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFileSelected"></a>
+                    <span class="name">
+                        <span ><b>onFileSelected</b></span>
+                        <a href="#onFileSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFileSelected(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="188"
+                                    class="link-to-prism">src/app/modules/home/laboratories/laboratories.component.ts:188</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onPageChange"></a>
+                    <span class="name">
+                        <span ><b>onPageChange</b></span>
+                        <a href="#onPageChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onPageChange(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="184"
+                                    class="link-to-prism">src/app/modules/home/laboratories/laboratories.component.ts:184</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="OnSubmit"></a>
+                    <span class="name">
+                        <span ><b>OnSubmit</b></span>
+                        <a href="#OnSubmit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>OnSubmit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="118"
+                                    class="link-to-prism">src/app/modules/home/laboratories/laboratories.component.ts:118</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="OnUpdate"></a>
+                    <span class="name">
+                        <span ><b>OnUpdate</b></span>
+                        <a href="#OnUpdate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>OnUpdate(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="150"
+                                    class="link-to-prism">src/app/modules/home/laboratories/laboratories.component.ts:150</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updatePaginatedLaboratories"></a>
+                    <span class="name">
+                        <span ><b>updatePaginatedLaboratories</b></span>
+                        <a href="#updatePaginatedLaboratories"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updatePaginatedLaboratories()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">src/app/modules/home/laboratories/laboratories.component.ts:110</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteModal"></a>
+                    <span class="name">
+                        <span ><b>deleteModal</b></span>
+                        <a href="#deleteModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/modules/home/laboratories/laboratories.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="imageSource"></a>
+                    <span class="name">
+                        <span ><b>imageSource</b></span>
+                        <a href="#imageSource"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/modules/home/laboratories/laboratories.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoading$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>isLoading$</b></span>
+                        <a href="#isLoading$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/modules/home/laboratories/laboratories.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="laboratories"></a>
+                    <span class="name">
+                        <span ><b>laboratories</b></span>
+                        <a href="#laboratories"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/modules/home/laboratories/laboratories.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="laboratoryForm"></a>
+                    <span class="name">
+                        <span ><b>laboratoryForm</b></span>
+                        <a href="#laboratoryForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/modules/home/laboratories/laboratories.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logoPreview"></a>
+                    <span class="name">
+                        <span ><b>logoPreview</b></span>
+                        <a href="#logoPreview"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/modules/home/laboratories/laboratories.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paginatedLaboratories"></a>
+                    <span class="name">
+                        <span ><b>paginatedLaboratories</b></span>
+                        <a href="#paginatedLaboratories"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/modules/home/laboratories/laboratories.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pagination"></a>
+                    <span class="name">
+                        <span ><b>pagination</b></span>
+                        <a href="#pagination"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/modules/home/laboratories/laboratories.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selected_item"></a>
+                    <span class="name">
+                        <span ><b>selected_item</b></span>
+                        <a href="#selected_item"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+      nom:&quot;&quot;,
+      logo:&quot;&quot;,
+      nrc: &quot;&quot;,
+      active:&quot;&quot;,  
+      dateActivation:&quot;&quot;
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/modules/home/laboratories/laboratories.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateModal"></a>
+                    <span class="name">
+                        <span ><b>updateModal</b></span>
+                        <a href="#updateModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/modules/home/laboratories/laboratories.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, OnInit, Output, ViewChild } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormControl, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { PaginatorModule, PaginatorState } from &#x27;primeng/paginator&#x27;;
+import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
+import { DomSanitizer } from &#x27;@angular/platform-browser&#x27;;
+import { AutoCompleteModule } from &#x27;primeng/autocomplete&#x27;;
+import { CommonModule} from &#x27;@angular/common&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import { TableModule } from &#x27;primeng/table&#x27;;
+import { UpdateModalComponent } from &quot;./subpages/update-modal/update-modal.component&quot;;
+import { DeleteModalComponent } from &quot;./subpages/delete-modal/delete-modal.component&quot;;
+import { InputTextModule } from &quot;primeng/inputtext&quot;; 
+import { SweetAlertService } from &#x27;../../../shared/services/sweet-alert/sweet-alert.service&#x27;;
+import { LaboratoryService } from &#x27;../../../services/home/laboratory/laboratory.service&#x27;;
+
+@Component({
+  selector: &#x27;app-laboratories&#x27;,
+  standalone: true,
+  imports: [PaginatorModule, FormsModule, ReactiveFormsModule, AutoCompleteModule, CommonModule,
+    ReactiveFormsModule,
+    CommonModule,
+    PaginatorModule,
+    TableModule, UpdateModalComponent, DeleteModalComponent,InputTextModule
+  ],
+  templateUrl: &#x27;./laboratories.component.html&#x27;,
+  styleUrl: &#x27;./laboratories.component.css&#x27;
+})
+export class LaboratoriesComponent implements OnInit {
+
+  updateModal:boolean&#x3D;false;
+  deleteModal:boolean&#x3D;false;
+  laboratoryForm:any;
+  laboratories:any;
+  selected_item:any&#x3D;{
+      nom:&quot;&quot;,
+      logo:&quot;&quot;,
+      nrc: &quot;&quot;,
+      active:&quot;&quot;,  
+      dateActivation:&quot;&quot;
+  };
+
+
+  pagination:any;
+
+  paginatedLaboratories: any[] &#x3D; []; 
+
+  logoPreview:any;
+
+  imageSource:any;
+  
+  
+
+
+
+
+  readonly isLoading$?: Observable&lt;boolean&gt;;
+
+
+
+  constructor(
+    private fb: FormBuilder,
+    private service:LaboratoryService,
+    private AlertService:SweetAlertService,
+    private sanitizer: DomSanitizer
+  ) {
+
+  }
+
+
+  ngOnInit(): void {
+
+    this.laboratoryForm &#x3D; this.fb.group({
+      nom: [&#x27;&#x27;, Validators.required],
+      logo: [&#x27;&#x27;, Validators.required],
+      nrc: [&#x27;&#x27;, Validators.required],
+      active: [false],  
+      dateActivation: [&#x27;&#x27;] 
+    });
+
+    this.pagination &#x3D; {
+      current_page: 1,  
+      per_page: 3,     
+      total: 0    
+    };
+
+    this.getLaboratories();
+   
+   
+  }
+
+
+
+  getLaboratories():void{
+    this.service.getAll().subscribe((data: any) &#x3D;&gt; {
+      this.laboratories &#x3D; data;            
+      this.pagination.total &#x3D; data.length;
+      this.updatePaginatedLaboratories();  
+     
+
+    },
+      (err) &#x3D;&gt; {
+        console.log(err)
+
+      }
+    )
+  }
+
+
+
+  updatePaginatedLaboratories(): void {
+    const startIndex &#x3D; this.pagination.current_page * this.pagination.per_page;
+    const endIndex &#x3D; startIndex + this.pagination.per_page;
+    this.paginatedLaboratories &#x3D; this.laboratories.slice(startIndex, endIndex); 
+  }
+
+  
+
+  OnSubmit():void{
+  
+      if(this.laboratoryForm.valid){
+
+        let laboratory:any&#x3D;
+      { 
+
+        nom: this.laboratoryForm.value.nom,
+      logo: this.laboratoryForm.value.logo,
+      nrc: this.laboratoryForm.value.nrc,
+      active: this.laboratoryForm.value.active,  
+      dateActivation: this.laboratoryForm.value.dateActivation
+      }
+      
+      console.log(laboratory)
+        this.service.create(laboratory).subscribe(
+          () &#x3D;&gt; {
+            this.AlertService.showSuccessAlert(&quot;Succès&quot; , &quot;Laboratoire ajoutée&quot;) 
+            this.getLaboratories();
+          } , 
+          (err) &#x3D;&gt;{
+            return this.AlertService.showErrorAlert(&quot;Erreur&quot;, err?.error?.message);
+          }
+        )
+       }
+       else {
+        console.log(&quot;invalid form&quot;)
+       }
+  }
+
+
+
+  OnUpdate(value:any) {
+    console.log(value.id);
+    console.log(value.street);
+    this.service.update(value.id,value).subscribe (
+      ()&#x3D;&gt; {
+        this.AlertService.showSuccessAlert(&quot;Succès&quot; , &quot;Laboratoire modifiée&quot;) 
+        this.getLaboratories();
+        this.updateModal&#x3D;false;
+      } , 
+      (err) &#x3D;&gt;{
+        console.log(err)
+        return this.AlertService.showErrorAlert(&quot;Erreur&quot;, err?.error?.message);
+      }
+    )
+
+  }
+
+  OnDelete(value:any){
+    this.service.delete(value.id).subscribe(
+      ()&#x3D;&gt; {
+        this.AlertService.showSuccessAlert(&quot;Succès&quot; , &quot;Laboratoire supprimée&quot;) 
+        this.getLaboratories();
+        this.deleteModal&#x3D;false;
+      }, 
+      (err) &#x3D;&gt;{
+        console.log(err)
+        return this.AlertService.showErrorAlert(&quot;Erreur&quot;, err?.error?.message);
+      }
+    )
+  }
+
+
+  
+
+  onPageChange(event: any) {
+    this.pagination.current_page &#x3D; event.page; 
+    this.updatePaginatedLaboratories();   }        
+
+  onFileSelected(event: any): void {
+    const file &#x3D; event.target.files[0];
+    if (file) {
+      const reader &#x3D; new FileReader();
+      reader.onload &#x3D; (e: any) &#x3D;&gt; {
+        this.logoPreview &#x3D; e.target.result; 
+        this.laboratoryForm.patchValue({
+          logo: e.target.result.split(&#x27;,&#x27;)[1] 
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  
+  
+ 
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-update-modal [item]&#x3D;&quot;selected_item&quot; [isVisible]&#x3D;&quot;updateModal&quot; (closeMeEvent)&#x3D;&quot;updateModal&#x3D;false&quot; (confirmEvent)&#x3D;&quot;OnUpdate($event)&quot;&gt;&lt;/app-update-modal&gt;
+&lt;app-delete-modal [item]&#x3D;&quot;selected_item&quot; [isVisible]&#x3D;&quot;deleteModal&quot; (closeMeEvent)&#x3D;&quot;deleteModal&#x3D;false&quot; (confirmEvent)&#x3D;&quot;OnDelete($event)&quot;&gt;&lt;/app-delete-modal&gt;
+
+
+
+&lt;div class&#x3D;&quot; flex-col space-y-4 justify-center items-center animate__fadeIn animate__animated &quot;&gt;
+&lt;div&gt;
+    &lt;h1 class&#x3D;&quot;text-3xl poppins-medium text-gray-600&quot;&gt;Laboratoires&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;grid lg:grid-cols-2 gap-4 grid-rows-2 h-auto &quot;&gt;
+   &lt;div class&#x3D;&quot;bg-white   rounded-lg p-4 drop-shadow-sm  flex-col flex&quot;&gt;
+   
+    &lt;div class&#x3D;&quot;p-10 text-sm poppins-light&quot;&gt;
+
+        &lt;form [formGroup]&#x3D;&quot;laboratoryForm&quot; (ngSubmit)&#x3D;&quot;OnSubmit()&quot;&gt;
+          
+          &lt;div class&#x3D;&quot;flex flex-row gap-4 mb-6 items-center &quot;&gt;
+            &lt;div class&#x3D;&quot;flex flex-col items-center  p-2 justify-center space-y-2&quot; [ngClass]&#x3D;&quot;{ &#x27;bg-slate-100&#x27;: logoPreview }&quot;&gt;
+              &lt;img *ngIf&#x3D;&quot;logoPreview&quot; [src]&#x3D;&quot;logoPreview&quot; alt&#x3D;&quot;Aperçu du logo&quot; class&#x3D;&quot;w-24 h-24 mt-2 rounded&quot; /&gt;
+              &lt;button
+              type&#x3D;&quot;button&quot;
+              class&#x3D;&quot;text-sm px-6 py-2 text-white  bg-primary rounded-xl drop-shadow-md&quot;
+              (click)&#x3D;&quot;fileInput.click()&quot;
+            &gt;
+              &lt;span *ngIf&#x3D;&quot;logoPreview&quot;&gt;Modifier Logo&lt;/span&gt;
+              &lt;span *ngIf&#x3D;&quot;!logoPreview&quot;&gt;Ajouter Logo&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;input
+            type&#x3D;&quot;file&quot;
+            accept&#x3D;&quot;image/*&quot;
+            class&#x3D;&quot;hidden&quot;
+            id&#x3D;&quot;logo&quot;
+            #fileInput
+            (change)&#x3D;&quot;onFileSelected($event)&quot;
+          /&gt;
+              
+            &lt;/div&gt;
+      
+            &lt;div class&#x3D;&quot;relative flex-1&quot;&gt;
+              &lt;input
+                type&#x3D;&quot;text&quot;
+                class&#x3D;&quot;peer block min-h-[auto] w-full rounded bg-secondary border-[1.5px] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary placeholder:opacity-0&quot;
+                id&#x3D;&quot;nom&quot;
+                formControlName&#x3D;&quot;nom&quot;
+                placeholder&#x3D;&quot;Entrez le nom&quot;
+              /&gt;
+              &lt;label
+                for&#x3D;&quot;nom&quot;
+                class&#x3D;&quot;pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary&quot;
+                [class]&#x3D;&quot;laboratoryForm?.get(&#x27;nom&#x27;).value ? &#x27;-translate-y-[1.6rem] scale-[0.8]&#x27; : &#x27;border-gray-300&#x27;&quot;
+              &gt;
+                Nom
+              &lt;/label&gt;
+              &lt;p *ngIf&#x3D;&quot;laboratoryForm.get(&#x27;nom&#x27;)?.invalid &amp;&amp; (laboratoryForm.get(&#x27;nom&#x27;)?.dirty || laboratoryForm.get(&#x27;nom&#x27;)?.touched)&quot; class&#x3D;&quot;pl-2 mt-2 text-xs text-red-600&quot;&gt;
+                &lt;span class&#x3D;&quot;font-medium&quot;&gt;*&lt;/span&gt; Champs requis
+              &lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+      
+          &lt;div class&#x3D;&quot;flex flex-row gap-4 mb-6&quot;&gt;
+            &lt;div class&#x3D;&quot;flex-1 relative&quot;&gt;
+              &lt;input
+                type&#x3D;&quot;text&quot;
+                class&#x3D;&quot;peer block min-h-[auto] w-full rounded bg-secondary border-[1.5px] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary placeholder:opacity-0&quot;
+                id&#x3D;&quot;nrc&quot;
+                formControlName&#x3D;&quot;nrc&quot;
+                placeholder&#x3D;&quot;Entrez le NRC&quot;
+              /&gt;
+              &lt;label
+                for&#x3D;&quot;nrc&quot;
+                class&#x3D;&quot;pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary&quot;
+                [class]&#x3D;&quot;laboratoryForm?.get(&#x27;nrc&#x27;).value ? &#x27;-translate-y-[1.6rem] scale-[0.8]&#x27; : &#x27;border-gray-300&#x27;&quot;
+              &gt;
+                NRC
+              &lt;/label&gt;
+              &lt;p *ngIf&#x3D;&quot;laboratoryForm.get(&#x27;nrc&#x27;)?.invalid &amp;&amp; (laboratoryForm.get(&#x27;nrc&#x27;)?.dirty || laboratoryForm.get(&#x27;nrc&#x27;)?.touched)&quot; class&#x3D;&quot;pl-2 mt-2 text-xs text-red-600&quot;&gt;
+                &lt;span class&#x3D;&quot;font-medium&quot;&gt;*&lt;/span&gt; Champs requis
+              &lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+      
+          &lt;div class&#x3D;&quot;flex flex-row gap-4 mb-6&quot;&gt;
+            &lt;div class&#x3D;&quot;flex items-center&quot;&gt;
+              &lt;input type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;active&quot; formControlName&#x3D;&quot;active&quot; class&#x3D;&quot;mr-2&quot; /&gt;
+              &lt;label for&#x3D;&quot;active&quot; class&#x3D;&quot;text-sm font-medium&quot;&gt;Actif&lt;/label&gt;
+            &lt;/div&gt;
+      
+            &lt;div class&#x3D;&quot;flex-1 relative&quot;&gt;
+              &lt;input
+                type&#x3D;&quot;date&quot;
+                class&#x3D;&quot;peer block min-h-[auto] w-full rounded bg-secondary border-[1.5px] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary placeholder:opacity-0&quot;
+                id&#x3D;&quot;dateActivation&quot;
+                formControlName&#x3D;&quot;dateActivation&quot;
+                placeholder&#x3D;&quot;Date d&#x27;activation&quot;
+              /&gt;
+              &lt;label
+                for&#x3D;&quot;dateActivation&quot;
+                class&#x3D;&quot;pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary&quot;
+              &gt;
+              &lt;/label&gt;
+              &lt;p *ngIf&#x3D;&quot;laboratoryForm.get(&#x27;dateActivation&#x27;)?.invalid &amp;&amp; (laboratoryForm.get(&#x27;dateActivation&#x27;)?.dirty || laboratoryForm.get(&#x27;dateActivation&#x27;)?.touched)&quot; class&#x3D;&quot;pl-2 mt-2 text-xs text-red-600&quot;&gt;
+                &lt;span class&#x3D;&quot;font-medium&quot;&gt;*&lt;/span&gt; Champs requis
+              &lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+      
+          &lt;div class&#x3D;&quot;flex justify-end mt-4&quot;&gt;
+            &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;bg-primary text-sm font-medium rounded-sm px-6 py-2 text-white&quot;&gt;
+              Sauvegarder
+            &lt;/button&gt;
+          &lt;/div&gt;
+      
+        &lt;/form&gt;
+      &lt;/div&gt;
+      
+                  
+
+
+        
+   &lt;/div&gt;
+
+
+
+
+
+
+
+    &lt;div class&#x3D;&quot;flexflex-col rounded-3xl bg-white h-[36 rem]  &quot;&gt;
+&lt;p-table
+  class&#x3D;&quot;flex-1 overflow-auto&quot;
+  styleClass&#x3D;&quot;rounded-2xl text-[15px] font-DMsans overflow-hidden&quot;
+  [value]&#x3D;&quot;paginatedLaboratories || []&quot;  
+  [loading]&#x3D;&quot;isLoading$&quot;
+  [selection]&#x3D;&quot;[]&quot;
+  [rows]&#x3D;&quot;10&quot;
+  dataKey&#x3D;&quot;nrc&quot;&gt;
+  &lt;ng-template pTemplate&#x3D;&quot;header&quot;&gt;
+    &lt;tr class&#x3D;&quot;bg-secondary-color&quot;&gt;
+      &lt;th&gt;Logo&lt;/th&gt;
+      &lt;th&gt;Nom&lt;/th&gt; 
+      &lt;th&gt;NRC&lt;/th&gt;
+      &lt;th&gt;Actif&lt;/th&gt; 
+      &lt;th&gt;Date d&#x27;activation&lt;/th&gt;
+      &lt;th&gt;Action&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/ng-template&gt;
+
+  &lt;ng-template pTemplate&#x3D;&quot;body&quot; let-item&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;img *ngIf&#x3D;&quot;item.logo&quot; [src]&#x3D;&quot;&#x27;data:image/png;base64,&#x27; + item.logo&quot; alt&#x3D;&quot;Logo du laboratoire&quot; class&#x3D;&quot;w-16 h-16 rounded&quot; /&gt;
+      &lt;/td&gt;
+      &lt;td&gt;{{ item.nom }}&lt;/td&gt;
+      &lt;td&gt;{{ item.nrc }}&lt;/td&gt;
+      &lt;td&gt;
+        &lt;span *ngIf&#x3D;&quot;item.active&quot;&gt;Oui&lt;/span&gt;
+        &lt;span *ngIf&#x3D;&quot;!item.active&quot;&gt;Non&lt;/span&gt;
+      &lt;/td&gt; 
+      &lt;td&gt;{{ item.dateActivation | date: &#x27;dd/MM/yyyy&#x27; }}&lt;/td&gt; 
+      &lt;td class&#x3D;&quot;flex justify-center items-center w-3/4 text-slate-300&quot;&gt;
+       
+        &lt;button class&#x3D;&quot;h-14 w-9 object-contain text-slate-500 hover:text-slate-500&quot; (click)&#x3D;&quot; updateModal&#x3D;true;selected_item&#x3D;item&quot;&gt;
+          &lt;i class&#x3D;&quot;pi pi-pencil&quot;&gt;&lt;/i&gt;
+        &lt;/button&gt;
+
+        &lt;button class&#x3D;&quot;h-14 w-9 object-contain text-red-300 hover:text-red-500&quot; (click)&#x3D;&quot;deleteModal&#x3D;true;selected_item&#x3D;item&quot;&gt;
+          &lt;i class&#x3D;&quot;pi pi-trash&quot;&gt;&lt;/i&gt;
+        &lt;/button&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/ng-template&gt;
+
+  &lt;ng-template pTemplate&#x3D;&quot;emptymessage&quot;&gt;
+    &lt;tr&gt;
+      &lt;td colspan&#x3D;&quot;5&quot;&gt;Aucune donnée à afficher&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/ng-template&gt;
+&lt;/p-table&gt;
+
+
+&lt;p-paginator
+  class&#x3D;&quot;mt-auto&quot;
+  (onPageChange)&#x3D;&quot;onPageChange($event)&quot;
+  [first]&#x3D;&quot;pagination.current_page * pagination?.per_page&quot;
+  [rows]&#x3D;&quot;pagination?.per_page&quot;
+  [totalRecords]&#x3D;&quot;pagination?.total&quot;
+&gt;&lt;/p-paginator&gt;
+  &lt;/div&gt;
+
+    
+
+&lt;/div&gt;
+
+
+
+
+
+
+&lt;/div&gt;
+
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-update-modal [item]="selected_item" [isVisible]="updateModal" (closeMeEvent)="updateModal=false" (confirmEvent)="OnUpdate($event)"></app-update-modal><app-delete-modal [item]="selected_item" [isVisible]="deleteModal" (closeMeEvent)="deleteModal=false" (confirmEvent)="OnDelete($event)"></app-delete-modal><div class=" flex-col space-y-4 justify-center items-center animate__fadeIn animate__animated "><div>    <h1 class="text-3xl poppins-medium text-gray-600">Laboratoires</h1></div><div class="grid lg:grid-cols-2 gap-4 grid-rows-2 h-auto ">   <div class="bg-white   rounded-lg p-4 drop-shadow-sm  flex-col flex">       <div class="p-10 text-sm poppins-light">        <form [formGroup]="laboratoryForm" (ngSubmit)="OnSubmit()">                    <div class="flex flex-row gap-4 mb-6 items-center ">            <div class="flex flex-col items-center  p-2 justify-center space-y-2" [ngClass]="{ \'bg-slate-100\': logoPreview }">              <img *ngIf="logoPreview" [src]="logoPreview" alt="Aperçu du logo" class="w-24 h-24 mt-2 rounded" />              <button              type="button"              class="text-sm px-6 py-2 text-white  bg-primary rounded-xl drop-shadow-md"              (click)="fileInput.click()"            >              <span *ngIf="logoPreview">Modifier Logo</span>              <span *ngIf="!logoPreview">Ajouter Logo</span>            </button>            <input            type="file"            accept="image/*"            class="hidden"            id="logo"            #fileInput            (change)="onFileSelected($event)"          />                          </div>                  <div class="relative flex-1">              <input                type="text"                class="peer block min-h-[auto] w-full rounded bg-secondary border-[1.5px] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary placeholder:opacity-0"                id="nom"                formControlName="nom"                placeholder="Entrez le nom"              />              <label                for="nom"                class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary"                [class]="laboratoryForm?.get(\'nom\').value ? \'-translate-y-[1.6rem] scale-[0.8]\' : \'border-gray-300\'"              >                Nom              </label>              <p *ngIf="laboratoryForm.get(\'nom\')?.invalid && (laboratoryForm.get(\'nom\')?.dirty || laboratoryForm.get(\'nom\')?.touched)" class="pl-2 mt-2 text-xs text-red-600">                <span class="font-medium">*</span> Champs requis              </p>            </div>          </div>                <div class="flex flex-row gap-4 mb-6">            <div class="flex-1 relative">              <input                type="text"                class="peer block min-h-[auto] w-full rounded bg-secondary border-[1.5px] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary placeholder:opacity-0"                id="nrc"                formControlName="nrc"                placeholder="Entrez le NRC"              />              <label                for="nrc"                class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary"                [class]="laboratoryForm?.get(\'nrc\').value ? \'-translate-y-[1.6rem] scale-[0.8]\' : \'border-gray-300\'"              >                NRC              </label>              <p *ngIf="laboratoryForm.get(\'nrc\')?.invalid && (laboratoryForm.get(\'nrc\')?.dirty || laboratoryForm.get(\'nrc\')?.touched)" class="pl-2 mt-2 text-xs text-red-600">                <span class="font-medium">*</span> Champs requis              </p>            </div>          </div>                <div class="flex flex-row gap-4 mb-6">            <div class="flex items-center">              <input type="checkbox" id="active" formControlName="active" class="mr-2" />              <label for="active" class="text-sm font-medium">Actif</label>            </div>                  <div class="flex-1 relative">              <input                type="date"                class="peer block min-h-[auto] w-full rounded bg-secondary border-[1.5px] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary placeholder:opacity-0"                id="dateActivation"                formControlName="dateActivation"                placeholder="Date d\'activation"              />              <label                for="dateActivation"                class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary"              >              </label>              <p *ngIf="laboratoryForm.get(\'dateActivation\')?.invalid && (laboratoryForm.get(\'dateActivation\')?.dirty || laboratoryForm.get(\'dateActivation\')?.touched)" class="pl-2 mt-2 text-xs text-red-600">                <span class="font-medium">*</span> Champs requis              </p>            </div>          </div>                <div class="flex justify-end mt-4">            <button type="submit" class="bg-primary text-sm font-medium rounded-sm px-6 py-2 text-white">              Sauvegarder            </button>          </div>              </form>      </div>                                   </div>    <div class="flexflex-col rounded-3xl bg-white h-[36 rem]  "><p-table  class="flex-1 overflow-auto"  styleClass="rounded-2xl text-[15px] font-DMsans overflow-hidden"  [value]="paginatedLaboratories || []"    [loading]="isLoading$"  [selection]="[]"  [rows]="10"  dataKey="nrc">  <ng-template pTemplate="header">    <tr class="bg-secondary-color">      <th>Logo</th>      <th>Nom</th>       <th>NRC</th>      <th>Actif</th>       <th>Date d\'activation</th>      <th>Action</th>    </tr>  </ng-template>  <ng-template pTemplate="body" let-item>    <tr>      <td><img *ngIf="item.logo" [src]="\'data:image/png;base64,\' + item.logo" alt="Logo du laboratoire" class="w-16 h-16 rounded" />      </td>      <td>{{ item.nom }}</td>      <td>{{ item.nrc }}</td>      <td>        <span *ngIf="item.active">Oui</span>        <span *ngIf="!item.active">Non</span>      </td>       <td>{{ item.dateActivation | date: \'dd/MM/yyyy\' }}</td>       <td class="flex justify-center items-center w-3/4 text-slate-300">               <button class="h-14 w-9 object-contain text-slate-500 hover:text-slate-500" (click)=" updateModal=true;selected_item=item">          <i class="pi pi-pencil"></i>        </button>        <button class="h-14 w-9 object-contain text-red-300 hover:text-red-500" (click)="deleteModal=true;selected_item=item">          <i class="pi pi-trash"></i>        </button>      </td>    </tr>  </ng-template>  <ng-template pTemplate="emptymessage">    <tr>      <td colspan="5">Aucune donnée à afficher</td>    </tr>  </ng-template></p-table><p-paginator  class="mt-auto"  (onPageChange)="onPageChange($event)"  [first]="pagination.current_page * pagination?.per_page"  [rows]="pagination?.per_page"  [totalRecords]="pagination?.total"></p-paginator>  </div>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AdressesComponent', 'selector': 'app-adresses'},{'name': 'AnalysesComponent', 'selector': 'app-analyses'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthComponent', 'selector': 'app-auth'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DeleteModalComponent', 'selector': 'app-delete-modal'},{'name': 'DeleteModalComponent', 'selector': 'app-delete-modal'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LaboratoriesComponent', 'selector': 'app-laboratories'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ModalComponent', 'selector': 'app-modal'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotFoundPageComponent', 'selector': 'app-not-found-page'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TemplatePageComponent', 'selector': 'template-page'},{'name': 'UpdateModalComponent', 'selector': 'app-update-modal'},{'name': 'UpdateModalComponent', 'selector': 'app-update-modal'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'LaboratoriesComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'LaboratoriesComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -14,7 +14,7 @@ FROM nginx:alpine
 COPY --from=build /app/dist/client-app/browser /usr/share/nginx/html
 
 
-RUN npm test
+RUN npm run test
 
 
 EXPOSE 80

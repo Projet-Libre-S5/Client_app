@@ -32,13 +32,16 @@
       "city": "Elhoceima",
       "code": "25015",
       "region": "Tanger-Tetouan"
-    },
+    }
+  ],
+  "laboratories": [
     {
-      "id": "02f6",
-      "street": "Rabat",
-      "city": "Rabat",
-      "code": "3000",
-      "region": "Rabat"
+      "id": "5d79",
+      "nom": "LAb1",
+      "logo": {},
+      "nrc": "test",
+      "active": true,
+      "dateActivation": "2024-11-10"
     }
   ]
 }

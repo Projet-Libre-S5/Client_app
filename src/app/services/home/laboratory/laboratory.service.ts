@@ -2,9 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LABORATORY_URL } from '../../../helpers/constants/Api';
 import { BaseService } from '../../base.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
+
 })
 export class LaboratoryService extends BaseService {
 

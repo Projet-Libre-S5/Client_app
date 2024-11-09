@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/cor
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { CommonModule} from '@angular/common';
 import { Observable } from 'rxjs';
@@ -29,19 +30,25 @@ export class LaboratoriesComponent implements OnInit {
   updateModal:boolean=false;
   deleteModal:boolean=false;
   laboratoryForm:any;
-  adresses:any;
+  laboratories:any;
   selected_item:any={
-    street:'',
-    city:'',
-    code:'',
-    region:''
+      nom:"",
+      logo:"",
+      nrc: "",
+      active:"",  
+      dateActivation:""
   };
+
 
   pagination:any;
 
   paginatedLaboratories: any[] = []; 
 
   logoPreview:any;
+
+  imageSource:any;
+  
+  
 
 
 
@@ -53,7 +60,8 @@ export class LaboratoriesComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service:LaboratoryService,
-    private AlertService:SweetAlertService
+    private AlertService:SweetAlertService,
+    private sanitizer: DomSanitizer
   ) {
 
   }
@@ -84,10 +92,11 @@ export class LaboratoriesComponent implements OnInit {
 
   getLaboratories():void{
     this.service.getAll().subscribe((data: any) => {
-      this.adresses = data;             // Store all data
-      this.pagination.total = data.length; // Update total items based on fetched data
+      this.laboratories = data;            
+      this.pagination.total = data.length;
       this.updatePaginatedLaboratories();  
      
+
     },
       (err) => {
         console.log(err)
@@ -96,10 +105,12 @@ export class LaboratoriesComponent implements OnInit {
     )
   }
 
+
+
   updatePaginatedLaboratories(): void {
     const startIndex = this.pagination.current_page * this.pagination.per_page;
     const endIndex = startIndex + this.pagination.per_page;
-    this.paginatedLaboratories = this.adresses.slice(startIndex, endIndex); // Slice data for current page
+    this.paginatedLaboratories = this.laboratories.slice(startIndex, endIndex); 
   }
 
   
@@ -171,25 +182,22 @@ export class LaboratoriesComponent implements OnInit {
   
 
   onPageChange(event: any) {
-    this.pagination.current_page = event.page; // Update current page
-    this.updatePaginatedLaboratories();            // Update the paginated addresses displayed
-  }
+    this.pagination.current_page = event.page; 
+    this.updatePaginatedLaboratories();   }        
 
-  onFileSelected(event: Event): void {
-    const file = (event.target as HTMLInputElement).files?.[0];
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
     if (file) {
-      this.laboratoryForm.patchValue({ logo: file });
-      this.laboratoryForm.get('logo')?.updateValueAndValidity();
-      
-      // Si vous souhaitez afficher un aperçu de l'image sélectionnée
       const reader = new FileReader();
-      reader.onload = () => {
-        this.logoPreview = reader.result as string;
+      reader.onload = (e: any) => {
+        this.logoPreview = e.target.result; 
+        this.laboratoryForm.patchValue({
+          logo: e.target.result.split(',')[1] 
+        });
       };
       reader.readAsDataURL(file);
     }
   }
-  
   
   
  

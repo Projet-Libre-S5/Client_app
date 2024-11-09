@@ -8,7 +8,6 @@
     <h1 class="text-3xl poppins-medium text-gray-600">Laboratoires</h1>
 </div>
 
-<!--First Card-->
 <div class="grid lg:grid-cols-2 gap-4 grid-rows-2 h-auto ">
    <div class="bg-white   rounded-lg p-4 drop-shadow-sm  flex-col flex">
    
@@ -16,9 +15,7 @@
 
         <form [formGroup]="laboratoryForm" (ngSubmit)="OnSubmit()">
           
-          <!-- Flex Row 1: Logo Preview / Input Logo + Name -->
           <div class="flex flex-row gap-4 mb-6 items-center ">
-            <!-- Logo Preview and Input -->
             <div class="flex flex-col items-center  p-2 justify-center space-y-2" [ngClass]="{ 'bg-slate-100': logoPreview }">
               <img *ngIf="logoPreview" [src]="logoPreview" alt="Aperçu du logo" class="w-24 h-24 mt-2 rounded" />
               <button
@@ -40,7 +37,6 @@
               
             </div>
       
-            <!-- Name Input -->
             <div class="relative flex-1">
               <input
                 type="text"
@@ -62,7 +58,6 @@
             </div>
           </div>
       
-          <!-- Flex Row 2: NRC -->
           <div class="flex flex-row gap-4 mb-6">
             <div class="flex-1 relative">
               <input
@@ -85,15 +80,12 @@
             </div>
           </div>
       
-          <!-- Flex Row 3: Active Checkbox + Date Activation -->
           <div class="flex flex-row gap-4 mb-6">
-            <!-- Active Checkbox -->
             <div class="flex items-center">
               <input type="checkbox" id="active" formControlName="active" class="mr-2" />
               <label for="active" class="text-sm font-medium">Actif</label>
             </div>
       
-            <!-- Date Activation -->
             <div class="flex-1 relative">
               <input
                 type="date"
@@ -113,7 +105,6 @@
             </div>
           </div>
       
-          <!-- Submit Button -->
           <div class="flex justify-end mt-4">
             <button type="submit" class="bg-primary text-sm font-medium rounded-sm px-6 py-2 text-white">
               Sauvegarder
@@ -136,7 +127,6 @@
 
 
     <div class="flexflex-col rounded-3xl bg-white h-[36 rem]  ">
-<!-- Table Display -->
 <p-table
   class="flex-1 overflow-auto"
   styleClass="rounded-2xl text-[15px] font-DMsans overflow-hidden"
@@ -147,30 +137,33 @@
   dataKey="nrc">
   <ng-template pTemplate="header">
     <tr class="bg-secondary-color">
-      <th>Nom</th> <!-- Titre correspondant au champ Nom dans le formulaire -->
-      <th>NRC</th> <!-- Titre correspondant au champ NRC dans le formulaire -->
-      <th>Actif</th> <!-- Titre correspondant au champ Actif dans le formulaire -->
-      <th>Date d'activation</th> <!-- Titre correspondant au champ Date d'activation dans le formulaire -->
-      <th>Action</th> <!-- Colonne pour les actions : Modifier et Supprimer -->
+      <th>Logo</th>
+      <th>Nom</th> 
+      <th>NRC</th>
+      <th>Actif</th> 
+      <th>Date d'activation</th>
+      <th>Action</th>
     </tr>
   </ng-template>
 
   <ng-template pTemplate="body" let-item>
     <tr>
-      <td>{{ item.nom }}</td> <!-- Affiche le nom de l'élément -->
-      <td>{{ item.nrc }}</td> <!-- Affiche le NRC de l'élément -->
+      <td><img *ngIf="item.logo" [src]="'data:image/png;base64,' + item.logo" alt="Logo du laboratoire" class="w-16 h-16 rounded" />
+      </td>
+      <td>{{ item.nom }}</td>
+      <td>{{ item.nrc }}</td>
       <td>
         <span *ngIf="item.active">Oui</span>
         <span *ngIf="!item.active">Non</span>
-      </td> <!-- Affiche "Oui" ou "Non" en fonction de l'état de l'élément -->
-      <td>{{ item.dateActivation | date: 'dd/MM/yyyy' }}</td> <!-- Affiche la date d'activation -->
+      </td> 
+      <td>{{ item.dateActivation | date: 'dd/MM/yyyy' }}</td> 
       <td class="flex justify-center items-center w-3/4 text-slate-300">
-        <!-- Bouton Modifier -->
-        <button class="h-14 w-9 object-contain text-slate-500 hover:text-slate-500" (click)="  updateModal=false">
+       
+        <button class="h-14 w-9 object-contain text-slate-500 hover:text-slate-500" (click)=" updateModal=true;selected_item=item">
           <i class="pi pi-pencil"></i>
         </button>
-        <!-- Bouton Supprimer -->
-        <button class="h-14 w-9 object-contain text-red-300 hover:text-red-500" (click)="deleteModal=false">
+
+        <button class="h-14 w-9 object-contain text-red-300 hover:text-red-500" (click)="deleteModal=true;selected_item=item">
           <i class="pi pi-trash"></i>
         </button>
       </td>
@@ -184,7 +177,7 @@
   </ng-template>
 </p-table>
 
-<!-- Paginator -->
+
 <p-paginator
   class="mt-auto"
   (onPageChange)="onPageChange($event)"

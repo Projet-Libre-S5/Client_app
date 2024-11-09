@@ -23,28 +23,39 @@ export class UpdateModalComponent implements OnInit,OnChanges {
   @Output() closeMeEvent = new EventEmitter();
   @Output() confirmEvent = new EventEmitter();
  
-  adresseForm:any;
+  laboratoryForm:any;
+
+  logoPreview:any;
+
+  dateActivationEnabled=false;
+
+
+ 
+
  
   constructor(private fb: FormBuilder){
      
   }
  
   ngOnInit(): void {
-   this.adresseForm=this.fb.group({
-     street:['',Validators.required],
-     city:['',Validators.required],
-     code:['',Validators.required],
-     region:['',Validators.required]
-   })
+    this.laboratoryForm=this.fb.group({
+      nom: ['', Validators.required],
+      logo: ['', Validators.required],
+      nrc: ['', Validators.required],
+      active: [false],  
+      dateActivation: [''] 
+     })
  
  }
  
    ngOnChanges(changes: SimpleChanges): void {
-     this.adresseForm=this.fb.group({
-       street:[this.item.street,Validators.required],
-       city:[this.item.city,Validators.required],
-       code:[this.item.code,Validators.required],
-       region:[this.item.region,Validators.required]
+    
+    this.laboratoryForm=this.fb.group({
+      nom: [this.item.nom, Validators.required],
+      logo: [this.item.logo, Validators.required],
+      nrc: [this.item.nrc, Validators.required],
+      active: [this.item.active],  
+      dateActivation: [this.item.dateActivation] 
      })
    }
  
@@ -57,11 +68,35 @@ export class UpdateModalComponent implements OnInit,OnChanges {
  }
  confirm() {
    let updated_item;
-   if(this.adresseForm.valid){
+   if(this.laboratoryForm.valid){
      updated_item ={
-           "id":this.item.id,...this.adresseForm.value
+           "id":this.item.id,...this.laboratoryForm.value
          }
    }
    this.confirmEvent.emit(updated_item);
  } 
+
+ onFileSelected(event: any): void {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.logoPreview = e.target.result; // Set preview
+      this.laboratoryForm.patchValue({
+        logo: e.target.result.split(',')[1] // Store base64 without metadata
+      });
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+toggleDateActivation() {
+  const isActive = this.laboratoryForm.get('active')?.value;
+  if (isActive) {
+    this.dateActivationEnabled=true;
+  } else {
+    this.dateActivationEnabled=false;
+  }}
+
+
 } 

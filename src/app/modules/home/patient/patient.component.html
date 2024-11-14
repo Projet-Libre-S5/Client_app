@@ -1,0 +1,234 @@
+<div class="container mx-auto px-4">
+  <header
+    class="bg-gradient-to-r from-blue-400 to-purple-500 text-white text-center py-6 rounded-md shadow-md mb-6"
+  >
+    <h1 class="text-2xl font-semibold">Gestion des Patients</h1>
+  </header>
+
+  <div class="bg-white p-6 rounded-md shadow-md mb-8">
+    <h2 class="text-xl font-semibold mb-4">
+      {{ selectedPatient ? "Modifier" : "Ajouter" }} un Patient
+    </h2>
+    <!-- Ajouter un bouton pour ajouter un nouveau patient -->
+    <!-- <button (click)="createNewPatient()" class="btn">
+      Ajouter un Nouveau Patient
+    </button>     -->
+
+    <form
+      *ngIf="selectedPatient"
+      (ngSubmit)="addOrUpdatePatient(selectedPatient!)"
+      class="grid gap-4 sm:grid-cols-2"
+    >
+      <!-- Nom complet -->
+      <div class="form-group">
+        <label for="nomComplet" class="block font-medium">Nom complet :</label>
+        <input
+          type="text"
+          id="nomComplet"
+          [(ngModel)]="selectedPatient!.nomComplet"
+          name="nomComplet"
+          class="w-full p-2 border rounded-md"
+          required
+        />
+      </div>
+
+      <!-- Date de naissance -->
+      <div class="form-group">
+        <label for="dateNaissance" class="block font-medium"
+          >Date de naissance :</label
+        >
+        <input
+          type="date"
+          id="dateNaissance"
+          [(ngModel)]="selectedPatient!.dateNaissance"
+          name="dateNaissance"
+          class="w-full p-2 border rounded-md"
+          required
+        />
+      </div>
+
+      <!-- Lieu de naissance -->
+      <div class="form-group">
+        <label for="lieuDeNaissance" class="block font-medium"
+          >Lieu de naissance :</label
+        >
+        <input
+          type="text"
+          id="lieuDeNaissance"
+          [(ngModel)]="selectedPatient!.lieuDeNaissance"
+          name="lieuDeNaissance"
+          class="w-full p-2 border rounded-md"
+          required
+        />
+      </div>
+
+      <!-- Sexe -->
+      <div class="form-group">
+        <label for="sexe" class="block font-medium">Sexe :</label>
+        <select
+          id="sexe"
+          [(ngModel)]="selectedPatient!.sexe"
+          name="sexe"
+          class="w-full p-2 border rounded-md"
+          required
+        >
+          <option value="M">Masculin</option>
+          <option value="F">Féminin</option>
+          <option value="A">Autre</option>
+        </select>
+      </div>
+
+      <!-- Type de pièce d'identité -->
+      <div class="form-group">
+        <label for="typePieceIdentite" class="block font-medium"
+          >Type de pièce d'identité :</label
+        >
+        <select
+          id="typePieceIdentite"
+          [(ngModel)]="selectedPatient!.typePieceIdentite"
+          name="typePieceIdentite"
+          class="w-full p-2 border rounded-md"
+          required
+        >
+          <option value="CNI">Carte Nationale d'Identité</option>
+          <option value="Passeport">Passeport</option>
+          <option value="PermisConduire">Permis de Conduire</option>
+        </select>
+      </div>
+
+      <!-- Numéro de pièce d'identité -->
+      <div class="form-group">
+        <label for="numPieceIdentite" class="block font-medium"
+          >Numéro de pièce d'identité :</label
+        >
+        <input
+          type="text"
+          id="numPieceIdentite"
+          [(ngModel)]="selectedPatient!.numPieceIdentite"
+          name="numPieceIdentite"
+          class="w-full p-2 border rounded-md"
+          required
+        />
+      </div>
+
+      <!-- Adresse -->
+      <div class="form-group">
+        <label for="adresse" class="block font-medium">Adresse :</label>
+        <textarea
+          id="adresse"
+          [(ngModel)]="selectedPatient!.adresse"
+          name="adresse"
+          rows="3"
+          class="w-full p-2 border rounded-md"
+          required
+        ></textarea>
+      </div>
+
+      <!-- Numéro de téléphone -->
+      <div class="form-group">
+        <label for="numTel" class="block font-medium"
+          >Numéro de téléphone :</label
+        >
+        <input
+          type="tel"
+          id="numTel"
+          [(ngModel)]="selectedPatient!.numTel"
+          name="numTel"
+          class="w-full p-2 border rounded-md"
+          required
+        />
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email" class="block font-medium">Email :</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="selectedPatient!.email"
+          name="email"
+          class="w-full p-2 border rounded-md"
+          required
+        />
+      </div>
+
+      <!-- Visible pour -->
+      <div class="form-group">
+        <label for="visiblePour" class="block font-medium"
+          >Visible pour :</label
+        >
+        <input
+          type="text"
+          id="visiblePour"
+          [(ngModel)]="selectedPatient!.visiblePour"
+          name="visiblePour"
+          placeholder="Ex: Médecins, Infirmiers"
+          class="w-full p-2 border rounded-md"
+        />
+      </div>
+
+      <!-- Bouton de soumission -->
+      <div class="form-group" style="grid-column: span 2">
+        <button
+          type="submit"
+          class="w-full p-2 bg-blue-500 text-white rounded-md"
+        >
+          Enregistrer le Patient
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="patient-list bg-white p-6 rounded-md shadow-md">
+    <h2 class="text-xl font-semibold mb-4">Liste des Patients</h2>
+    <div
+      *ngFor="let patient of paginatedPatients"
+      class="patient-card flex items-center p-4 mb-4 bg-gray-100 rounded-md shadow-sm"
+    >
+      <div
+        class="patient-avatar bg-gradient-to-r from-green-400 to-blue-500 w-16 h-16 rounded-full flex items-center justify-center text-2xl font-semibold text-white mr-4"
+      >
+        {{ patient.nomComplet.charAt(0) }}
+      </div>
+      <div class="patient-info flex-grow">
+        <h3 class="patient-name font-semibold">{{ patient.nomComplet }}</h3>
+        <p class="patient-details text-gray-600">
+          Né(e) le: {{ patient.dateNaissance }} à {{ patient.lieuDeNaissance }}
+        </p>
+        <p class="patient-details text-gray-600">Email: {{ patient.email }}</p>
+      </div>
+      <div class="patient-actions flex gap-2">
+        <button
+          (click)="editPatient(patient)"
+          class="bg-blue-500 text-white py-1 px-4 rounded shadow"
+        >
+          Éditer
+        </button>
+        <button
+          (click)="deletePatient(patient.id)"
+          class="bg-red-500 text-white py-1 px-4 rounded shadow"
+        >
+          Supprimer
+        </button>
+      </div>
+    </div>
+
+    <div class="flex justify-between items-center mt-4">
+      <button
+        (click)="previousPage()"
+        class="bg-gray-200 text-gray-800 px-4 py-2 rounded-md shadow"
+        [disabled]="currentPage === 1"
+      >
+        Précédent
+      </button>
+      <span class="text-gray-600">Page {{ currentPage }}</span>
+      <button
+        (click)="nextPage()"
+        class="bg-gray-200 text-gray-800 px-4 py-2 rounded-md shadow"
+        [disabled]="currentPage * pageSize >= patients.length"
+      >
+        Suivant
+      </button>
+    </div>
+  </div>
+</div>

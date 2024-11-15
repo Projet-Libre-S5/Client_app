@@ -1,0 +1,53 @@
+<div class="contact-management animated">
+    <h2>Gestion des Contacts Laboratoire</h2>
+    <form id="contactForm" class="contact-form">
+      <div class="form-group">
+        <label for="fkIdLaboratoire">ID Laboratoire :</label>
+        <input type="number" id="fkIdLaboratoire" name="fkIdLaboratoire" [(ngModel)]="contact.fkIdLaboratoire" required />
+      </div>
+      <div class="form-group">
+        <label for="fkIdAdresse">ID Adresse :</label>
+        <input type="number" id="fkIdAdresse" name="fkIdAdresse" [(ngModel)]="contact.fkIdAdresse" required />
+      </div>
+      <div class="form-group">
+        <label for="numTelContact">Numéro de téléphone :</label>
+        <input type="tel" id="numTelContact" name="numTel" [(ngModel)]="contact.numTelContact" required />
+      </div>
+      <div class="form-group">
+        <label for="fax">Fax :</label>
+        <input type="tel" id="fax" name="fax" [(ngModel)]="contact.fax" />
+      </div>
+      <div class="form-group">
+        <label for="emailContact">Email :</label>
+        <input type="email" id="emailContact" name="email" [(ngModel)]="contact.emailContact" required />
+      </div>
+      <div class="form-group" style="grid-column: span 2">
+        <button type="button" (click)="saveContact()" class="btn">Enregistrer le Contact</button>
+      </div>
+    </form>
+  </div>
+  
+  <p-table #dt1 [value]="contacts" dataKey="id" [rows]="10" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [globalFilterFields]="['name', 'emailContact', 'numTelContact']">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Numéro de Téléphone</th>
+              <th>Fax</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-contact>
+          <tr>
+              <td>{{ contact.fkIdLaboratoire }}</td>
+              <td>{{ contact.emailContact }}</td>
+              <td>{{ contact.numTelContact }}</td>
+              <td>{{ contact.fax }}</td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+          <tr>
+              <td colspan="4">Aucun contact trouvé.</td>
+          </tr>
+      </ng-template>
+  </p-table>
+  

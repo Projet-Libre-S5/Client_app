@@ -6,6 +6,7 @@ import { AnalysesComponent } from './analyses/analyses.component';
 import { AdressesComponent } from './adresses/adresses.component';
 import { PatientComponent } from './patient/patient.component';
 import { UtilisateursComponent } from './utilisateurs/utilisateurs.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 import { NotFoundPageComponent } from '../../Layouts/not-found-page/not-found-page.component';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'Adresses', component: AdressesComponent },
   { path: 'Patients', component: PatientComponent },
   { path: 'Users', component: UtilisateursComponent },
+  { path: 'Contacts', component: ContactsComponent },
 ];
 
 @NgModule({

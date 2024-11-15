@@ -9,6 +9,9 @@ import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
+import { TableModule } from 'primeng/table';
+import { BrowserModule } from '@angular/platform-browser';
+
 @NgModule({
   declarations: [],
   schemas: [NO_ERRORS_SCHEMA],
@@ -20,6 +23,8 @@ import { DropdownModule } from 'primeng/dropdown';
     ButtonModule,
     InputTextModule,
     DropdownModule,
+    BrowserModule,
+    TableModule,
   ],
 })
 export class HomeModule {}

@@ -22,6 +22,13 @@ export class SidebarComponent {
       childs: [],
     },
     {
+      label: 'Utilisateurs',
+      route_path: '/Users',
+      icon: 'pi pi-map',
+      isOpen: false,
+      childs: [],
+    },
+    {
       label: 'Adresses',
       route_path: '/Adresses',
       icon: 'pi pi-map',

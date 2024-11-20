@@ -1,0 +1,1467 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>client-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">client-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  AdressesComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/home/adresses/adresses.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-adresses</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>PaginatorModule</code>
+                            <code>FormsModule</code>
+                            <code>ReactiveFormsModule</code>
+                            <code>AutoCompleteModule</code>
+                            <code>CommonModule</code>
+                            <code>ReactiveFormsModule</code>
+                            <code>CommonModule</code>
+                            <code>PaginatorModule</code>
+                            <code>TableModule</code>
+                                <code><a href="../components/UpdateModalComponent.html" target="_self" >UpdateModalComponent</a></code>
+                                <code><a href="../components/DeleteModalComponent.html" target="_self" >DeleteModalComponent</a></code>
+                            <code>InputTextModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./adresses.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./adresses.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#adresseForm" >adresseForm</a>
+                            </li>
+                            <li>
+                                <a href="#adresses" >adresses</a>
+                            </li>
+                            <li>
+                                <a href="#deleteModal" >deleteModal</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#isLoading$" >isLoading$</a>
+                            </li>
+                            <li>
+                                <a href="#paginatedAdresses" >paginatedAdresses</a>
+                            </li>
+                            <li>
+                                <a href="#pagination" >pagination</a>
+                            </li>
+                            <li>
+                                <a href="#selected_item" >selected_item</a>
+                            </li>
+                            <li>
+                                <a href="#updateModal" >updateModal</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getAdresses" >getAdresses</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#OnDelete" >OnDelete</a>
+                            </li>
+                            <li>
+                                <a href="#onPageChange" >onPageChange</a>
+                            </li>
+                            <li>
+                                <a href="#OnSubmit" >OnSubmit</a>
+                            </li>
+                            <li>
+                                <a href="#OnUpdate" >OnUpdate</a>
+                            </li>
+                            <li>
+                                <a href="#updatePaginatedAdresses" >updatePaginatedAdresses</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(fb: FormBuilder, service: AdressService, AlertService: SweetAlertService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/modules/home/adresses/adresses.component.ts:53</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>service</td>
+                                                  
+                                                        <td>
+                                                                    <code>AdressService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>AlertService</td>
+                                                  
+                                                        <td>
+                                                                    <code>SweetAlertService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAdresses"></a>
+                    <span class="name">
+                        <span ><b>getAdresses</b></span>
+                        <a href="#getAdresses"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAdresses()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="88"
+                                    class="link-to-prism">src/app/modules/home/adresses/adresses.component.ts:88</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="66"
+                                    class="link-to-prism">src/app/modules/home/adresses/adresses.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="OnDelete"></a>
+                    <span class="name">
+                        <span ><b>OnDelete</b></span>
+                        <a href="#OnDelete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>OnDelete(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="157"
+                                    class="link-to-prism">src/app/modules/home/adresses/adresses.component.ts:157</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onPageChange"></a>
+                    <span class="name">
+                        <span ><b>onPageChange</b></span>
+                        <a href="#onPageChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onPageChange(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="174"
+                                    class="link-to-prism">src/app/modules/home/adresses/adresses.component.ts:174</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="OnSubmit"></a>
+                    <span class="name">
+                        <span ><b>OnSubmit</b></span>
+                        <a href="#OnSubmit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>OnSubmit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">src/app/modules/home/adresses/adresses.component.ts:110</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="OnUpdate"></a>
+                    <span class="name">
+                        <span ><b>OnUpdate</b></span>
+                        <a href="#OnUpdate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>OnUpdate(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="140"
+                                    class="link-to-prism">src/app/modules/home/adresses/adresses.component.ts:140</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updatePaginatedAdresses"></a>
+                    <span class="name">
+                        <span ><b>updatePaginatedAdresses</b></span>
+                        <a href="#updatePaginatedAdresses"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updatePaginatedAdresses()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="102"
+                                    class="link-to-prism">src/app/modules/home/adresses/adresses.component.ts:102</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="adresseForm"></a>
+                    <span class="name">
+                        <span ><b>adresseForm</b></span>
+                        <a href="#adresseForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/modules/home/adresses/adresses.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="adresses"></a>
+                    <span class="name">
+                        <span ><b>adresses</b></span>
+                        <a href="#adresses"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/modules/home/adresses/adresses.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteModal"></a>
+                    <span class="name">
+                        <span ><b>deleteModal</b></span>
+                        <a href="#deleteModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/modules/home/adresses/adresses.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoading$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>isLoading$</b></span>
+                        <a href="#isLoading$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/modules/home/adresses/adresses.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paginatedAdresses"></a>
+                    <span class="name">
+                        <span ><b>paginatedAdresses</b></span>
+                        <a href="#paginatedAdresses"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/modules/home/adresses/adresses.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pagination"></a>
+                    <span class="name">
+                        <span ><b>pagination</b></span>
+                        <a href="#pagination"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/modules/home/adresses/adresses.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selected_item"></a>
+                    <span class="name">
+                        <span ><b>selected_item</b></span>
+                        <a href="#selected_item"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    street:&#x27;&#x27;,
+    city:&#x27;&#x27;,
+    code:&#x27;&#x27;,
+    region:&#x27;&#x27;
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/modules/home/adresses/adresses.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateModal"></a>
+                    <span class="name">
+                        <span ><b>updateModal</b></span>
+                        <a href="#updateModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/modules/home/adresses/adresses.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, OnInit, Output, ViewChild } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormControl, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { PaginatorModule, PaginatorState } from &#x27;primeng/paginator&#x27;;
+import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
+import { AutoCompleteModule } from &#x27;primeng/autocomplete&#x27;;
+import { CommonModule} from &#x27;@angular/common&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import { TableModule } from &#x27;primeng/table&#x27;;
+import { UpdateModalComponent } from &quot;./subpages/update-modal/update-modal.component&quot;;
+import { DeleteModalComponent } from &quot;./subpages/delete-modal/delete-modal.component&quot;;
+import { InputTextModule } from &quot;primeng/inputtext&quot;; 
+import { AdressService } from &#x27;../../../services/home/adress/adress.service&#x27;;
+import { SweetAlertService } from &#x27;../../../shared/services/sweet-alert/sweet-alert.service&#x27;;
+
+
+//import * as citiesData from &#x27;../../../../assets/data/moroccan-cities.json&#x27;;
+
+
+
+@Component({
+  selector: &#x27;app-adresses&#x27;,
+  standalone: true,
+  imports: [PaginatorModule, FormsModule, ReactiveFormsModule, AutoCompleteModule, CommonModule,
+    ReactiveFormsModule,
+    CommonModule,
+    PaginatorModule,
+    TableModule, UpdateModalComponent, DeleteModalComponent,InputTextModule
+  ],
+  templateUrl: &#x27;./adresses.component.html&#x27;,
+  styleUrl: &#x27;./adresses.component.css&#x27;
+})
+export class AdressesComponent implements OnInit {
+
+  updateModal:boolean&#x3D;false;
+  deleteModal:boolean&#x3D;false;
+  adresseForm:any;
+  adresses:any;
+  selected_item:any&#x3D;{
+    street:&#x27;&#x27;,
+    city:&#x27;&#x27;,
+    code:&#x27;&#x27;,
+    region:&#x27;&#x27;
+  };
+
+  pagination:any;
+
+  paginatedAdresses: any[] &#x3D; []; 
+
+
+
+
+
+  readonly isLoading$?: Observable&lt;boolean&gt;;
+
+
+
+  constructor(
+    private fb: FormBuilder,
+    private service:AdressService,
+    private AlertService:SweetAlertService
+  ) {
+
+  }
+
+
+  ngOnInit(): void {
+
+    this.adresseForm&#x3D;this.fb.group({
+      street:[&#x27;&#x27;,Validators.required],
+      city:[&#x27;&#x27;,Validators.required],
+      code:[&#x27;&#x27;,Validators.required],
+      region:[&#x27;&#x27;,Validators.required]
+    })
+
+    this.pagination &#x3D; {
+      current_page: 1,  
+      per_page: 3,     
+      total: 0    
+    };
+
+    this.getAdresses();
+   
+   
+  }
+
+
+
+  getAdresses():void{
+    this.service.getAll().subscribe((data: any) &#x3D;&gt; {
+      this.adresses &#x3D; data;             // Store all data
+      this.pagination.total &#x3D; data.length; // Update total items based on fetched data
+      this.updatePaginatedAdresses();  
+     
+    },
+      (err) &#x3D;&gt; {
+        console.log(err)
+
+      }
+    )
+  }
+
+  updatePaginatedAdresses(): void {
+    const startIndex &#x3D; this.pagination.current_page * this.pagination.per_page;
+    const endIndex &#x3D; startIndex + this.pagination.per_page;
+    this.paginatedAdresses &#x3D; this.adresses.slice(startIndex, endIndex); // Slice data for current page
+  }
+
+  
+
+  OnSubmit():void{
+  
+       if(this.adresseForm.valid){
+
+        let adress:any&#x3D;
+      { 
+        street:this.adresseForm.value.street,
+      city:this.adresseForm.value.city,
+      code:this.adresseForm.value.code,
+      region:this.adresseForm.value.region
+      }
+      
+      console.log(adress)
+        this.service.create(adress).subscribe(
+          () &#x3D;&gt; {
+            this.AlertService.showSuccessAlert(&quot;Succès&quot; , &quot;adresse ajoutée&quot;) 
+            this.getAdresses();
+          } , 
+          (err) &#x3D;&gt;{
+            return this.AlertService.showErrorAlert(&quot;Erreur&quot;, err?.error?.message);
+          }
+        )
+       }
+       else {
+        console.log(&quot;invalid form&quot;)
+       }
+  }
+
+
+
+  OnUpdate(value:any) {
+    console.log(value.id);
+    console.log(value.street);
+    this.service.update(value.id,value).subscribe (
+      ()&#x3D;&gt; {
+        this.AlertService.showSuccessAlert(&quot;Succès&quot; , &quot;adresse modifiée&quot;) 
+        this.getAdresses();
+        this.updateModal&#x3D;false;
+      } , 
+      (err) &#x3D;&gt;{
+        console.log(err)
+        return this.AlertService.showErrorAlert(&quot;Erreur&quot;, err?.error?.message);
+      }
+    )
+
+  }
+
+  OnDelete(value:any){
+    this.service.delete(value.id).subscribe(
+      ()&#x3D;&gt; {
+        this.AlertService.showSuccessAlert(&quot;Succès&quot; , &quot;adresse supprimée&quot;) 
+        this.getAdresses();
+        this.deleteModal&#x3D;false;
+      }, 
+      (err) &#x3D;&gt;{
+        console.log(err)
+        return this.AlertService.showErrorAlert(&quot;Erreur&quot;, err?.error?.message);
+      }
+    )
+  }
+
+
+  
+
+  onPageChange(event: any) {
+    this.pagination.current_page &#x3D; event.page; // Update current page
+    this.updatePaginatedAdresses();            // Update the paginated addresses displayed
+  }
+
+  
+  
+  
+ 
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-update-modal [item]&#x3D;&quot;selected_item&quot; [isVisible]&#x3D;&quot;updateModal&quot; (closeMeEvent)&#x3D;&quot;updateModal&#x3D;false&quot; (confirmEvent)&#x3D;&quot;OnUpdate($event)&quot;&gt;&lt;/app-update-modal&gt;
+&lt;app-delete-modal [item]&#x3D;&quot;selected_item&quot; [isVisible]&#x3D;&quot;deleteModal&quot; (closeMeEvent)&#x3D;&quot;deleteModal&#x3D;false&quot; (confirmEvent)&#x3D;&quot;OnDelete($event)&quot;&gt;&lt;/app-delete-modal&gt;
+
+
+
+&lt;div class&#x3D;&quot; flex-col space-y-4 justify-center items-center animate__fadeIn animate__animated &quot;&gt;
+&lt;div&gt;
+    &lt;h1 class&#x3D;&quot;text-3xl poppins-medium text-gray-600&quot;&gt;Adresses&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;!--First Card--&gt;
+&lt;div class&#x3D;&quot;grid lg:grid-cols-2 gap-4 grid-rows-2 h-auto &quot;&gt;
+   &lt;div class&#x3D;&quot;bg-white   rounded-lg p-4 drop-shadow-sm  flex-col flex&quot;&gt;
+   
+            &lt;div class&#x3D;&quot;p-10 text-sm poppins-light  &quot;&gt;
+
+              &lt;form [formGroup]&#x3D;&quot;adresseForm&quot; (ngSubmit)&#x3D;&quot;OnSubmit()&quot;&gt;
+
+              &lt;div class&#x3D;&quot;grid grid-cols-3 grid-rows-3 gap-4 h-60 &quot;&gt;
+                &lt;div class&#x3D;&quot;col-span-2&quot;&gt;
+                  &lt;div class&#x3D;&quot;relative &quot; &gt;
+                    &lt;input
+                      type&#x3D;&quot;text&quot;
+                      class&#x3D;&quot;peer block min-h-[auto] w-full  rounded bg-secondary border-[1.5px]   focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&amp;:not([data-twe-input-placeholder-active])]:placeholder:opacity-0&quot;
+                      id&#x3D;&quot;region&quot;
+                      formControlName&#x3D;&quot;region&quot;
+                      placeholder&#x3D;&quot;Entre la région&quot; /&gt;
+                    &lt;label
+                      for&#x3D;&quot;region&quot;
+                      class&#x3D;&quot;pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6]  transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary   motion-reduce:transition-none &quot;
+                      [class]&#x3D;&quot;adresseForm?.get(&#x27;region&#x27;).value
+                      ? &#x27;-translate-y-[1.6rem] scale-[0.8]  &#x27;
+                      : &#x27;border-gray-300&#x27;
+                  &quot;
+                      &gt;Région&lt;/label&gt;
+
+                      &lt;p *ngIf&#x3D;&quot;adresseForm.get(&#x27;region&#x27;)?.invalid &amp;&amp; (adresseForm.get(&#x27;region&#x27;)?.dirty || adresseForm.get(&#x27;region&#x27;)?.touched)&quot;
+                      class&#x3D;&quot;pl-2 mt-2 text-xs text-red-600&quot;&gt;
+                     &lt;span class&#x3D;&quot;font-medium&quot;&gt;*&lt;/span&gt; champs requis  
+                   &lt;/p&gt;
+                     
+                    &lt;/div&gt;&lt;/div&gt;
+
+
+                &lt;div class&#x3D;&quot;col-start-3&quot;&gt; &lt;div class&#x3D;&quot;relative &quot; &gt;
+                  &lt;input
+                    type&#x3D;&quot;text&quot;
+                    class&#x3D;&quot;peer block min-h-[auto] w-full rounded bg-secondary  border-[1.5px]   focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&amp;:not([data-twe-input-placeholder-active])]:placeholder:opacity-0&quot;
+                    id&#x3D;&quot;city&quot;
+                    formControlName&#x3D;&quot;city&quot;
+                    placeholder&#x3D;&quot;Entre la ville&quot; /&gt;
+                  &lt;label
+                    for&#x3D;&quot;city&quot;
+                    class&#x3D;&quot;pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6]  transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none &quot;
+                    [class]&#x3D;&quot;adresseForm?.get(&#x27;city&#x27;).value
+                      ? &#x27;-translate-y-[1.6rem] scale-[0.8]  &#x27;
+                      : &#x27;border-gray-300&#x27;
+                  &quot;
+                    &gt;Ville&lt;/label&gt;
+
+                    &lt;p *ngIf&#x3D;&quot;adresseForm.get(&#x27;city&#x27;)?.invalid &amp;&amp; (adresseForm.get(&#x27;city&#x27;)?.dirty || adresseForm.get(&#x27;city&#x27;)?.touched)&quot;
+                      class&#x3D;&quot;pl-2 mt-2 text-xs text-red-600&quot;&gt;
+                     &lt;span class&#x3D;&quot;font-medium&quot;&gt;*&lt;/span&gt; champs requis  
+                   &lt;/p&gt;
+                  &lt;/div&gt;&lt;/div&gt;
+
+
+               
+                &lt;div class&#x3D;&quot;col-span-3 row-start-2&quot;&gt;  &lt;div class&#x3D;&quot;relative &quot; &gt;
+                  &lt;input
+                    type&#x3D;&quot;text&quot;
+                    class&#x3D;&quot;peer block min-h-[auto] w-[90%] rounded bg-secondary border-[1.5px]   focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&amp;:not([data-twe-input-placeholder-active])]:placeholder:opacity-0&quot;
+                    id&#x3D;&quot;street&quot;
+                    formControlName&#x3D;&quot;street&quot;
+                    placeholder&#x3D;&quot;Etre la rue&quot; /&gt;
+                  &lt;label
+                    for&#x3D;&quot;street&quot;
+                    class&#x3D;&quot;pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6]  transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none &quot;
+                    [class]&#x3D;&quot;adresseForm?.get(&#x27;street&#x27;).value
+                    ? &#x27;-translate-y-[1.6rem] scale-[0.8]  &#x27;
+                    : &#x27;border-gray-300&#x27;
+                &quot;
+                    &gt;Rue&lt;/label&gt;
+                    &lt;p *ngIf&#x3D;&quot;adresseForm.get(&#x27;street&#x27;)?.invalid &amp;&amp; (adresseForm.get(&#x27;street&#x27;)?.dirty || adresseForm.get(&#x27;street&#x27;)?.touched)&quot;
+                    class&#x3D;&quot;pl-2 mt-2 text-xs text-red-600&quot;&gt;
+                   &lt;span class&#x3D;&quot;font-medium&quot;&gt;*&lt;/span&gt; champs requis  
+                 &lt;/p&gt;
+                  &lt;/div&gt;&lt;/div&gt;
+                 
+                  &lt;div class&#x3D;&quot;&quot;&gt; &lt;div class&#x3D;&quot;relative&quot; &gt;
+                    &lt;input
+                      type&#x3D;&quot;text&quot;
+                      class&#x3D;&quot;peer block min-h-[auto] w-full rounded bg-secondary border-[1.5px]   focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&amp;:not([data-twe-input-placeholder-active])]:placeholder:opacity-0&quot;
+                      id&#x3D;&quot;code&quot;
+                      formControlName&#x3D;&quot;code&quot;
+                      placeholder&#x3D;&quot;Enter text&quot; /&gt;
+                    &lt;label
+                      for&#x3D;&quot;code&quot;
+                      class&#x3D;&quot;pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6]  transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none &quot;
+                      [class]&#x3D;&quot;adresseForm?.get(&#x27;code&#x27;).value
+                    ? &#x27;-translate-y-[1.6rem] scale-[0.8]  &#x27;
+                    : &#x27;border-gray-300&#x27;
+                &quot;
+                      &gt;Zip/Code Postal&lt;/label&gt;
+                      &lt;p *ngIf&#x3D;&quot;adresseForm.get(&#x27;code&#x27;)?.invalid &amp;&amp; (adresseForm.get(&#x27;code&#x27;)?.dirty || adresseForm.get(&#x27;code&#x27;)?.touched)&quot;
+                      class&#x3D;&quot;pl-2 mt-2 text-xs text-red-600&quot;&gt;
+                     &lt;span class&#x3D;&quot;font-medium&quot;&gt;*&lt;/span&gt; champs requis  
+                   &lt;/p&gt;
+                    &lt;/div&gt;
+                      &lt;/div&gt;
+
+            &lt;/div&gt;
+
+
+            &lt;div class&#x3D;&quot;flex justify-end&quot;&gt;
+            &lt;button
+            type&#x3D;&quot;submit&quot;
+            class&#x3D;&quot;bg-primary  text-sm font-medium rounded-sm px-6 py-2  text-white &quot;&gt;
+            Sauvegarder
+          &lt;/button&gt;
+           &lt;/div&gt;
+          &lt;/form&gt;
+
+
+            &lt;/div&gt;
+   &lt;/div&gt;
+
+
+
+
+
+
+
+    &lt;div class&#x3D;&quot;flexflex-col rounded-3xl bg-white h-[36 rem]  &quot;&gt;
+      &lt;p-table
+        class&#x3D;&quot;flex-1 overflow-auto&quot;
+        styleClass&#x3D;&quot;rounded-2xl text-[15px] font-DMsans overflow-hidden&quot;
+        [value]&#x3D;&quot;paginatedAdresses || []&quot;
+        [loading]&#x3D;&quot;isLoading$&quot;
+        [selection]&#x3D;&quot;[]&quot;
+        [rows]&#x3D;&quot;10&quot;
+        dataKey&#x3D;&quot;code&quot;
+      &gt;
+        &lt;ng-template pTemplate&#x3D;&quot;header&quot;&gt;
+          &lt;tr class&#x3D;&quot;bg-secondary-color&quot;&gt;
+            &lt;th&gt;Adresses&lt;/th&gt;
+            &lt;th&gt;Code postal&lt;/th&gt;
+            &lt;th&gt;Ville&lt;/th&gt;
+            &lt;th&gt;Région&lt;/th&gt;
+            &lt;th&gt;Action&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/ng-template&gt;
+
+        &lt;ng-template pTemplate&#x3D;&quot;body&quot; let-item&gt;
+          &lt;tr&gt;
+            &lt;td&gt;{{ item.street }}&lt;/td&gt;
+            &lt;td&gt;{{ item.code }}&lt;/td&gt;
+            &lt;td&gt;{{ item.city }}&lt;/td&gt;
+            &lt;td&gt;{{ item.region }}&lt;/td&gt;
+            &lt;td class&#x3D;&quot;flex justify-center items-center w-3/4 text-slate-300 &quot;&gt;
+              &lt;button class&#x3D;&quot;h-14 w-9 object-contain  text-slate-500 hover:text-slate-500&quot; (click)&#x3D;&quot;updateModal&#x3D;true;selected_item&#x3D;item&quot;&gt;
+                &lt;i class&#x3D;&quot;pi pi-pencil&quot;&gt;&lt;/i&gt;
+
+              &lt;/button&gt;
+              &lt;button class&#x3D;&quot;h-14 w-9 object-contain text-red-300 hover:text-red-500&quot; (click)&#x3D;&quot;deleteModal&#x3D;true;selected_item&#x3D;item&quot;&gt;
+                &lt;i class&#x3D;&quot;pi pi-trash&quot;&gt;&lt;/i&gt;
+              &lt;/button&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/ng-template&gt;
+
+        &lt;ng-template pTemplate&#x3D;&quot;emptymessage&quot;&gt;
+          &lt;tr&gt;
+            &lt;td colspan&#x3D;&quot;4&quot;&gt;No data to show&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/ng-template&gt;
+      &lt;/p-table&gt;
+     &lt;p-paginator
+     class&#x3D;&quot;mt-auto&quot;
+        (onPageChange)&#x3D;&quot;onPageChange($event)&quot;
+        [first]&#x3D;&quot;pagination.current_page * pagination?.per_page&quot;
+        [rows]&#x3D;&quot;pagination?.per_page&quot;
+        [totalRecords]&#x3D;&quot;pagination?.total&quot;
+      &gt;&lt;/p-paginator&gt;
+  &lt;/div&gt;
+
+    
+
+&lt;/div&gt;
+
+
+
+
+
+
+&lt;/div&gt;
+
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-update-modal [item]="selected_item" [isVisible]="updateModal" (closeMeEvent)="updateModal=false" (confirmEvent)="OnUpdate($event)"></app-update-modal><app-delete-modal [item]="selected_item" [isVisible]="deleteModal" (closeMeEvent)="deleteModal=false" (confirmEvent)="OnDelete($event)"></app-delete-modal><div class=" flex-col space-y-4 justify-center items-center animate__fadeIn animate__animated "><div>    <h1 class="text-3xl poppins-medium text-gray-600">Adresses</h1></div><!--First Card--><div class="grid lg:grid-cols-2 gap-4 grid-rows-2 h-auto ">   <div class="bg-white   rounded-lg p-4 drop-shadow-sm  flex-col flex">               <div class="p-10 text-sm poppins-light  ">              <form [formGroup]="adresseForm" (ngSubmit)="OnSubmit()">              <div class="grid grid-cols-3 grid-rows-3 gap-4 h-60 ">                <div class="col-span-2">                  <div class="relative " >                    <input                      type="text"                      class="peer block min-h-[auto] w-full  rounded bg-secondary border-[1.5px]   focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"                      id="region"                      formControlName="region"                      placeholder="Entre la région" />                    <label                      for="region"                      class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6]  transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary   motion-reduce:transition-none "                      [class]="adresseForm?.get(\'region\').value                      ? \'-translate-y-[1.6rem] scale-[0.8]  \'                      : \'border-gray-300\'                  "                      >Région</label>                      <p *ngIf="adresseForm.get(\'region\')?.invalid && (adresseForm.get(\'region\')?.dirty || adresseForm.get(\'region\')?.touched)"                      class="pl-2 mt-2 text-xs text-red-600">                     <span class="font-medium">*</span> champs requis                     </p>                                         </div></div>                <div class="col-start-3"> <div class="relative " >                  <input                    type="text"                    class="peer block min-h-[auto] w-full rounded bg-secondary  border-[1.5px]   focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"                    id="city"                    formControlName="city"                    placeholder="Entre la ville" />                  <label                    for="city"                    class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6]  transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none "                    [class]="adresseForm?.get(\'city\').value                      ? \'-translate-y-[1.6rem] scale-[0.8]  \'                      : \'border-gray-300\'                  "                    >Ville</label>                    <p *ngIf="adresseForm.get(\'city\')?.invalid && (adresseForm.get(\'city\')?.dirty || adresseForm.get(\'city\')?.touched)"                      class="pl-2 mt-2 text-xs text-red-600">                     <span class="font-medium">*</span> champs requis                     </p>                  </div></div>                               <div class="col-span-3 row-start-2">  <div class="relative " >                  <input                    type="text"                    class="peer block min-h-[auto] w-[90%] rounded bg-secondary border-[1.5px]   focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"                    id="street"                    formControlName="street"                    placeholder="Etre la rue" />                  <label                    for="street"                    class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6]  transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none "                    [class]="adresseForm?.get(\'street\').value                    ? \'-translate-y-[1.6rem] scale-[0.8]  \'                    : \'border-gray-300\'                "                    >Rue</label>                    <p *ngIf="adresseForm.get(\'street\')?.invalid && (adresseForm.get(\'street\')?.dirty || adresseForm.get(\'street\')?.touched)"                    class="pl-2 mt-2 text-xs text-red-600">                   <span class="font-medium">*</span> champs requis                   </p>                  </div></div>                                   <div class=""> <div class="relative" >                    <input                      type="text"                      class="peer block min-h-[auto] w-full rounded bg-secondary border-[1.5px]   focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"                      id="code"                      formControlName="code"                      placeholder="Enter text" />                    <label                      for="code"                      class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6]  transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none "                      [class]="adresseForm?.get(\'code\').value                    ? \'-translate-y-[1.6rem] scale-[0.8]  \'                    : \'border-gray-300\'                "                      >Zip/Code Postal</label>                      <p *ngIf="adresseForm.get(\'code\')?.invalid && (adresseForm.get(\'code\')?.dirty || adresseForm.get(\'code\')?.touched)"                      class="pl-2 mt-2 text-xs text-red-600">                     <span class="font-medium">*</span> champs requis                     </p>                    </div>                      </div>            </div>            <div class="flex justify-end">            <button            type="submit"            class="bg-primary  text-sm font-medium rounded-sm px-6 py-2  text-white ">            Sauvegarder          </button>           </div>          </form>            </div>   </div>    <div class="flexflex-col rounded-3xl bg-white h-[36 rem]  ">      <p-table        class="flex-1 overflow-auto"        styleClass="rounded-2xl text-[15px] font-DMsans overflow-hidden"        [value]="paginatedAdresses || []"        [loading]="isLoading$"        [selection]="[]"        [rows]="10"        dataKey="code"      >        <ng-template pTemplate="header">          <tr class="bg-secondary-color">            <th>Adresses</th>            <th>Code postal</th>            <th>Ville</th>            <th>Région</th>            <th>Action</th>          </tr>        </ng-template>        <ng-template pTemplate="body" let-item>          <tr>            <td>{{ item.street }}</td>            <td>{{ item.code }}</td>            <td>{{ item.city }}</td>            <td>{{ item.region }}</td>            <td class="flex justify-center items-center w-3/4 text-slate-300 ">              <button class="h-14 w-9 object-contain  text-slate-500 hover:text-slate-500" (click)="updateModal=true;selected_item=item">                <i class="pi pi-pencil"></i>              </button>              <button class="h-14 w-9 object-contain text-red-300 hover:text-red-500" (click)="deleteModal=true;selected_item=item">                <i class="pi pi-trash"></i>              </button>            </td>          </tr>        </ng-template>        <ng-template pTemplate="emptymessage">          <tr>            <td colspan="4">No data to show</td>          </tr>        </ng-template>      </p-table>     <p-paginator     class="mt-auto"        (onPageChange)="onPageChange($event)"        [first]="pagination.current_page * pagination?.per_page"        [rows]="pagination?.per_page"        [totalRecords]="pagination?.total"      ></p-paginator>  </div>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AdressesComponent', 'selector': 'app-adresses'},{'name': 'AnalysesComponent', 'selector': 'app-analyses'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthComponent', 'selector': 'app-auth'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DeleteModalComponent', 'selector': 'app-delete-modal'},{'name': 'DeleteModalComponent', 'selector': 'app-delete-modal'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LaboratoriesComponent', 'selector': 'app-laboratories'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ModalComponent', 'selector': 'app-modal'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotFoundPageComponent', 'selector': 'app-not-found-page'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TemplatePageComponent', 'selector': 'template-page'},{'name': 'UpdateModalComponent', 'selector': 'app-update-modal'},{'name': 'UpdateModalComponent', 'selector': 'app-update-modal'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AdressesComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AdressesComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

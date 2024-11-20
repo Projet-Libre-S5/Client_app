@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container mx-auto px-4 py-8">
   <!-- Header -->
   <header
@@ -145,3 +146,205 @@
     </div>
   </div>
 </div>
+=======
+<app-update-modal [item]="selected_item" [isVisible]="updateModal" (closeMeEvent)="updateModal=false" (confirmEvent)="OnUpdate($event)"></app-update-modal>
+<app-delete-modal [item]="selected_item" [isVisible]="deleteModal" (closeMeEvent)="deleteModal=false" (confirmEvent)="OnDelete($event)"></app-delete-modal>
+
+
+
+<div class=" flex-col space-y-4 justify-center items-center animate__fadeIn animate__animated ">
+<div>
+    <h1 class="text-3xl poppins-medium text-gray-600">Laboratoires</h1>
+</div>
+
+<div class="grid lg:grid-cols-2 gap-4 grid-rows-2 h-auto ">
+   <div class="bg-white   rounded-lg p-4 drop-shadow-sm  flex-col flex">
+   
+    <div class="p-10 text-sm poppins-light">
+
+        <form [formGroup]="laboratoryForm" (ngSubmit)="OnSubmit()">
+          
+          <div class="flex flex-row gap-4 mb-6 items-center ">
+            <div class="flex flex-col items-center  p-2 justify-center space-y-2" [ngClass]="{ 'bg-slate-100': logoPreview }">
+              <img *ngIf="logoPreview" [src]="logoPreview" alt="Aperçu du logo" class="w-24 h-24 mt-2 rounded" />
+              <button
+              type="button"
+              class="text-sm px-6 py-2 text-white  bg-primary rounded-xl drop-shadow-md"
+              (click)="fileInput.click()"
+            >
+              <span *ngIf="logoPreview">Modifier Logo</span>
+              <span *ngIf="!logoPreview">Ajouter Logo</span>
+            </button>
+            <input
+            type="file"
+            accept="image/*"
+            class="hidden"
+            id="logo"
+            #fileInput
+            (change)="onFileSelected($event)"
+          />
+              
+            </div>
+      
+            <div class="relative flex-1">
+              <input
+                type="text"
+                class="peer block min-h-[auto] w-full rounded bg-secondary border-[1.5px] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary placeholder:opacity-0"
+                id="nom"
+                formControlName="nom"
+                placeholder="Entrez le nom"
+              />
+              <label
+                for="nom"
+                class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary"
+                [class]="laboratoryForm?.get('nom').value ? '-translate-y-[1.6rem] scale-[0.8]' : 'border-gray-300'"
+              >
+                Nom
+              </label>
+              <p *ngIf="laboratoryForm.get('nom')?.invalid && (laboratoryForm.get('nom')?.dirty || laboratoryForm.get('nom')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
+                <span class="font-medium">*</span> Champs requis
+              </p>
+            </div>
+          </div>
+      
+          <div class="flex flex-row gap-4 mb-6">
+            <div class="flex-1 relative">
+              <input
+                type="text"
+                class="peer block min-h-[auto] w-full rounded bg-secondary border-[1.5px] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary placeholder:opacity-0"
+                id="nrc"
+                formControlName="nrc"
+                placeholder="Entrez le NRC"
+              />
+              <label
+                for="nrc"
+                class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary"
+                [class]="laboratoryForm?.get('nrc').value ? '-translate-y-[1.6rem] scale-[0.8]' : 'border-gray-300'"
+              >
+                NRC
+              </label>
+              <p *ngIf="laboratoryForm.get('nrc')?.invalid && (laboratoryForm.get('nrc')?.dirty || laboratoryForm.get('nrc')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
+                <span class="font-medium">*</span> Champs requis
+              </p>
+            </div>
+          </div>
+      
+          <div class="flex flex-row gap-4 mb-6">
+            <div class="flex items-center">
+              <input type="checkbox" id="active" formControlName="active" class="mr-2" />
+              <label for="active" class="text-sm font-medium">Actif</label>
+            </div>
+      
+            <div class="flex-1 relative">
+              <input
+                type="date"
+                class="peer block min-h-[auto] w-full rounded bg-secondary border-[1.5px] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary placeholder:opacity-0"
+                id="dateActivation"
+                formControlName="dateActivation"
+                placeholder="Date d'activation"
+              />
+              <label
+                for="dateActivation"
+                class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary"
+              >
+              </label>
+              <p *ngIf="laboratoryForm.get('dateActivation')?.invalid && (laboratoryForm.get('dateActivation')?.dirty || laboratoryForm.get('dateActivation')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
+                <span class="font-medium">*</span> Champs requis
+              </p>
+            </div>
+          </div>
+      
+          <div class="flex justify-end mt-4">
+            <button type="submit" class="bg-primary text-sm font-medium rounded-sm px-6 py-2 text-white">
+              Sauvegarder
+            </button>
+          </div>
+      
+        </form>
+      </div>
+      
+                  
+
+
+        
+   </div>
+
+
+
+
+
+
+
+    <div class="flexflex-col rounded-3xl bg-white h-[36 rem]  ">
+<p-table
+  class="flex-1 overflow-auto"
+  styleClass="rounded-2xl text-[15px] font-DMsans overflow-hidden"
+  [value]="paginatedLaboratories || []"  
+  [loading]="isLoading$"
+  [selection]="[]"
+  [rows]="10"
+  dataKey="nrc">
+  <ng-template pTemplate="header">
+    <tr class="bg-secondary-color">
+      <th>Logo</th>
+      <th>Nom</th> 
+      <th>NRC</th>
+      <th>Actif</th> 
+      <th>Date d'activation</th>
+      <th>Action</th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-item>
+    <tr>
+      <td><img *ngIf="item.logo" [src]="'data:image/png;base64,' + item.logo" alt="Logo du laboratoire" class="w-16 h-16 rounded" />
+      </td>
+      <td>{{ item.nom }}</td>
+      <td>{{ item.nrc }}</td>
+      <td>
+        <span *ngIf="item.active">Oui</span>
+        <span *ngIf="!item.active">Non</span>
+      </td> 
+      <td>{{ item.dateActivation | date: 'dd/MM/yyyy' }}</td> 
+      <td class="flex justify-center items-center w-3/4 text-slate-300">
+       
+        <button class="h-14 w-9 object-contain text-slate-500 hover:text-slate-500" (click)=" updateModal=true;selected_item=item">
+          <i class="pi pi-pencil"></i>
+        </button>
+
+        <button class="h-14 w-9 object-contain text-red-300 hover:text-red-500" (click)="deleteModal=true;selected_item=item">
+          <i class="pi pi-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="5">Aucune donnée à afficher</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+
+<p-paginator
+  class="mt-auto"
+  (onPageChange)="onPageChange($event)"
+  [first]="pagination.current_page * pagination?.per_page"
+  [rows]="pagination?.per_page"
+  [totalRecords]="pagination?.total"
+></p-paginator>
+  </div>
+
+    
+
+</div>
+
+
+
+
+
+
+</div>
+
+>>>>>>> ea70597190466fda30ea72826e091f1b0da99a3d

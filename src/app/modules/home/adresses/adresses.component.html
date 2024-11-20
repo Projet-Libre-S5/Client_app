@@ -1,23 +1,143 @@
-<app-update-modal [isVisible]="updateModal" (closeMeEvent)="updateModal=false"></app-update-modal>
-<app-delete-modal [isVisible]="deleteModal" (closeMeEvent)="deleteModal=false"></app-delete-modal>
+<app-update-modal [item]="selected_item" [isVisible]="updateModal" (closeMeEvent)="updateModal=false" (confirmEvent)="OnUpdate($event)"></app-update-modal>
+<app-delete-modal [item]="selected_item" [isVisible]="deleteModal" (closeMeEvent)="deleteModal=false" (confirmEvent)="OnDelete($event)"></app-delete-modal>
 
 
 
-<div class="h-full flex-col space-y-4 justify-center items-center animate__fadeIn animate__animated ">
+<div class=" flex-col space-y-4 justify-center items-center animate__fadeIn animate__animated ">
 <div>
     <h1 class="text-3xl poppins-medium text-gray-600">Adresses</h1>
 </div>
-<div class="grid lg:grid-cols-2 gap-4 grid-rows-2  ">
-   <div class="bg-white   rounded-lg h-28 p-4 shadow-sm border-2 flex-col">
+
+<!--First Card-->
+<div class="grid lg:grid-cols-2 gap-4 grid-rows-2 h-auto ">
+   <div class="bg-white   rounded-lg p-4 drop-shadow-sm  flex-col flex">
    
-            <div class="p-2 text-sm poppins-light">Ajouter une adresse</div>
+            <div class="p-10 text-sm poppins-light  ">
+
+              <form [formGroup]="adresseForm" (ngSubmit)="OnSubmit()">
+
+              <div class="grid grid-cols-3 grid-rows-3 gap-4 h-60 ">
+                <div class="col-span-2">
+                  <div class="relative " >
+                    <input
+                      type="text"
+                      class="peer block min-h-[auto] w-full  rounded bg-secondary border-[1.5px]   focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
+                      id="region"
+                      formControlName="region"
+                      placeholder="Entre la région" />
+                    <label
+                      for="region"
+                      class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6]  transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary   motion-reduce:transition-none "
+                      [class]="adresseForm?.get('region').value
+                      ? '-translate-y-[1.6rem] scale-[0.8]  '
+                      : 'border-gray-300'
+                  "
+                      >Région</label>
+
+                      <p *ngIf="adresseForm.get('region')?.invalid && (adresseForm.get('region')?.dirty || adresseForm.get('region')?.touched)"
+                      class="pl-2 mt-2 text-xs text-red-600">
+                     <span class="font-medium">*</span> champs requis  
+                   </p>
+                     
+                    </div></div>
+
+
+                <div class="col-start-3"> <div class="relative " >
+                  <input
+                    type="text"
+                    class="peer block min-h-[auto] w-full rounded bg-secondary  border-[1.5px]   focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
+                    id="city"
+                    formControlName="city"
+                    placeholder="Entre la ville" />
+                  <label
+                    for="city"
+                    class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6]  transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none "
+                    [class]="adresseForm?.get('city').value
+                      ? '-translate-y-[1.6rem] scale-[0.8]  '
+                      : 'border-gray-300'
+                  "
+                    >Ville</label>
+
+                    <p *ngIf="adresseForm.get('city')?.invalid && (adresseForm.get('city')?.dirty || adresseForm.get('city')?.touched)"
+                      class="pl-2 mt-2 text-xs text-red-600">
+                     <span class="font-medium">*</span> champs requis  
+                   </p>
+                  </div></div>
+
+
+               
+                <div class="col-span-3 row-start-2">  <div class="relative " >
+                  <input
+                    type="text"
+                    class="peer block min-h-[auto] w-[90%] rounded bg-secondary border-[1.5px]   focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
+                    id="street"
+                    formControlName="street"
+                    placeholder="Etre la rue" />
+                  <label
+                    for="street"
+                    class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6]  transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none "
+                    [class]="adresseForm?.get('street').value
+                    ? '-translate-y-[1.6rem] scale-[0.8]  '
+                    : 'border-gray-300'
+                "
+                    >Rue</label>
+                    <p *ngIf="adresseForm.get('street')?.invalid && (adresseForm.get('street')?.dirty || adresseForm.get('street')?.touched)"
+                    class="pl-2 mt-2 text-xs text-red-600">
+                   <span class="font-medium">*</span> champs requis  
+                 </p>
+                  </div></div>
+                 
+                  <div class=""> <div class="relative" >
+                    <input
+                      type="text"
+                      class="peer block min-h-[auto] w-full rounded bg-secondary border-[1.5px]   focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
+                      id="code"
+                      formControlName="code"
+                      placeholder="Enter text" />
+                    <label
+                      for="code"
+                      class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6]  transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none "
+                      [class]="adresseForm?.get('code').value
+                    ? '-translate-y-[1.6rem] scale-[0.8]  '
+                    : 'border-gray-300'
+                "
+                      >Zip/Code Postal</label>
+                      <p *ngIf="adresseForm.get('code')?.invalid && (adresseForm.get('code')?.dirty || adresseForm.get('code')?.touched)"
+                      class="pl-2 mt-2 text-xs text-red-600">
+                     <span class="font-medium">*</span> champs requis  
+                   </p>
+                    </div>
+                      </div>
+
+            </div>
+
+
+            <div class="flex justify-end">
+            <button
+            type="submit"
+            class="bg-primary  text-sm font-medium rounded-sm px-6 py-2  text-white ">
+            Sauvegarder
+          </button>
+           </div>
+          </form>
+
+
+            </div>
    </div>
-    <div class="rounded-3xl bg-white">
+
+
+
+
+
+
+
+    <div class="flexflex-col rounded-3xl bg-white h-[36 rem]  ">
       <p-table
+        class="flex-1 overflow-auto"
         styleClass="rounded-2xl text-[15px] font-DMsans overflow-hidden"
-        [value]="adresses || []"
+        [value]="paginatedAdresses || []"
         [loading]="isLoading$"
-        [(selection)]="selected_adresses"
+        [selection]="[]"
         [rows]="10"
         dataKey="code"
       >
@@ -33,16 +153,16 @@
 
         <ng-template pTemplate="body" let-item>
           <tr>
-            <td>{{ item.adresse }}</td>
+            <td>{{ item.street }}</td>
             <td>{{ item.code }}</td>
             <td>{{ item.city }}</td>
             <td>{{ item.region }}</td>
             <td class="flex justify-center items-center w-3/4 text-slate-300 ">
-              <button class="h-14 w-9 object-contain hover:text-slate-500" (click)="updateModal=true">
+              <button class="h-14 w-9 object-contain  text-slate-500 hover:text-slate-500" (click)="updateModal=true;selected_item=item">
                 <i class="pi pi-pencil"></i>
 
               </button>
-              <button class="h-14 w-9 object-contain hover:text-red-300" (click)="deleteModal=true">
+              <button class="h-14 w-9 object-contain text-red-300 hover:text-red-500" (click)="deleteModal=true;selected_item=item">
                 <i class="pi pi-trash"></i>
               </button>
             </td>
@@ -55,12 +175,13 @@
           </tr>
         </ng-template>
       </p-table>
-      <!--<p-paginator
+     <p-paginator
+     class="mt-auto"
         (onPageChange)="onPageChange($event)"
         [first]="pagination.current_page * pagination?.per_page"
         [rows]="pagination?.per_page"
         [totalRecords]="pagination?.total"
-      ></p-paginator>-->
+      ></p-paginator>
   </div>
 
     

@@ -1,0 +1,108 @@
+<app-modal title="Modifier le laboratoire" [isVisible]="isVisible" ConfirmationLabel="Sauvegarder" (closeMeEvent)="closeMe()" (confirmEvent)="confirm()" >
+   <div class="p-8 w-[36rem]">
+    <form [formGroup]="laboratoryForm">
+          
+        <div class="flex flex-row gap-6 mb-6 items-center ">
+          <div class="flex flex-col items-center p-1 justify-center space-y-2" [ngClass]="{ 'bg-slate-100': item.logo }">
+            <img *ngIf="item.logo" [src]="'data:image/png;base64,' + item.logo" alt="Aperçu du logo" class="w-24 h-24 mt-2 rounded" />
+             <button
+              type="button"
+              class="text-sm px-6 py-2 text-white  bg-primary rounded-xl drop-shadow-md"
+              (click)="fileInput.click()"
+            >
+            <span *ngIf="item.logo">Modifier Logo</span>
+            <span *ngIf="!item.logo">Ajouter Logo</span>
+          </button>
+          <input
+          type="file"
+          accept="image/*"
+          class="hidden"
+          id="logo"
+          #fileInput
+          (change)="onFileSelected($event)"
+        />
+            
+          </div>
+    
+          <div class="relative flex-1">
+            <input
+              type="text"
+              class="peer block min-h-[auto] w-full rounded bg-secondary border-[1.5px] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary placeholder:opacity-0"
+              id="nom"
+              formControlName="nom"
+              placeholder="Entrez le nom"
+            />
+            <label
+              for="nom"
+              class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary"
+              [class]="laboratoryForm?.get('nom').value ? '-translate-y-[1.6rem] scale-[0.8]' : 'border-gray-300'"
+            >
+              Nom
+            </label>
+            <p *ngIf="laboratoryForm.get('nom')?.invalid && (laboratoryForm.get('nom')?.dirty || laboratoryForm.get('nom')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
+              <span class="font-medium">*</span> Champs requis
+            </p>
+          </div>
+        </div>
+    
+        <div class="flex flex-row gap-4 mb-6">
+          <div class="flex-1 relative">
+            <input
+              type="text"
+              class="peer block min-h-[auto] w-full rounded bg-secondary border-[1.5px] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary placeholder:opacity-0"
+              id="nrc"
+              formControlName="nrc"
+              placeholder="Entrez le NRC"
+            />
+            <label
+              for="nrc"
+              class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary"
+              [class]="laboratoryForm?.get('nrc').value ? '-translate-y-[1.6rem] scale-[0.8]' : 'border-gray-300'"
+            >
+              NRC
+            </label>
+            <p *ngIf="laboratoryForm.get('nrc')?.invalid && (laboratoryForm.get('nrc')?.dirty || laboratoryForm.get('nrc')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
+              <span class="font-medium">*</span> Champs requis
+            </p>
+          </div>
+        </div>
+    
+        <div class="flex flex-row gap-4 mb-6">
+            <div class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="active"
+                  formControlName="active"
+                  class="mr-2 h-5 w-5 text-primary border-gray-300 rounded checked:bg-primary checked:border-transparent"
+                  (change)="toggleDateActivation()"
+                />
+                <label for="active" class="text-sm font-medium">Actif</label>
+              </div>
+            
+              <div class="flex-1 flex-row space-x-2">
+                 <label
+                for="dateActivation"
+                class="ml-2"
+              >
+                Date d'activation :
+               </label>
+                <input
+                  type="date"
+                  class="peer block min-h-[auto] w-full rounded bg-secondary border-[1.5px] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary placeholder:opacity-0"
+                  id="dateActivation"
+                  formControlName="dateActivation"
+                  placeholder="Date d'activation"
+                  [disabled]="dateActivationEnabled"
+                />
+              
+                <p
+                  *ngIf="laboratoryForm.get('dateActivation')?.invalid && (laboratoryForm.get('dateActivation')?.dirty || laboratoryForm.get('dateActivation')?.touched)"
+                  class="pl-2 mt-2 text-xs text-red-600"
+                >
+                  <span class="font-medium">*</span> Champs requis
+                </p>
+              </div>
+        </div>
+      </form>
+    </div>
+</app-modal>

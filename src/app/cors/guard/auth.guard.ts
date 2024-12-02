@@ -11,8 +11,8 @@ import { Injectable } from '@angular/core';
         if (this.authService.isAuthenticated()) {
           return true; 
         } else {
-         // this.router.navigate(['/login']);
-          return true;
+          this.router.navigate(['/login']);
+          return false;
         }
       }
     }

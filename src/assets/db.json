@@ -13,23 +13,16 @@
   ],
   "adresses": [
     {
-      "id": "a312",
+      "id": "4f9e",
       "street": "Hay almostaqbal",
       "city": "Khouribga",
       "code": "25015",
-      "region": "Souss"
+      "region": "Tanger-Tetouan"
     },
     {
-      "id": "c5d6",
+      "id": "6ff9",
       "street": "Hay almostaqbal",
-      "city": "Agadir",
-      "code": "25015",
-      "region": "Souss"
-    },
-    {
-      "id": "4f9e",
-      "street": "Hay almostaqbal",
-      "city": "Elhoceima",
+      "city": "Khouribga",
       "code": "25015",
       "region": "Tanger-Tetouan"
     }

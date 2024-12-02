@@ -1,12 +1,60 @@
-<div class="flex items-center px-6 py-4 md:max-w-3xl md:mx-auto lg:max-w-none lg:mx-0 xl:px-0">
-    <div class="w-full">
-      <div class="relative">
-        <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
-          <img class="h-5 w-5" src="assets/svg/search.svg" alt="search icon">
+
+  <div class="max-w-7xl mx-auto px-10 bg-white py-3 sm:px-6 lg:px-8">
+    <div class="relative flex justify-between xl:grid xl:grid-cols-12 lg:gap-8">
+      
+      <div class="flex md:absolute md:left-0 md:inset-y-0 lg:static xl:col-span-1">
+        <div class="flex-shrink-0 flex items-center">
+          <div class="items-center hidden max-md:block md:right-0 md:inset-y-0">
+            <button  type="button" class="-mx-2 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary" aria-expanded="false">
+              <span class="sr-only">Open menu</span>
+              <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+              <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
         </div>
-        <input id="search" name="search" placeholder="Search ..." class="block w-full text-black bg-secondary-color border border-gray-300 rounded-3xl py-4 pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm" placeholder="Recherche" type="search"/>
+      </div>
+
+      <div class="w-96 flex-2 m-auto  md:px-8 lg:px-0 xl:col-span-6">
+        <div class="relative ">
+          <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
+            <img class="h-4 w-4" src="assets/svg/search.svg" alt="search icon">
+          </div>
+          <input id="search" name="search" class="block w-full text-black font-light   bg-slate-100 border border-gray-300 rounded-3xl py-[10px] pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm" placeholder="Recherche" type="search"/>
+        </div>
+            </div>
+
+      <div class="hidden lg:flex lg:items-center lg:justify-end xl:col-span-5">
+    
+        <div class="card flex justify-content-center">
+          <select >
+            <option value="fr">Français</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+      <button  type="button" class="ml-5 flex-shrink-0 bg-white rounded-full p-1 text-black hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary" aria-expanded="false">
+        <span class="sr-only">View notifications</span>
+        <img class="h-5 w-5 mt-0.5" src="/assets/svg/setting.svg">
+
+      </button>
+        <div class="flex-shrink-0 relative ml-5">
+          <div>
+            <ng-container >
+
+            <button type="button" class="bg-white rounded-full flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary" id="user-menu-button" aria-expanded="false" aria-haspopup="true" routerLink="/account">
+              <span class="sr-only">Open user menu</span>
+              <img class="h-8 w-8 rounded-full" src="/assets/profile.webp" alt=""/>
+            </button>
+          </ng-container>
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
 
   

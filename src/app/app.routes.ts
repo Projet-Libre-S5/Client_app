@@ -5,12 +5,17 @@ import { HomeComponent } from './modules/home/home.component';
 import { LoginComponent } from './modules/auth/login/login.component';
 import { NgModule } from '@angular/core';
 import { AuthGuard } from './cors/guard/auth.guard';
+import { ProfileComponent } from './modules/auth/profile/profile.component';
 
 export const routes: Routes = [  
  
     {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent
       },
    
     {

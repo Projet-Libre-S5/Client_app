@@ -1,0 +1,27 @@
+<p class="text-primary text-xl font-semibold truncate mb-2 ">Profile image</p> 
+<input id="fileUploader" type="file" (change)="onFileChange($event)" class="hidden" />
+<div class="flex flex-row p-4">
+    <div class="relative">
+    <img class="h-24 w-24  ring-1 object-contain ring-primary rounded-full cursor-pointer" [src]="imageSrc ?imageSrc:defaultImageSrc "  alt="Image de profile"   (click)="triggerFileUpload()"  />
+    <span 
+    (click)="triggerFileUpload()" 
+    class="bottom-2 pb-0.5  pl-1 left-20 absolute  w-5 h-5 bg-primary border-1 border-primary rounded-full content-center cursor-pointer " >
+        <img src="../../../../assets/icons/svg/edit_light.svg" />
+    </span>
+    </div>
+    <div class="flex flex-col  justify-around px-6">
+        <button
+        (click)="triggerFileUpload()" 
+        class="flex justify-center items-center border border-1 border-primary  text-sm  p-2 rounded-md bg-primary text-white">
+        <span>change image</span> 
+      </button>
+
+        <button
+        class="flex justify-center items-center border border-1 border-primary text-primary text-sm  p-2 rounded-md">
+        <img src=""
+             class="text-primary flex-shrink-0"
+        />
+        <span>delete</span>
+       
+      </button>
+    </div>

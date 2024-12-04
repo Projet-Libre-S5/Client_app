@@ -1,0 +1,191 @@
+<template-page>
+    <div class="xl:px-36 px-10">
+      <p class="text-primary p-4 text-2xl font-semibold truncate">
+        Formulaire de mise à jour des informations
+      </p>
+      <form [formGroup]="Form">
+        <div class="flex flex-col">
+          <div class="flex flex-col mt-4 p-4 space-y-4">
+            <!-- Row 1: First Name & Last Name -->
+            <div class="grid lg:grid-cols-2 gap-4 grid-cols-1">
+              <div class="flex flex-col">
+                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-first-name">
+                  Prénom
+                </label>
+                <input
+                  formControlName="first_name"
+                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-white"
+                  id="grid-first-name"
+                  type="text"
+                  placeholder="Entrez le prénom"
+                />
+              </div>
+              <div class="flex flex-col">
+                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-last-name">
+                  Nom
+                </label>
+                <input
+                  formControlName="last_name"
+                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-white"
+                  id="grid-last-name"
+                  type="text"
+                  placeholder="Entrez le nom"
+                />
+              </div>
+            </div>
+  
+            <!-- Row 2: Profession & Telephone -->
+            <div class="grid lg:grid-cols-2 gap-4 grid-cols-1">
+              <div class="flex flex-col">
+                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-profession">
+                  Profession
+                </label>
+                <input
+                  formControlName="profession"
+                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-white"
+                  id="grid-profession"
+                  type="text"
+                  placeholder="Entrez la profession"
+                />
+              </div>
+              <div class="flex flex-col">
+                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-phone">
+                  Téléphone
+                </label>
+                <input
+                  formControlName="phone"
+                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-white"
+                  id="grid-phone"
+                  type="text"
+                  placeholder="Entrez le numéro de téléphone"
+                />
+              </div>
+            </div>
+  
+            <!-- Row 3: Role & Signature -->
+            <div class="grid lg:grid-cols-2 gap-4 grid-cols-1">
+              <div class="flex flex-col">
+                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-role">
+                  Rôle
+                </label>
+                <input
+                  formControlName="role"
+                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-white"
+                  id="grid-role"
+                  type="text"
+                  placeholder="Entrez le rôle"
+                />
+              </div>
+              <div class="flex flex-col">
+                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-signature">
+                  Signature
+                </label>
+                <input
+                  formControlName="signature"
+                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-white"
+                  id="grid-signature"
+                  type="text"
+                  placeholder="Entrez la signature"
+                />
+              </div>
+            </div>
+  
+            <!-- Row 4: Email -->
+            <div class="flex flex-col">
+              <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-email">
+                Email
+              </label>
+              <input
+                formControlName="email"
+                class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-white"
+                id="grid-email"
+                type="email"
+                placeholder="Entrez l'email"
+              />
+            </div>
+          </div>
+        </div>
+  
+        <!-- Image Uploader -->
+        <div class="flex flex-col mt-6">
+          <app-image-uploader
+            defaultImageSrc="/assets/profile.webp"
+            (image64)="setImageSrc($event)">
+          </app-image-uploader>
+        </div>
+      </form>
+  
+      <!-- Formulaire de gestion des mots de passe -->
+      <p class="text-primary text-2xl font-semibold mt-10 mb-4">Gestion des mots de passe</p>
+      <form [formGroup]="Form">
+        <div class="flex flex-col space-y-4">
+          <div>
+            <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-password">
+              Mot de passe actuel
+            </label>
+            <input
+              formControlName="password"
+              class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-white"
+              id="grid-password"
+              type="password"
+              placeholder="********"
+            />
+          </div>
+          <div>
+            <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-new-password">
+              Nouveau mot de passe
+            </label>
+            <input
+              formControlName="new_password"
+              class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-white"
+              id="grid-new-password"
+              type="password"
+              placeholder="********"
+            />
+          </div>
+          <div>
+            <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-confirm-password">
+              Confirmez le mot de passe
+            </label>
+            <input
+              formControlName="confirm_password"
+              class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-white"
+              id="grid-confirm-password"
+              type="password"
+              placeholder="********"
+            />
+          </div>
+          <div class="mt-4  flex flex-col">
+            <p class="text-primary  text-xl font-semibold truncate ">
+             
+               </p> 
+            <div class="pt-3"></div>
+            <p class="text-lg">Vous êtes sur le point de supprimer votre compte. Cette action est définitive et ne pourra pas être annulée!</p>
+            <button
+            (click)=" confirmDelete()"
+            class="mt-6  px-3 py-3 w-1/2 flex justify-center items-center bg-primary text-white rounded-3xl  text-sm truncate md:text-base">
+            Supprimer
+          </button>
+        </div>
+        <div class="px-4 mt-4">
+            <hr class="w-full mb-3 h-1 mx-auto   bg-gray-300 border-0 rounded-full opacity-50">
+            <div class="flex flex-row flex-wrap-reverse mb-10 justify-end">
+            <button
+            (click)="resetForm()"
+            class=" mr-1 w-1/4 p-2 flex justify-center font-medium items-center bg-white text-primary-ligh border-1 border-gray-300  border-2 rounded-3xl  text-sm  md:text-base">
+           cancel
+          </button>
+          <button
+          type="submit"
+          class=" w-1/2 p-2 flex justify-center items-center bg-primary text-white rounded-3xl text-sm truncate md:text-base">
+          Save
+        </button>
+        </div>
+    
+    </div>
+        </div>
+      </form>
+    </div>
+  </template-page>
+  
+  

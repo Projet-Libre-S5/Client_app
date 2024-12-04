@@ -1,101 +1,73 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import {TemplatePageComponent} from "../../../Layouts/template-page/template-page.component";
+import { map, Observable } from 'rxjs';
+import { CommonModule, NgForOf } from '@angular/common';
+import { CardModule } from 'primeng/card';
+import { SharedModule } from 'primeng/api';
+import { Router, RouterLink } from '@angular/router';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
+import { SweetAlertService } from '../../../shared/services/sweet-alert/sweet-alert.service';
+import { LaboratoryService } from '../../../services/home/laboratory/laboratory.service';
+import { TagModule } from 'primeng/tag';
+
+
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [],
+  imports: [  
+    CommonModule,
+    CardModule,
+    SharedModule,
+    PaginatorModule,
+    CardModule,
+    SharedModule,
+    RouterLink,
+    TagModule
+  ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
  
    openSidebar: boolean = true;
+   isLoading$:boolean=false;
+   laboratories: any[] = []; 
+   selected_item: any = null; 
 
-  menuSidebar = [
-    {
-      link_name: "Dashboard",
-      link: "/dashboard",
-      icon: "bx bx-grid-alt",
-      sub_menu: []
-    }, {
-      link_name: "Category",
-      link: null,
-      icon: "bx bx-collection",
-      sub_menu: [
-        {
-          link_name: "HTML & CSS",
-          link: "/html-n-css",
-        }, {
-          link_name: "JavaScript",
-          link: "/javascript",
-        }, {
-          link_name: "PHP & MySQL",
-          link: "/php-n-mysql",
-        }
-      ]
-    }, {
-      link_name: "Posts",
-      link: null,
-      icon: "bx bx-book-alt",
-      sub_menu: [
-        {
-          link_name: "Web Design",
-          link: "/posts/web-design",
-        }, {
-          link_name: "Login Form",
-          link: "/posts/login-form",
-        }, {
-          link_name: "Card Design",
-          link: "/posts/card-design",
-        }
-      ]
-    }, {
-      link_name: "Analytics",
-      link: "/analytics",
-      icon: "bx bx-pie-chart-alt-2",
-      sub_menu: []
-    }, {
-      link_name: "Chart",
-      link: "/chart",
-      icon: "bx bx-line-chart",
-      sub_menu: []
-    }, {
-      link_name: "Plugins",
-      link: null,
-      icon: "bx bx-plug",
-      sub_menu: [
-        {
-          link_name: "UI Face",
-          link: "/ui-face",
-        }, {
-          link_name: "Pigments",
-          link: "/pigments",
-        }, {
-          link_name: "Box Icons",
-          link: "/box-icons",
-        }
-      ]
-    }, {
-      link_name: "Explore",
-      link: "/explore",
-      icon: "bx bx-compass",
-      sub_menu: []
-    }, {
-      link_name: "History",
-      link: "/history",
-      icon: "bx bx-history",
-      sub_menu: []
-    }, {
-      link_name: "Setting",
-      link: "/setting",
-      icon: "bx bx-cog",
-      sub_menu: []
-    }
-  ]
 
-  constructor() { }
+   constructor(
+    private service:LaboratoryService,
+    private AlertService:SweetAlertService,
+  ) {
+
+  }
+
+
+   getLaboratories(): void {
+    this.service.getAll().subscribe(
+      (data: any) => {
+        this.laboratories = data; // Assign data to the laboratories array
+        //this.isLoading = false;
+      },
+      (error) => {
+        console.error('Error fetching laboratories:', error);
+        //this.isLoading = false;
+      }
+    );
+  }
+
+
+
+   OnSearch($event:any){
+
+   }
+
+   HandleSelectedActions($event:any){}
+
 
   ngOnInit() {
+    this.getLaboratories();
 
   }
 

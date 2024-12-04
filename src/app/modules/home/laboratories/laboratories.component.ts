@@ -12,6 +12,13 @@ import { DeleteModalComponent } from "./subpages/delete-modal/delete-modal.compo
 import { InputTextModule } from "primeng/inputtext"; 
 import { SweetAlertService } from '../../../shared/services/sweet-alert/sweet-alert.service';
 import { LaboratoryService } from '../../../services/home/laboratory/laboratory.service';
+import { StepperModule } from 'primeng/stepper';
+import {  NgForOf } from '@angular/common';
+import { CardModule } from 'primeng/card';
+import { SharedModule } from 'primeng/api';
+import { Router, RouterLink } from '@angular/router';
+import { TagModule } from 'primeng/tag';
+
 
 @Component({
   selector: 'app-laboratories',
@@ -20,7 +27,8 @@ import { LaboratoryService } from '../../../services/home/laboratory/laboratory.
     ReactiveFormsModule,
     CommonModule,
     PaginatorModule,
-    TableModule, UpdateModalComponent, DeleteModalComponent,InputTextModule
+    TableModule, UpdateModalComponent, DeleteModalComponent,InputTextModule,StepperModule,NgForOf,CardModule,SharedModule,RouterLink,
+    TagModule
   ],
   templateUrl: './laboratories.component.html',
   styleUrl: './laboratories.component.css'
@@ -48,12 +56,11 @@ export class LaboratoriesComponent implements OnInit {
 
   imageSource:any;
   
-  
+  isLoading$:boolean=true;
 
 
 
 
-  readonly isLoading$?: Observable<boolean>;
 
 
 
@@ -95,10 +102,12 @@ export class LaboratoriesComponent implements OnInit {
       this.laboratories = data;            
       this.pagination.total = data.length;
       this.updatePaginatedLaboratories();  
+      this.isLoading$=false;
      
 
     },
       (err) => {
+        this.isLoading$=true;
         console.log(err)
 
       }

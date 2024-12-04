@@ -23,7 +23,6 @@ export const routes: Routes = [
           },
         ],canActivate: [AuthGuard]
       },
-
       {
         path:'**',
         component:NotFoundPageComponent

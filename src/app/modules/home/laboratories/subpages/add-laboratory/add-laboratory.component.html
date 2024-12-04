@@ -1,0 +1,329 @@
+<div class="bg-white rounded-2xl">
+    <p class="text-primary-light pt-6 pl-10 text-xl font-semibold truncate">
+      Add laboratory
+    </p>
+    <div class="grid grid-cols-6 gap-4 p-8 h-[70vh]">
+      <!-- steps -->
+      <div class="col-span-2 border-r-2 pt-32 pr-6 px-2 min-w-[40px] border-gray-200">
+        <app-breadcrumb-steps [step]="step"/>
+      </div>
+      <ng-container *ngIf="step == 1">
+        <!-- form -->
+        <div class="animate__animated m-auto ml-8 py-2 animate__zoomIn col-span-3 xl:col-span-3 max-xl:col-span-4 relative w-full">
+          <form [formGroup]="buildingFormStepOne" class="w-full max-w-lg ml-4">
+            <!-- Row 1: NRC / Nom -->
+            <div class="grid grid-cols-2 gap-6 mb-6">
+              <div class="col-span-1">
+                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-nrc">
+                  NRC
+                </label>
+                <input
+                  formControlName="nrc"
+                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+                  id="grid-nrc"
+                  type="text"
+                  placeholder="Entrez le NRC"
+                />
+                <p *ngIf="buildingFormStepOne.get('nrc')?.invalid && (buildingFormStepOne.get('nrc')?.dirty || buildingFormStepOne.get('nrc')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
+                  <span class="font-medium">*</span> Champs requis
+                </p>
+              </div>
+      
+              <div class="col-span-1">
+                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-nom">
+                  Nom
+                </label>
+                <input
+                  formControlName="nom"
+                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+                  id="grid-nom"
+                  type="text"
+                  placeholder="Entrez le nom"
+                />
+                <p *ngIf="buildingFormStepOne.get('nom')?.invalid && (buildingFormStepOne.get('nom')?.dirty || buildingFormStepOne.get('nom')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
+                  <span class="font-medium">*</span> Champs requis
+                </p>
+              </div>
+            </div>
+      
+            <!-- Row 2: Checkbox / Date d'activation -->
+            <div class="grid grid-cols-2 gap-6 mb-6">
+              <div class="col-span-1">
+                <div class="flex items-center h-20">
+                  <input
+                    type="checkbox"
+                    id="active"
+                    formControlName="active"
+                    class="mr-2"
+                    (change)="onActiveChange($event)"
+                  />
+                  <label for="active" class="text-sm font-medium text-gray-700">Actif</label>
+                </div>
+              </div>
+      
+              <div class="col-span-1" *ngIf="buildingFormStepOne.get('active')?.value">
+                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-dateActivation">
+                  Date d'activation
+                </label>
+                <input
+                  formControlName="dateActivation"
+                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+                  id="grid-dateActivation"
+                  type="date"
+                  placeholder="Date d'activation"
+                />
+                <p *ngIf="buildingFormStepOne.get('dateActivation')?.invalid && (buildingFormStepOne.get('dateActivation')?.dirty || buildingFormStepOne.get('dateActivation')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
+                  <span class="font-medium">*</span> Champs requis
+                </p>
+              </div>
+            </div>
+      
+            <!-- Row 3: Téléphone / Fax -->
+            <div class="grid grid-cols-2 gap-6 mb-6">
+              <div class="col-span-1">
+                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-numTel">
+                  Numéro de Téléphone
+                </label>
+                <input
+                  formControlName="numTel"
+                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+                  id="grid-numTel"
+                  type="text"
+                  placeholder="Entrez le numéro de téléphone"
+                />
+              </div>
+      
+              <div class="col-span-1">
+                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-fax">
+                  Fax
+                </label>
+                <input
+                  formControlName="fax"
+                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+                  id="grid-fax"
+                  type="text"
+                  placeholder="Entrez le fax"
+                />
+              </div>
+            </div>
+      
+            <!-- Row 4: Email -->
+            <div class="mb-6">
+              <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-email">
+                Email
+              </label>
+              <input
+                formControlName="email"
+                class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+                id="grid-email"
+                type="email"
+                placeholder="Entrez l'email"
+              />
+            </div>
+      
+            <div class="h-16"></div>
+          </form>
+      
+          <!-- Next Button -->
+          <div class="flex justify-center items-center h-full">
+            <button
+              [disabled]="!buildingFormStepOne.valid"
+              class="bg-primary text-white rounded-full px-8 py-2 text-sm md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
+              (click)="onNextPage()"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+          
+      </ng-container>
+      
+      <ng-container *ngIf="step == 2 ">
+        <!-- form -->
+        <div class="animate__animated animate__zoomIn max-md:col-span-5 col-span-4 ">
+
+          
+       
+          <p-fileUpload  #fileUploader name="myfile[]" [multiple]="true"accept="image/*"  maxFileSize="1000000"(onUpload)="onTemplatedUpload()"
+               (onSelect)="onSelectedFiles($event)" >
+           <ng-template class=" bg-white" pTemplate="header">
+            <button
+            type="button"
+            class="text-sm px-6 py-2 text-white  bg-primary rounded-xl drop-shadow-md"
+            (click)="fileInput.click()"
+          >
+            <span *ngIf="logoPreview">Modifier Logo</span>
+            <span *ngIf="!logoPreview">Ajouter Logo</span>
+          </button>
+          <input
+          type="file"
+          accept="image/*"
+          class="hidden"
+          id="logo"
+          #fileInput
+          (change)="onFileSelected($event)"
+        />
+            </ng-template>
+            <ng-template pTemplate="content" let-files let-uploadedFiles="uploadedFiles"
+                         let-removeFileCallback="removeFileCallback"
+                         let-removeUploadedFileCallback="removeUploadedFileCallback">
+              <div *ngIf="files?.length > 0">
+           <div class="flex flex-wrap p-0 sm:p-5 gap-5">
+                  <div *ngFor="let file of files; let i = index"
+                       class="card m-0 px-6 flex flex-column border-1 surface-border align-items-center gap-3">
+                    <div>
+                      <img role="presentation" [alt]="file.name" [src]="file.objectURL" width="100" height="50"/>
+                    </div>
+                    <span class="font-semibold">{{  file.name }}</span>
+                    <div>{{  formatSize(file.size) }}</div>
+                    <p-badge value="Completed" class="mt-3" severity="success"/>
+                    <p-button label="X" (click)="onRemoveTemplatingFile($event, file, removeFileCallback , i)"
+                              [outlined]="true" [rounded]="true" severity="danger"/>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+            <ng-template pTemplate="file"></ng-template>
+            <ng-template pTemplate="empty">
+              <div class="bg-primary/5 border font-chillax  flex justify-center rounded-md px-16">
+                <div class="flex flex-col h-52 align-middle m-auto">
+                  <p class=" text-black font-semibold">drag and drop image or <span
+                    class="text-primary"><button>browser</button></span></p>
+                  <p class="text-primary-ligh">SVG,PNG,JPEG.GIF</p>
+                </div>
+              </div>
+            </ng-template>
+          </p-fileUpload>
+          <ng-container *ngIf="showError">
+            <p
+            class="text-sm text-red-600 animate__animated animate__fadeInDown">
+              <span class="font-medium">*</span> champs requis
+            </p>
+          </ng-container>
+          <div class="absolute bottom-4 right-1 grid grid-cols-3 gap-2">
+            
+
+          <div class="flex flex-row space-x-2 justify-center items-center h-full">
+            <button
+            class="  border-2 border-primary text-primary bg-white rounded-full px-8 py-2 text-sm md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
+            (click)="onBackPage()"
+          >
+            Previous
+          </button>
+            <button
+            [disabled]="!image"
+            class=" bg-primary  text-white   rounded-full px-8 py-2 text-sm md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
+            (click)="onNextPage()"
+          >
+            Next
+          </button>
+          </div>
+          </div>
+
+        </div>
+      </ng-container>
+
+
+    <ng-container *ngIf="step == 3">
+      <!-- form -->
+      <div class="animate__animated my-auto bg animate__zoomIn xl:col-span-4 max-xl:col-span-5">
+        <ng-container *ngIf="step == 3">
+          <!-- Step 3: Address Form -->
+          <div class="animate__animated m-auto ml-8 animate__zoomIn col-span-3 xl:col-span-3 max-xl:col-span-4 relative w-full">
+            <form [formGroup]="buildingFormStepThree" class="w-full max-w-lg ml-4 grid grid-cols-2 gap-6">
+              <!-- Row 1: Rue and Code Postal -->
+              <div class="mb-6">
+                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-rue">
+                  Rue
+                </label>
+                <input
+                  formControlName="rue"
+                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+                  id="grid-rue"
+                  type="text"
+                  placeholder="Entrez la rue"
+                />
+                <p *ngIf="buildingFormStepThree.get('rue')?.invalid && (buildingFormStepThree.get('rue')?.dirty || buildingFormStepThree.get('rue')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
+                  <span class="font-medium">*</span> Champs requis
+                </p>
+              </div>
+          
+              <div class="mb-6">
+                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-codePostal">
+                  Code Postal
+                </label>
+                <input
+                  formControlName="codePostal"
+                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+                  id="grid-codePostal"
+                  type="text"
+                  placeholder="Entrez le code postal"
+                />
+                <p *ngIf="buildingFormStepThree.get('codePostal')?.invalid && (buildingFormStepThree.get('codePostal')?.dirty || buildingFormStepThree.get('codePostal')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
+                  <span class="font-medium">*</span> Champs requis
+                </p>
+              </div>
+          
+              <!-- Row 2: Commune and Ville -->
+              <div class="mb-6">
+                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-commune">
+                  Commune
+                </label>
+                <input
+                  formControlName="commune"
+                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+                  id="grid-commune"
+                  type="text"
+                  placeholder="Entrez la commune"
+                />
+                <p *ngIf="buildingFormStepThree.get('commune')?.invalid && (buildingFormStepThree.get('commune')?.dirty || buildingFormStepThree.get('commune')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
+                  <span class="font-medium">*</span> Champs requis
+                </p>
+              </div>
+          
+              <div class="mb-6">
+                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-ville">
+                  Ville
+                </label>
+                <input
+                  formControlName="ville"
+                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+                  id="grid-ville"
+                  type="text"
+                  placeholder="Entrez la ville"
+                />
+                <p *ngIf="buildingFormStepThree.get('ville')?.invalid && (buildingFormStepThree.get('ville')?.dirty || buildingFormStepThree.get('ville')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
+                  <span class="font-medium">*</span> Champs requis
+                </p>
+              </div>
+          
+              <!-- Next Button -->
+          <div class="space-x-2 flex justify-center mt-4 ml-2" >
+                <button
+            class="  border-2 border-primary text-primary bg-white rounded-full px-8 py-2 text-sm md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
+            (click)="onBackPage()"
+          >
+            Previous
+          </button>
+            <button
+            [disabled]="!buildingFormStepThree.valid"
+            class=" bg-primary  text-white   rounded-full px-8 py-2 text-sm md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
+            (click)="onNextPage()"
+          >
+            Validate
+          </button>
+              </div>
+            </form>
+          </div>
+          
+        </ng-container>
+        
+        
+        
+        
+      </div>
+    </ng-container>
+
+    </div>
+  </div>
+

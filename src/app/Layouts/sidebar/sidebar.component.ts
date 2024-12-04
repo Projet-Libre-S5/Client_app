@@ -19,7 +19,9 @@ export class SidebarComponent {
   
   public readonly sidebar_elements = [
     { label: "Dashboard", route_path: "/Dashboard", icon:"pi pi-th-large",isOpen:false, childs: [] },
-    { label: "Laboratoires",route_path: "/Laboratories" ,icon:"pi pi-building",isOpen:false,childs: []},
+    { label: "Laboratoires",route_path: "/Laboratories" ,icon:"pi pi-building",isOpen:false,childs: [
+      { label: "Ajouter Laboratoire", route_path: "/Laboratories/Add-laboratory"},
+    ]},
     { label: "Contacts",route_path: "/Contacts" ,icon:"pi pi-address-book",isOpen:false,childs: []},
     { label: "Adresses",route_path: "/Adresses" ,icon:"pi pi-map",isOpen:false,childs: []},
     { label: "Analyses",route_path: "/Analyses",icon:"pi pi-clipboard",isOpen:false,childs: [

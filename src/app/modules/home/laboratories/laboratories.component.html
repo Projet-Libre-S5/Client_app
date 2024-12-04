@@ -1,200 +1,121 @@
 <app-update-modal [item]="selected_item" [isVisible]="updateModal" (closeMeEvent)="updateModal=false" (confirmEvent)="OnUpdate($event)"></app-update-modal>
 <app-delete-modal [item]="selected_item" [isVisible]="deleteModal" (closeMeEvent)="deleteModal=false" (confirmEvent)="OnDelete($event)"></app-delete-modal>
 
-
-
-<div class=" flex-col space-y-4 justify-center items-center animate__fadeIn animate__animated ">
-<div>
-    <h1 class="text-3xl poppins-medium text-gray-600">Laboratoires</h1>
-</div>
-
-<div class="grid lg:grid-cols-2 gap-4 grid-rows-2 h-auto ">
-   <div class="bg-white   rounded-lg p-4 drop-shadow-sm  flex-col flex">
-   
-    <div class="p-10 text-sm poppins-light">
-
-        <form [formGroup]="laboratoryForm" (ngSubmit)="OnSubmit()">
-          
-          <div class="flex flex-row gap-4 mb-6 items-center ">
-            <div class="flex flex-col items-center  p-2 justify-center space-y-2" [ngClass]="{ 'bg-slate-100': logoPreview }">
-              <img *ngIf="logoPreview" [src]="logoPreview" alt="Aperçu du logo" class="w-24 h-24 mt-2 rounded" />
-              <button
-              type="button"
-              class="text-sm px-6 py-2 text-white  bg-primary rounded-xl drop-shadow-md"
-              (click)="fileInput.click()"
-            >
-              <span *ngIf="logoPreview">Modifier Logo</span>
-              <span *ngIf="!logoPreview">Ajouter Logo</span>
-            </button>
-            <input
-            type="file"
-            accept="image/*"
-            class="hidden"
-            id="logo"
-            #fileInput
-            (change)="onFileSelected($event)"
-          />
-              
-            </div>
-      
-            <div class="relative flex-1">
-              <input
-                type="text"
-                class="peer block min-h-[auto] w-full rounded bg-secondary border-[1.5px] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary placeholder:opacity-0"
-                id="nom"
-                formControlName="nom"
-                placeholder="Entrez le nom"
-              />
-              <label
-                for="nom"
-                class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary"
-                [class]="laboratoryForm?.get('nom').value ? '-translate-y-[1.6rem] scale-[0.8]' : 'border-gray-300'"
-              >
-                Nom
-              </label>
-              <p *ngIf="laboratoryForm.get('nom')?.invalid && (laboratoryForm.get('nom')?.dirty || laboratoryForm.get('nom')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
-                <span class="font-medium">*</span> Champs requis
-              </p>
-            </div>
-          </div>
-      
-          <div class="flex flex-row gap-4 mb-6">
-            <div class="flex-1 relative">
-              <input
-                type="text"
-                class="peer block min-h-[auto] w-full rounded bg-secondary border-[1.5px] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary placeholder:opacity-0"
-                id="nrc"
-                formControlName="nrc"
-                placeholder="Entrez le NRC"
-              />
-              <label
-                for="nrc"
-                class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary"
-                [class]="laboratoryForm?.get('nrc').value ? '-translate-y-[1.6rem] scale-[0.8]' : 'border-gray-300'"
-              >
-                NRC
-              </label>
-              <p *ngIf="laboratoryForm.get('nrc')?.invalid && (laboratoryForm.get('nrc')?.dirty || laboratoryForm.get('nrc')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
-                <span class="font-medium">*</span> Champs requis
-              </p>
-            </div>
-          </div>
-      
-          <div class="flex flex-row gap-4 mb-6">
-            <div class="flex items-center">
-              <input type="checkbox" id="active" formControlName="active" class="mr-2" />
-              <label for="active" class="text-sm font-medium">Actif</label>
-            </div>
-      
-            <div class="flex-1 relative">
-              <input
-                type="date"
-                class="peer block min-h-[auto] w-full rounded bg-secondary border-[1.5px] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary placeholder:opacity-0"
-                id="dateActivation"
-                formControlName="dateActivation"
-                placeholder="Date d'activation"
-              />
-              <label
-                for="dateActivation"
-                class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary"
-              >
-              </label>
-              <p *ngIf="laboratoryForm.get('dateActivation')?.invalid && (laboratoryForm.get('dateActivation')?.dirty || laboratoryForm.get('dateActivation')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
-                <span class="font-medium">*</span> Champs requis
-              </p>
-            </div>
-          </div>
-      
-          <div class="flex justify-end mt-4">
-            <button type="submit" class="bg-primary text-sm font-medium rounded-sm px-6 py-2 text-white">
-              Sauvegarder
-            </button>
-          </div>
-      
-        </form>
-      </div>
-      
-                  
-
-
-        
-   </div>
-
-
-
-
-
-
-
-    <div class="flexflex-col rounded-3xl bg-white h-[36 rem]  ">
-<p-table
-  class="flex-1 overflow-auto"
-  styleClass="rounded-2xl text-[15px] font-DMsans overflow-hidden"
-  [value]="paginatedLaboratories || []"  
-  [loading]="isLoading$"
-  [selection]="[]"
-  [rows]="10"
-  dataKey="nrc">
-  <ng-template pTemplate="header">
-    <tr class="bg-secondary-color">
-      <th>Logo</th>
-      <th>Nom</th> 
-      <th>NRC</th>
-      <th>Actif</th> 
-      <th>Date d'activation</th>
-      <th>Action</th>
-    </tr>
-  </ng-template>
-
-  <ng-template pTemplate="body" let-item>
-    <tr>
-      <td><img *ngIf="item.logo" [src]="'data:image/png;base64,' + item.logo" alt="Logo du laboratoire" class="w-16 h-16 rounded" />
-      </td>
-      <td>{{ item.nom }}</td>
-      <td>{{ item.nrc }}</td>
-      <td>
-        <span *ngIf="item.active">Oui</span>
-        <span *ngIf="!item.active">Non</span>
-      </td> 
-      <td>{{ item.dateActivation | date: 'dd/MM/yyyy' }}</td> 
-      <td class="flex justify-center items-center w-3/4 text-slate-300">
+<div class="h-full flex-col space-y-4 justify-center items-center animate__fadeIn animate__animated ">
+  <!-- <app-actions-table (OnSearch)="OnSearch($event)"  [exporter]="false" (SelectedEvent)="HandleSelectedActions($event)" />-->
+   <div class="rounded-3xl bg-white">
+ 
+   <div class="mt-10 font-chillax flex flex-wrap p-2  animate__fadeIn animate__animated ">
+     <ng-container *ngIf="laboratories.length>0">
+       <!-- *ngIf="!(isLoading$ | async)"-->
+      <ng-container *ngFor="let laboratory of laboratories"  >
+       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+         <ng-container *ngFor="let laboratory of laboratories">
+           <p-card class="font-chillax animate__fadeIn animate__animated rounded-3xl m-4 w-72 overflow-hidden shadow-xl">
+             <!-- Card Header -->
+             <ng-template pTemplate="header">
+               <img
+                 *ngIf="laboratory.logo"
+                 [src]="'data:image/png;base64,' + laboratory.logo"
+                 class="h-36 w-full object-cover"
+                 alt="Logo du laboratoire"
+               />
+               <img
+                 *ngIf="!laboratory.logo"
+                 src="assets/Lab.jpg"
+                 class="h-36 w-full object-cover"
+                 alt="Default Lab Image"
+               />
+             </ng-template>
        
-        <button class="h-14 w-9 object-contain text-slate-500 hover:text-slate-500" (click)=" updateModal=true;selected_item=item">
-          <i class="pi pi-pencil"></i>
-        </button>
+             <!-- Card Content -->
+             <div class="grid grid-cols-3 p-2">
 
-        <button class="h-14 w-9 object-contain text-red-300 hover:text-red-500" (click)="deleteModal=true;selected_item=item">
-          <i class="pi pi-trash"></i>
-        </button>
-      </td>
-    </tr>
-  </ng-template>
+                   <!-- Name -->
+             <p class="flex col-span-3 items-center mt-4">
+                     <img src="assets/icons/svg/floor.svg" class="h-5 w-5">
+                     <span class="ml-4 text-xs">{{ laboratory.nom || '--' }}</span>
+                   </p>
+           
+               <!-- NRC -->
+               <p class="flex col-span-3 items-center mt-4">
+                 <img src="assets/icons/svg/batiment2.svg" class="h-5 w-5">
 
-  <ng-template pTemplate="emptymessage">
-    <tr>
-      <td colspan="5">Aucune donnée à afficher</td>
-    </tr>
-  </ng-template>
-</p-table>
+                 
+                 <span class="ml-4 mr-4 text-xs truncate">{{ laboratory.nrc || '--' }}</span>
+                 <p-tag  severity="success" *ngIf="laboratory.active" value="Active" [rounded]="true" />
 
 
-<p-paginator
-  class="mt-auto"
-  (onPageChange)="onPageChange($event)"
-  [first]="pagination.current_page * pagination?.per_page"
-  [rows]="pagination?.per_page"
-  [totalRecords]="pagination?.total"
-></p-paginator>
-  </div>
-
-    
-
+               </p>
+       
+           
+               <!-- Activation Date -->
+               <p class="flex col-span-3 items-center mt-4">
+                 <img src="assets/icons/svg/calendar.svg" class="h-5 w-5">
+                 <span class="ml-4 text-xs">
+                   {{ laboratory.dateActivation | date: 'dd/MM/yyyy' }}
+                 </span>
+               </p>
+             </div>
+       
+             <!-- Card Footer -->
+             <ng-template pTemplate="footer">
+               <div class="flex justify-end gap-1 mt-1">
+                   view détails
+               </div>
+             </ng-template>
+           </p-card>
+         </ng-container>
+       </div>
+       
+       </ng-container> 
+     </ng-container>
+ 
+     <ng-container *ngIf="laboratories.length == 0">
+     <div class="text-center p-6 w-full bg-white rounded-3xl">
+         <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+           <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+         </svg>
+         <h3 class="mt-2 text-sm font-medium text-gray-900">no laboratory</h3>
+         <p class="mt-1 text-sm text-gray-500">create new</p>
+         <div class="mt-6">
+           <a type="button" routerLink="/Laboratories/Add-laboratory" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-gray-200">
+             <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+               <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+             </svg>
+             new laboratory
+           </a>
+         </div>
+       </div>
+     </ng-container>
+    <ng-container *ngIf="isLoading$">
+       <div *ngFor="let i of [1,1,1,1,1,1,1]" class="font-chillax rounded-3xl m-4 w-80 overflow-hidden shadow-xl animate-pulse">
+         <div class="h-36 bg-gray-300"></div>
+         <div class="grid grid-cols-3 p-2">
+           <div class="flex col-span-3 items-center mt-4">
+             <div class="w-8 h-8 bg-gray-300 rounded-full"></div>
+             <span class="ml-4 text-xs w-24 h-4 bg-gray-300 rounded"></span>
+           </div>
+           <div class="col-span-3 flex items-center mt-4">
+             <div class="w-8 h-8 bg-gray-300 rounded-full"></div>
+             <span class="ml-4 text-xs w-24 h-4 bg-gray-300 rounded"></span>
+           </div>
+           <div class="flex col-span-3 items-center mt-4">
+             <div class="w-8 h-8 bg-gray-300 rounded-full"></div>
+             <span class="ml-4 text-xs w-24 h-4 bg-gray-300 rounded"></span>
+           </div>
+         </div>
+         <div class="flex justify-end gap-1 mt-1 p-2">
+           <div class="w-24 h-8 bg-gray-300 rounded-3xl"></div>
+         </div>
+       </div>
+     </ng-container>
+   </div>
+    <!-- <p-paginator
+     (onPageChange)="onPageChange($event)"
+     [first]="(Pagination$ | async)?.current_page * (Pagination$ | async)?.per_page"
+     [rows]="(Pagination$ | async)?.per_page"
+     [totalRecords]="(Pagination$ | async)?.total"
+   />
+   </div>-->
 </div>
-
-
-
-
-
-
-</div>
-

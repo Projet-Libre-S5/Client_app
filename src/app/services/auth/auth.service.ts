@@ -27,7 +27,9 @@ export class AuthService {
       this.Authenticated=true;
       localStorage.setItem('isLoggedIn', "true");  
       localStorage.setItem('token', user.id);  
-    this.router.navigate(["home"])
+      localStorage.setItem('name', user.name); 
+      localStorage.setItem('role', user.role);  
+    this.router.navigate(["dashboard/home"])
     }else{
       this.showWarningToast();
     }

@@ -18,18 +18,20 @@ export class SidebarComponent {
   }
   
   public readonly sidebar_elements = [
-    { label: "Dashboard", route_path: "/Dashboard", icon:"pi pi-th-large",isOpen:false, childs: [] },
-    { label: "Laboratoires",route_path: "/Laboratories" ,icon:"pi pi-building",isOpen:false,childs: [
-      { label: "Ajouter Laboratoire", route_path: "/Laboratories/Add-laboratory"},
+    { label: "Dashboard", route_path: "home", icon:"pi pi-th-large",isOpen:false, childs: [] },
+    { label: "Laboratoires",route_path: "" ,icon:"pi pi-building",isOpen:false,childs: [
+      { label: "Liste des Laboratoires", route_path: "Laboratories/liste"},
+      { label: "Ajouter Laboratoire", route_path: "Laboratories/Add-laboratory"},
+      
     ]},
-    { label: "Contacts",route_path: "/Contacts" ,icon:"pi pi-address-book",isOpen:false,childs: []},
-    { label: "Adresses",route_path: "/Adresses" ,icon:"pi pi-map",isOpen:false,childs: []},
-    { label: "Analyses",route_path: "/Analyses",icon:"pi pi-clipboard",isOpen:false,childs: [
-      { label: "Patients", route_path: "/Analyses/Patients"},
-      { label: "Epreuves", route_path: "/Analyses/Epreuves"},
-      { label: "Tests", route_path: "/Analyses/Tests"},
+    { label: "Contacts",route_path: "Contacts" ,icon:"pi pi-address-book",isOpen:false,childs: []},
+    { label: "Adresses",route_path: "Adresses" ,icon:"pi pi-map",isOpen:false,childs: []},
+    { label: "Analyses",route_path: "Analyses",icon:"pi pi-clipboard",isOpen:false,childs: [
+      { label: "Patients", route_path: "Analyses/Patients"},
+      { label: "Epreuves", route_path: "Analyses/Epreuves"},
+      { label: "Tests", route_path: "Analyses/Tests"},
     ]},
-    { label: "Historiques", route_path: "/historical", icon:"pi pi-history",isOpen:false, childs: [] }
+    { label: "Historiques", route_path: "historical", icon:"pi pi-history",isOpen:false, childs: [] }
     ]
 
 

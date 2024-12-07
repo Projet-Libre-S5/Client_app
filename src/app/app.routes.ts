@@ -22,10 +22,14 @@ export const routes: Routes = [
         path: 'accueil',
         component: LandingPageComponent
       },
+      {
+        path: '',
+        component: LandingPageComponent
+      },
    
     {
-        path: '',
-        component: HomeComponent,
+        path: 'dashboard',
+        component:  HomeComponent,
         children: [
           {
             path: '',

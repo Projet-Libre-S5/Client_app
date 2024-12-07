@@ -8,7 +8,6 @@
    <div class="mt-10 font-chillax flex flex-wrap p-2  animate__fadeIn animate__animated ">
      <ng-container *ngIf="laboratories.length>0">
        <!-- *ngIf="!(isLoading$ | async)"-->
-      <ng-container *ngFor="let laboratory of laboratories"  >
        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
          <ng-container *ngFor="let laboratory of laboratories">
            <p-card class="font-chillax animate__fadeIn animate__animated rounded-3xl m-4 w-72 overflow-hidden shadow-xl">
@@ -29,39 +28,49 @@
              </ng-template>
        
              <!-- Card Content -->
-             <div class="grid grid-cols-3 p-2">
+             <div class="grid grid-cols-3 p-2 h-52">
 
                    <!-- Name -->
              <p class="flex col-span-3 items-center mt-4">
-                     <img src="assets/icons/svg/floor.svg" class="h-5 w-5">
-                     <span class="ml-4 text-xs">{{ laboratory.nom || '--' }}</span>
+               <i class="pi pi-building" style="font-size: 1rem"></i>
+                     <span class="ml-2 text-xs">LABORATOIRE : </span>
+                      <span class="ml-4 text-[14px] font-semibold">{{ laboratory.nom || '--' }}</span>
                    </p>
            
                <!-- NRC -->
                <p class="flex col-span-3 items-center mt-4">
-                 <img src="assets/icons/svg/batiment2.svg" class="h-5 w-5">
-
-                 
-                 <span class="ml-4 mr-4 text-xs truncate">{{ laboratory.nrc || '--' }}</span>
-                 <p-tag  severity="success" *ngIf="laboratory.active" value="Active" [rounded]="true" />
+                 <i class="pi pi-id-card" style="font-size: 1rem"></i>
+                 <span class="ml-2 text-xs">NRC: </span>
+                 <span class="ml-4 mr-4 text-[14px] font-semibold truncate">{{ laboratory.nrc || '--' }}</span>
+                 <p-tag  severity="warning" *ngIf="!laboratory.active" value="Inactive" [rounded]="true" />
 
 
                </p>
        
            
                <!-- Activation Date -->
-               <p class="flex col-span-3 items-center mt-4">
-                 <img src="assets/icons/svg/calendar.svg" class="h-5 w-5">
-                 <span class="ml-4 text-xs">
-                   {{ laboratory.dateActivation | date: 'dd/MM/yyyy' }}
+               <p  *ngIf="laboratory.dateActivation" class="flex col-span-3 items-center mt-4">
+                <i class="pi pi-calendar-plus" style="font-size: 1rem"></i>
+                 <span class="ml-2 text-xs">DATE D'ACTIVATION: </span>
+                 <span class="ml-4 text-[14px] font-semibold">
+                   {{ laboratory.dateActivation | date: 'dd-MM-yyyy' }}
                  </span>
                </p>
+               <p class="flex col-span-3 items-center mt-4">
+                <i class="pi pi-map-marker" style="font-size: 1rem"></i>
+                
+                <span class="ml-2 text-xs">ADRESSE: </span>
+                <span class="ml-4 text-[14px] font-semibold">
+                  {{ laboratory.rue}}, {{ laboratory.ville}}
+                </span>
+              </p>
              </div>
        
              <!-- Card Footer -->
              <ng-template pTemplate="footer">
-               <div class="flex justify-end gap-1 mt-1">
-                   view détails
+               <div class="flex justify-end  align-middle gap-1 mt-1">
+                   <span>Voir les détails </span> <i class="pi  pi-angle-double-right mt-1" style="font-size: 1rem"></i>
+                  
                </div>
              </ng-template>
            </p-card>
@@ -69,7 +78,6 @@
        </div>
        
        </ng-container> 
-     </ng-container>
  
      <ng-container *ngIf="laboratories.length == 0">
      <div class="text-center p-6 w-full bg-white rounded-3xl">
@@ -79,7 +87,7 @@
          <h3 class="mt-2 text-sm font-medium text-gray-900">no laboratory</h3>
          <p class="mt-1 text-sm text-gray-500">create new</p>
          <div class="mt-6">
-           <a type="button" routerLink="/Laboratories/Add-laboratory" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-gray-200">
+           <a type="button" routerLink="/dashboard/Laboratories/Add-laboratory" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-gray-200">
              <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
              </svg>

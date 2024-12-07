@@ -124,36 +124,7 @@ export class LaboratoriesComponent implements OnInit {
 
   
 
-  OnSubmit():void{
-  
-      if(this.laboratoryForm.valid){
-
-        let laboratory:any=
-      { 
-
-        nom: this.laboratoryForm.value.nom,
-      logo: this.laboratoryForm.value.logo,
-      nrc: this.laboratoryForm.value.nrc,
-      active: this.laboratoryForm.value.active,  
-      dateActivation: this.laboratoryForm.value.dateActivation
-      }
-      
-      console.log(laboratory)
-        this.service.create(laboratory).subscribe(
-          () => {
-            this.AlertService.showSuccessAlert("Succès" , "Laboratoire ajoutée") 
-            this.getLaboratories();
-          } , 
-          (err) =>{
-            return this.AlertService.showErrorAlert("Erreur", err?.error?.message);
-          }
-        )
-       }
-       else {
-        console.log("invalid form")
-       }
-  }
-
+ 
 
 
   OnUpdate(value:any) {

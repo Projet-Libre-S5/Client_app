@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { SweetAlertService } from '../../../../../shared/services/sweet-alert/sweet-alert.service';
 import { LaboratoryService } from '../../../../../services/home/laboratory/laboratory.service';
 import {BreadcrumbStepsComponent } from '../../component/breadcrumb/breadcrumb.component'
+import { ActivitiesService } from '../../../../../services/home/activities/activities.service';
 
 @Component({
   selector: 'app-add-laboratory',
@@ -50,7 +51,9 @@ export class AddLaboratoryComponent {
 parkingtypes$: any;
 
 
-  constructor(private fb: FormBuilder , private router : Router , private laboratoryService : LaboratoryService , private AlertService : SweetAlertService) {
+  constructor(private fb: FormBuilder , private router : Router , private laboratoryService : LaboratoryService , 
+    private AlertService : SweetAlertService , private ActivityService:ActivitiesService
+  ) {
     this.buildingFormStepOne = this.fb.group({
       numTel: ['', Validators.required],
       fax: [''],
@@ -171,18 +174,37 @@ parkingtypes$: any;
           active: active,
           dateActivation: dateActivation,
           logo: this.image || null,
-          rue: this.buildingFormStepOne.value['rue'],
-          codePostal: this.buildingFormStepOne.value['codePostal'],
-          commune:this.buildingFormStepOne.value['commune'],
-          ville: this.buildingFormStepOne.value['ville'],
+          rue: this.buildingFormStepThree.value['rue'],
+          codePostal: this.buildingFormStepThree.value['codePostal'],
+          commune:this.buildingFormStepThree.value['commune'],
+          ville: this.buildingFormStepThree.value['ville'],
+
 
         };
 
   
         this.laboratoryService.create(req).subscribe(
           () => {
-            this.AlertService.showSuccessAlert('Succes', 'Laboratory added succefuly');
-            this.router.navigate(['/Laboratories']);
+            
+            const activity = {
+              event: "created",
+              entity: "laboratory",
+              titre: this.buildingFormStepOne.value['nom'],
+              user:localStorage.getItem('name'),
+              role:localStorage.getItem('role') ,
+              updated_at: new Date()
+            };
+            this.ActivityService.create(activity).subscribe(
+              ()=> {
+                this.AlertService.showSuccessAlert('Succes', 'Laboratory added succefuly');
+                this.router.navigate(['/dashboard/Laboratories/liste']);
+              } ,
+              (err) => {
+                this.AlertService.showErrorAlert('Errorr', err?.error?.message);
+              }
+            ) 
+            
+         
           },
           (err) => {
             this.AlertService.showErrorAlert('Erreur', err?.error?.message);

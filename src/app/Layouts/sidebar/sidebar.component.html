@@ -15,7 +15,7 @@
           <ng-container *ngFor="let route of sidebar_elements;"  >
 
             <a   class=" relative flex pl-4  space-x-4 items-center py-2 rounded-md ease-out duration-300 transition-all hover:bg-primary   group  #itemEl"  
-            [routerLink]='route.route_path' routerLinkActive="active"
+            [routerLink]='route.childs.length > 0?null:route.route_path' routerLinkActive="active"
             (click)="route.isOpen=!route.isOpen" 
              >
             

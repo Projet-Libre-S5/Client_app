@@ -1,0 +1,72 @@
+<ng-container *ngIf="card_title == 'Laboratories'">  
+    <div class="bg-white animate__fadeIn animate__animated rounded-xl flex-col space-y-6 justify-start  p-6  ">
+        <div>
+         <p class="text-3xl font-semibold text-primary-ligh">{{card_title}}</p>
+        </div>
+        <div class="flex flex-col space-y-4 pl-1 ">
+    
+         <div  *ngFor="let activity of activities" class="pl-2 border-l-2 border-primary flex flex-col flex-start " >
+             <div class="flex flex-row justify-between"> 
+             <p class="font-semibold text-primary-ligh  flex items-center">
+                <span
+                [ngClass]="{
+                  'bg-blue-200 text-blue-700': activity.event == 'created',
+                  'bg-green-200 text-green-700': activity.event == 'updated',
+                  'bg-red-200 text-red-700': activity.event == 'deleted'
+                }"
+                class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 rounded"
+              >
+                {{ activity.event }}
+              </span>
+               <span class="ml-1">
+                {{activity.auditable.first_name}} {{activity.auditable.last_name}}
+               </span>
+            </p>
+             <p class=" text-gray-400" >{{activity.user?.last_name}} {{activity.user?.first_name}}</p>
+             </div>
+             <p class=" text-gray-400">{{activity.updated_at | date: "dd/MM/YY | HH:mm"}} PM  </p>
+    
+         </div>
+         <ng-container *ngIf="activities.length == 0">
+            no activity
+         </ng-container>
+        </div>
+     </div>
+</ng-container>
+
+<ng-container *ngIf="card_title == 'Analyses'">
+    <div class="bg-white animate__fadeIn animate__animated  rounded-xl flex-col space-y-6 justify-start  p-6  ">
+        <div>
+         <p class="text-3xl font-semibold text-primary-ligh">{{card_title}}</p>
+        </div>
+        <div class="flex flex-col space-y-4 pl-1 ">
+    
+         <div  *ngFor="let activity of activities" class="pl-2 border-l-2 border-primary flex flex-col flex-start " >
+             <div class="flex flex-row justify-between"> 
+             <p class="font-semibold text-primary-ligh cursor-pointer hover:underline  " 
+             [routerLink]="['/occupations/show/' +activity.new_values.id]"
+             >
+             <span
+             [ngClass]="{
+               'bg-blue-200 text-blue-700': activity.event == 'updated',
+               'bg-green-200 text-green-700': activity.event == 'created',
+               'bg-red-200 text-red-700': activity.event == 'deleted'
+             }"
+             class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 rounded"
+           >
+             {{ activity.event }}
+           </span>
+             occupation id : {{activity.new_values.code }}
+            </p>
+            
+             <p class=" text-gray-400" >{{activity.user?.last_name }} {{activity.user?.first_name }}</p>
+             </div>
+             <p class=" text-gray-400">{{activity.updated_at  | date: "dd/MM/YY | HH:mm"}} PM  </p>
+    
+         </div>
+            <ng-container *ngIf="activities.length == 0">
+                no activity
+            </ng-container>
+        </div>
+     </div>
+</ng-container>

@@ -2,6 +2,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { LandingPageService } from '../../../services/landing-page.service';
 import { DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 
 interface article {
@@ -14,7 +15,7 @@ interface article {
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [NgFor,DatePipe,NgIf],
+  imports: [NgFor,DatePipe,NgIf,RouterLink],
   templateUrl: './landing-page.component.html',
   styleUrls: []
 })

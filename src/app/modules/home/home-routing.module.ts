@@ -6,6 +6,7 @@ import { AnalysesComponent } from './analyses/analyses.component';
 import { AdressesComponent } from './adresses/adresses.component';
 import { NotFoundPageComponent } from '../../Layouts/not-found-page/not-found-page.component';
 import { AddLaboratoryComponent } from './laboratories/subpages/add-laboratory/add-laboratory.component';
+import { HistoricalComponent } from './historical/historical.component';
 
 const routes: Routes = [
   { path: 'home', redirectTo: '/Dashboard', pathMatch: 'full' }, // Redirect root to /home
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'Laboratories/Add-laboratory', component: AddLaboratoryComponent },
   { path: 'Analyses', component: AnalysesComponent },
   { path: 'Adresses', component: AdressesComponent },
+  { path: 'historical', component: HistoricalComponent },
 ]
 
 @NgModule({

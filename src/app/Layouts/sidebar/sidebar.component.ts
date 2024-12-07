@@ -29,10 +29,7 @@ export class SidebarComponent {
       { label: "Epreuves", route_path: "/Analyses/Epreuves"},
       { label: "Tests", route_path: "/Analyses/Tests"},
     ]},
-    { label: "Profil", route_path: "/Account", icon:"pi pi-user",isOpen:false, childs: [
-      { label: "Informations", route_path: "/Analyses/Patients"},
-
-    ] }
+    { label: "Historiques", route_path: "/historical", icon:"pi pi-history",isOpen:false, childs: [] }
     ]
 
 

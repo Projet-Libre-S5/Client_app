@@ -1,0 +1,164 @@
+<nav class="bg-transparent py-6 shadow-none">
+    <div class="container mx-auto flex items-center justify-between">
+        <a href="#" class="w-8">
+            <img src="image.png" alt="" class="w-[250px]">
+        </a>
+        <button class="ml-2 shadow-none" type="button">
+            <span class="mt-2">
+                <span class="block w-6 h-0.5 bg-gray-800 mb-1"></span>
+                <span class="block w-6 h-0.5 bg-gray-800 mb-1"></span>
+                <span class="block w-6 h-0.5 bg-gray-800"></span>
+            </span>
+        </button>
+        <div class="w-full pt-3 pb-2 lg:py-0 hidden lg:block">
+            <ul class="flex items-center justify-end space-x-4">
+                <li>
+                    <a href="javascript:void(0);" class="px-2 cursor-pointer">Home</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="btn bg-primary text-white py-2 px-4 rounded">Se connecter</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<header class="relative">
+    <div class="min-h-[50vh] rounded-xl py-5 bg-gray-100">
+        <div class="container mx-auto h-full flex items-center">
+            <div class="w-1/3">
+                <p class="mb-3 mt-5">
+                    Le bonheur, c'est tous les matins mes deux pieds touchant le sol bien à plat, et je me dis : bonne journée, tu es en vie et en bonne santé. (Lubrano Lavadera)
+                </p>
+                <h1 class="text-4xl font-bold">Nous prenons soin de votre <span class="text-neutral">santé</span></h1>
+            </div>
+            <div class="w-2/3 relative pl-8">
+                <img src="assets/laboratory_lab.jpg" alt="" class="rounded-md relative z-10">
+            </div>
+        </div>
+    </div>
+</header>
+<section class="py-5 mt-5">
+    <div class="container mx-auto">
+        <div class="flex flex-wrap">
+            <div class="w-full lg:w-1/3 text-center mt-4 lg:text-left mb-4 lg:mb-0">
+                <h3 class="mb-3 font-semibold text-xl">Nos services couvrent tous les domaines dont vous avez besoin.</h3>
+                <p class="mb-4">Connectez-vous à notre plateforme pour en profiter pleinement.</p>
+            </div>
+            <div class="w-full lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4 px-6">
+                <div class="bg-white shadow-lg p-8 rounded-lg">
+                    <div class="flex justify-center text-primbg-primary">
+                        <i class="fa fa-vials text-2xl"></i>
+                    </div>
+                    <h5 class="mt-3 font-semibold">Analyses</h5>
+                    <p>Nous vous proposons des services complets pour vos analyses médicales, afin de surveiller votre santé en toute sérénité.</p>
+                </div>
+                <div class="bg-white shadow-lg p-4 rounded-lg">
+                    <div class="flex justify-center text-primbg-primary">
+                        <i class="fa fa-heartbeat text-2xl"></i>
+                    </div>
+                    <h5 class="mt-3 font-semibold">Accompagnement</h5>
+                    <p>Un accompagnement personnalisé pour suivre votre état de santé et anticiper vos besoins.</p>
+                </div>
+                <div class="bg-white shadow-lg p-8 rounded-lg">
+                    <div class="flex justify-center text-primbg-primary">
+                        <i class="fa fa-comments text-2xl"></i>
+                    </div>
+                    <h5 class="mt-3 font-semibold">Conseils</h5>
+                    <p>Des experts à votre disposition pour vous offrir des conseils adaptés à votre bien-être.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-0">
+    <div class="container mx-auto text-center pt-20">
+        <h1 class="mb-3 font-semibold text-2xl">Les dernières actualités médicales</h1>
+        <p>Les dernières actualités médicales.</p>
+    </div>
+</section>
+
+<section class="py-6">
+    <div class="container mx-auto">
+        <div class="flex flex-wrap -mx-4">
+            <!-- Card 1 -->
+            <div  *ngFor="let article of articles"  class="w-full md:w-1/3 px-4 mb-6">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <div class="relative">
+                        <a href="javascript:;">
+                            <img [src]="article.urlToImage" 
+                                class="w-full rounded-lg rounded-b-none object-cover h-52" alt="Card Image">
+                        </a>
+                    </div>
+                    <div class="p-6  flex-col">
+                        <div>
+                            <span class="text-yellow-500 text-xs font-bold uppercase">{{article.publishedAt | date: 'dd-MM-yyyy'}}</span>
+                            <a href="javascript:;" class="block mt-2 text-lg font-semibold text-gray-800">{{article.title}}</a>
+                            <p class="mt-2 mb-2 text-sm text-gray-600 h-28 text-wrap  text-ellipsis">
+                                {{article.description}}
+                            </p>
+                        </div>
+                       
+                        <div class="flex items-center mt-4 ">
+                            <a [href]="article.url" class="text-blue-500 font-semibold hover:underline mt-4 inline-block items-end">Lire la suite >></a>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+<footer class="footer py-5">
+    <div class="2">
+        <div class="row">
+      
+        </div>
+        <hr class="horizontal dark mt-lg-5 mt-4 mb-sm-4 mb-1">
+        <div class="row">
+            <div class="col-8 mx-lg-auto text-lg-center">
+                <p class="text-sm text-secondary">
+                    Plateforme dévloppé pour la gestion des laboratoires </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    if (document.getElementById("state1")) {
+                const countUp = new CountUp("state1", document.getElementById("state1").getAttribute("countTo"));
+                if (!countUp.error) {
+                  countUp.start();
+                } else {
+                  console.error(countUp.error);
+                }
+              }
+              if (document.getElementById("state2")) {
+                const countUp1 = new CountUp("state2", document.getElementById("state2").getAttribute("countTo"));
+                if (!countUp1.error) {
+                  countUp1.start();
+                } else {
+                  console.error(countUp1.error);
+                }
+              }
+              if (document.getElementById("state3")) {
+                const countUp2 = new CountUp("state3", document.getElementById("state3").getAttribute("countTo"));
+                if (!countUp2.error) {
+                  countUp2.start();
+                } else {
+                  console.error(countUp2.error);
+                };
+              }
+
+     if (document.querySelector('.datepicker-1')) {
+          flatpickr('.datepicker-1', {
+          }); // flatpickr
+        }
+
+     if (document.querySelector('.datepicker-2')) {
+          flatpickr('.datepicker-2', {
+          }); // flatpickr
+        }
+</script>

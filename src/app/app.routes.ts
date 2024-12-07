@@ -6,6 +6,7 @@ import { LoginComponent } from './modules/auth/login/login.component';
 import { NgModule } from '@angular/core';
 import { AuthGuard } from './cors/guard/auth.guard';
 import { ProfileComponent } from './modules/auth/profile/profile.component';
+import { LandingPageComponent } from './modules/landing-page/landing-page/landing-page.component';
 
 export const routes: Routes = [  
  
@@ -16,6 +17,10 @@ export const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent
+      },
+      {
+        path: 'accueil',
+        component: LandingPageComponent
       },
    
     {

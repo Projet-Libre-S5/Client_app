@@ -20,7 +20,7 @@
              >
             
             <div class="text-gray-500 group-hover:text-white "><i [class]="route.icon" ></i></div>
-            <div class=" text-gray-600 group-hover:text-white " >{{route.label}}</div>      
+            <div class=" text-gray-600 group-hover:text-white " >{{'sidebar.'+route?.label | translate}}</div>      
             <div class="absolute  right-4 group-hover:text-white text-gray-400 " *ngIf="route.childs.length > 0 && !route.isOpen">
               <i class="pi pi-angle-up" ></i>
             </div>
@@ -43,7 +43,7 @@
                    routerLinkActive="active_child"
                    >
                    
-                  <div class="text-gray-700 group-hover:text-white">{{ child.label }}</div>
+                  <div class="text-gray-700 group-hover:text-white">{{'sidebar.'+child?.label | translate}}</div>
                 </a>
               </ng-container>
             </div>

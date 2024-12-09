@@ -2,7 +2,7 @@
   "name": "client-app",
   "version": "0.0.0",
   "jest": {
-    "testEnvironment": "@happy-dom/jest-environment" ,
+    "testEnvironment": "@happy-dom/jest-environment",
     "preset": "jest-preset-angular",
     "setupFilesAfterEnv": [
       "<rootDir>/src/setup.jest.ts"
@@ -11,11 +11,15 @@
       "<rootDir>/node_modules/",
       "<rootDir>/dist/"
     ],
-
     "transform": {
-      "<transform_regex>": ["ts-jest", {  "tsConfig": "<rootDir>/tsconfig.spec.json",
-      "stringifyContentPathRegex": "\\.html$" }]
-  }
+      "<transform_regex>": [
+        "ts-jest",
+        {
+          "tsConfig": "<rootDir>/tsconfig.spec.json",
+          "stringifyContentPathRegex": "\\.html$"
+        }
+      ]
+    }
   },
   "scripts": {
     "ng": "ng",
@@ -37,6 +41,8 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "@ngx-translate/core": "^16.0.3",
+    "@ngx-translate/http-loader": "^16.0.0",
     "animate.css": "^4.1.1",
     "primeicons": "^7.0.0",
     "primeng": "^17.18.11",

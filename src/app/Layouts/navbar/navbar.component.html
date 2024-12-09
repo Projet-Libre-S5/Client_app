@@ -30,7 +30,7 @@
       <div class="hidden lg:flex lg:items-center lg:justify-end xl:col-span-5">
     
         <div class="card flex justify-content-center">
-          <select >
+          <select  [(ngModel)]="selectedLanguage" (change)="updatePlaceholder()" >
             <option value="fr">Français</option>
             <option value="en">English</option>
           </select>

@@ -1,0 +1,19 @@
+{
+    "sidebar":{
+        "dashboard": "Dashboard",
+        "laboratories": "Laboratories",
+        "laboratories_list": "Laboratories list",
+        "add_laboratory": "Add laboratory",
+        "adresses":"adresses",
+        "contacts": "Contacts",
+        "analyses": "Analyses",
+        "patients": "Patients",
+        "epreuves": "Samples",
+        "tests": "Tests",
+        "users": "Users",
+        "users_list": "Users list",
+        "add_users": "Add user",
+        "roles_management": "Roles management",
+        "historical": "History"
+      }
+    }

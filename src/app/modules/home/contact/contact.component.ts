@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {TemplatePageComponent} from "../../../Layouts/template-page/template-page.component";
 
 import {ButtonModule} from "primeng/button";
@@ -8,10 +8,16 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {SharedModule} from "primeng/api";
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
+import { UpdateModalComponent } from "../laboratories/subpages/update-modal/update-modal.component";
+import { DeleteModalComponent } from "../laboratories/subpages/delete-modal/delete-modal.component";
+import { Observable } from 'rxjs';
+import { FormBuilder, Validators } from '@angular/forms';
+import { SweetAlertService } from '../../../shared/services/sweet-alert/sweet-alert.service';
+import { ContactsService } from '../../../services/home/contact/contacts.service';
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [ 
+  imports: [
     ButtonModule,
     TableModule,
     StyleClassModule,
@@ -19,14 +25,127 @@ import { PaginatorModule, PaginatorState } from 'primeng/paginator';
     RouterModule,
     SharedModule,
     PaginatorModule,
-  ],
+    UpdateModalComponent,
+    DeleteModalComponent
+],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
-export class ContactComponent {
-  contacts:any[]=[];
-  selectedContacts:any[]=[];
-  isLoading:boolean=true;
+export class ContactComponent implements OnInit {
+
+  updateModal:boolean=false;
+  deleteModal:boolean=false;
+  Contacts:any;
+  selected_item:any={
+    street:'',
+    city:'',
+    code:'',
+    region:''
+  };
+
+  pagination:any;
+
+  paginatedContacts: any[] = []; 
 
 
+
+
+
+  readonly isLoading$?: Observable<boolean>;
+
+
+
+  constructor(
+    private fb: FormBuilder,
+    private service:ContactsService,
+    private AlertService:SweetAlertService
+  ) {
+
+  }
+
+
+  ngOnInit(): void {
+
+  
+
+    this.pagination = {
+      current_page: 1,  
+      per_page: 3,     
+      total: 0    
+    };
+
+    this.getContacts();
+   
+   
+  }
+
+
+
+  getContacts():void{
+    this.service.getAll().subscribe((data: any) => {
+      this.Contacts = data;             // Store all data
+      this.pagination.total = data.length; // Update total items based on fetched data
+      this.updatePaginatedContacts();  
+     
+    },
+      (err) => {
+        console.log(err)
+
+      }
+    )
+  }
+
+  updatePaginatedContacts(): void {
+    const startIndex = this.pagination.current_page * this.pagination.per_page;
+    const endIndex = startIndex + this.pagination.per_page;
+    this.paginatedContacts = this.Contacts.slice(startIndex, endIndex); 
+  }
+
+  
+
+
+  OnUpdate(value:any) {
+    console.log(value.id);
+    console.log(value.street);
+    this.service.update(value.id,value).subscribe (
+      ()=> {
+        this.AlertService.showSuccessAlert("Succès" , "adresse modifiée") 
+        this.getContacts();
+        this.updateModal=false;
+      } , 
+      (err) =>{
+        console.log(err)
+        return this.AlertService.showErrorAlert("Erreur", err?.error?.message);
+      }
+    )
+
+  }
+
+  OnDelete(value:any){
+    this.service.delete(value.id).subscribe(
+      ()=> {
+        this.AlertService.showSuccessAlert("Succès" , "adresse supprimée") 
+        this.getContacts();
+        this.deleteModal=false;
+      }, 
+      (err) =>{
+        console.log(err)
+        return this.AlertService.showErrorAlert("Erreur", err?.error?.message);
+      }
+    )
+  }
+
+
+  
+
+  onPageChange(event: any) {
+    this.pagination.current_page = event.page; 
+    this.updatePaginatedContacts();            
+  }
+
+  
+  
+  
+ 
 }
+

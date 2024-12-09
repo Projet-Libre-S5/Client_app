@@ -13,6 +13,8 @@ import { SweetAlertService } from '../../../../../shared/services/sweet-alert/sw
 import { LaboratoryService } from '../../../../../services/home/laboratory/laboratory.service';
 import {BreadcrumbStepsComponent } from '../../component/breadcrumb/breadcrumb.component'
 import { ActivitiesService } from '../../../../../services/home/activities/activities.service';
+import { ContactsService } from '../../../../../services/home/contact/contacts.service';
+import { AdressService } from '../../../../../services/home/adress/adress.service';
 
 @Component({
   selector: 'app-add-laboratory',
@@ -52,7 +54,8 @@ parkingtypes$: any;
 
 
   constructor(private fb: FormBuilder , private router : Router , private laboratoryService : LaboratoryService , 
-    private AlertService : SweetAlertService , private ActivityService:ActivitiesService
+    private AlertService : SweetAlertService , private ActivityService:ActivitiesService ,private ContactsService:ContactsService,
+    private adresseService:AdressService
   ) {
     this.buildingFormStepOne = this.fb.group({
       numTel: ['', Validators.required],
@@ -168,7 +171,7 @@ parkingtypes$: any;
           ? this.buildingFormStepOne.get('dateActivation')?.value
           : null;
   
-        let req: any = {
+        let req_lab: any = {
           nrc: this.buildingFormStepOne.value['nrc'],
           nom: this.buildingFormStepOne.value['nom'],
           active: active,
@@ -177,13 +180,13 @@ parkingtypes$: any;
           rue: this.buildingFormStepThree.value['rue'],
           codePostal: this.buildingFormStepThree.value['codePostal'],
           commune:this.buildingFormStepThree.value['commune'],
-          ville: this.buildingFormStepThree.value['ville'],
-
-
+          ville: this.buildingFormStepThree.value['ville']
         };
 
+
+
   
-        this.laboratoryService.create(req).subscribe(
+        this.laboratoryService.create(req_lab).subscribe(
           () => {
             
             const activity = {
@@ -196,6 +199,7 @@ parkingtypes$: any;
             };
             this.ActivityService.create(activity).subscribe(
               ()=> {
+
                 this.AlertService.showSuccessAlert('Succes', 'Laboratory added succefuly');
                 this.router.navigate(['/dashboard/Laboratories/liste']);
               } ,

@@ -20,6 +20,7 @@ export class HistoricalComponent implements OnInit {
   
   ngOnInit(): void {
     this.getActivities();
+    console.log(this.activitiesLaboratories);
   }
 
   getActivities():void{

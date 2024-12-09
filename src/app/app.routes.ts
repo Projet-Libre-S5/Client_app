@@ -19,10 +19,6 @@ export const routes: Routes = [
         component: ProfileComponent
       },
       {
-        path: 'accueil',
-        component: LandingPageComponent
-      },
-      {
         path: '',
         component: LandingPageComponent
       },

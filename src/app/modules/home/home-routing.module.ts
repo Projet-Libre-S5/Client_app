@@ -8,6 +8,9 @@ import { NotFoundPageComponent } from '../../Layouts/not-found-page/not-found-pa
 import { AddLaboratoryComponent } from './laboratories/subpages/add-laboratory/add-laboratory.component';
 import { HistoricalComponent } from './historical/historical.component';
 import { ContactComponent } from './contact/contact.component';
+import { UsersComponent } from './users/users/users.component';
+import { AddUserComponent } from './users/users/subpage/add-user/add-user.component';
+import { RolesComponent } from './users/roles/roles.component';
 
 const routes: Routes = [
   { path: 'home', component: DashboardComponent },
@@ -16,7 +19,12 @@ const routes: Routes = [
   { path: 'Analyses', component: AnalysesComponent },
   { path: 'Adresses', component: AdressesComponent },
   { path: 'historical', component: HistoricalComponent },
-  {path:'Contacts',component:ContactComponent}
+  {path:'Contacts',component:ContactComponent},
+  {path:'Users/liste',component:UsersComponent},
+  {path:'Users/add-User',component:AddUserComponent},
+  {path:'Users/roles',component:RolesComponent},
+
+
 ]
 
 @NgModule({

@@ -31,6 +31,11 @@ export class SidebarComponent {
       { label: "Epreuves", route_path: "Analyses/Epreuves"},
       { label: "Tests", route_path: "Analyses/Tests"},
     ]},
+    { label: "Utilisateurs",route_path: "" ,icon:"pi pi-users",isOpen:false,childs: [
+      { label: "Liste des utilisateurs ", route_path: "Users/liste"},
+      { label: "Ajouter un utilisateur", route_path: "Users/add-User"},
+      { label: "Gestion des roles", route_path: "Users/roles"},
+    ]},
     { label: "Historiques", route_path: "historical", icon:"pi pi-history",isOpen:false, childs: [] }
     ]
 

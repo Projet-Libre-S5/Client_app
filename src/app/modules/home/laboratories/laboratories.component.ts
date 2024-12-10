@@ -18,6 +18,7 @@ import { CardModule } from 'primeng/card';
 import { SharedModule } from 'primeng/api';
 import { Router, RouterLink } from '@angular/router';
 import { TagModule } from 'primeng/tag';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @Component({
@@ -28,7 +29,7 @@ import { TagModule } from 'primeng/tag';
     CommonModule,
     PaginatorModule,
     TableModule, UpdateModalComponent, DeleteModalComponent,InputTextModule,StepperModule,NgForOf,CardModule,SharedModule,RouterLink,
-    TagModule
+    TagModule,TranslateModule
   ],
   templateUrl: './laboratories.component.html',
   styleUrl: './laboratories.component.css'

@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule,RouterLink,FormsModule],
+  imports: [CommonModule,RouterLink,FormsModule,TranslateModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
@@ -25,8 +25,11 @@ export class NavbarComponent {
   updatePlaceholder() {
     if (this.selectedLanguage === 'fr') {
       this.switchLanguage('fr')
-    } else {
+    } else if (this.selectedLanguage === 'en') {
       this.switchLanguage('en')
+    } else  {
+      this.switchLanguage('ar')
+
     }
   }
 

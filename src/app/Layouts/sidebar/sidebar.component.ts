@@ -38,11 +38,13 @@ export class SidebarComponent {
       { label: "add_users", route_path: "Users/add-User"},
       { label: "roles_management", route_path: "Users/roles"},
     ]},
-    { label: "historical", route_path: "historical", icon:"pi pi-history",isOpen:false, childs: [] }
+    { label: "historical", route_path: "historical", icon:"pi pi-history",isOpen:false, childs: [] },
+    { label: "logout", route_path: "historical", icon:"pi pi-sign-out",isOpen:false, childs: [] }
+
     ]
 
 
-
+   
     logout(){
         this.authService.logout();
     }

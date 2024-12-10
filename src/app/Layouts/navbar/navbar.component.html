@@ -23,7 +23,7 @@
           <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
             <img class="h-4 w-4" src="assets/svg/search.svg" alt="search icon">
           </div>
-          <input id="search" name="search" class="block w-full text-black font-light   bg-slate-100 border border-gray-300 rounded-3xl py-[10px] pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm" placeholder="Recherche" type="search"/>
+          <input id="search" name="search" class="block w-full text-black font-light   bg-slate-100 border border-gray-300 rounded-3xl py-[10px] pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm" [placeholder]="'navbar.search'| translate"  type="search"/>
         </div>
             </div>
 
@@ -33,6 +33,8 @@
           <select  [(ngModel)]="selectedLanguage" (change)="updatePlaceholder()" >
             <option value="fr">Français</option>
             <option value="en">English</option>
+            <option value="ar">العربية</option>
+
           </select>
         </div>
       <button  type="button" class="ml-5 flex-shrink-0 bg-white rounded-full p-1 text-black hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary" aria-expanded="false">

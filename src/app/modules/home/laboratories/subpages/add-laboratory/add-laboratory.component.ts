@@ -15,6 +15,9 @@ import {BreadcrumbStepsComponent } from '../../component/breadcrumb/breadcrumb.c
 import { ActivitiesService } from '../../../../../services/home/activities/activities.service';
 import { ContactsService } from '../../../../../services/home/contact/contacts.service';
 import { AdressService } from '../../../../../services/home/adress/adress.service';
+import { TranslateModule } from '@ngx-translate/core';
+
+
 
 @Component({
   selector: 'app-add-laboratory',
@@ -29,7 +32,8 @@ import { AdressService } from '../../../../../services/home/adress/adress.servic
     SharedModule,
     CommonModule,
     ReactiveFormsModule,
-    BreadcrumbStepsComponent],
+    BreadcrumbStepsComponent,
+    TranslateModule],
   templateUrl: './add-laboratory.component.html',
   styleUrl: './add-laboratory.component.css'
 })

@@ -1,4 +1,6 @@
 {
+  "font":"montserrat",
+"dir":"ltr",
 "sidebar":{
     "dashboard": "Tableau de bord",
     "laboratories": "Laboratoires",
@@ -14,6 +16,53 @@
     "users_list": "Liste des utilisateurs",
     "add_users": "Ajouter un utilisateur",
     "roles_management": "Gestion des rôles",
-    "historical": "Historique"
-  }
+    "historical": "Historique",
+    "logout":"Déconnexion"
+
+  },
+  "navbar":{
+    "search":"Recherche"
+   } ,
+   "add-laboratory":{
+    "title":"Ajouter Laboratoire",
+    "nrc": "NRC",
+    "name": "Nom",
+    "active": "Actif",
+    "activation_date": "Date d'activation",
+    "phone_number": "Numéro de Téléphone",
+    "fax": "Fax",
+    "email": "Email",
+    "next": "Suivant",
+    "enter_nrc": "Entrez le NRC",
+    "enter_name": "Entrez le nom",
+    "enter_activation_date": "Entrez la date d'activation",
+    "enter_phone_number": "Entrez le numéro de téléphone",
+    "enter_fax": "Entrez le fax",
+    "enter_email": "Entrez l'email",
+    "required": "Ce champ est requis *",
+    "rue": "Rue",
+    "code_postal": "Code postal",
+    "commune": "Commune",
+    "ville": "Ville",
+    "enter_rue": "Entrez la rue",
+    "enter_code_postal": "Entrez le code postal",
+    "enter_commune": "Entrez la commune",
+    "enter_ville": "Entrez la ville",
+    "laboratory_line":"col-span-2 border-r-2 pt-32 pr-6 px-2 min-w-[40px] border-gray-200"
+  },
+   "laboratories": {  
+    "name": "laboratoire",
+    "nrc": "nrc",
+    "activation_date": "Date d'activation",
+    "address": "adresse",
+    "view_details": "Voir les détails",
+    "laboratory_information": "Informations du laboratoire",
+    "logo_and_visual_identity": "Logo et identité visuelle",
+    "address_and_contact_details": "Adresse et coordonnées",
+    "icon_class":"pi pi-angle-double-right mt-1",
+    "bread-crumb-orientation":"absolute top-4 left-5 w-0.5 h-full"
+
+}
+    
+
 }

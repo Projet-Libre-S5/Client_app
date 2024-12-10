@@ -1,9 +1,9 @@
 <div class="flex-col h-full  p-2   text-[13px] ">
   <div class="flex items-center gap-4 p-4 mb-2">
-    <img src="" alt="logo" class="w-8 h-8" />
-    <h5 class="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+    <!-- <img src="" alt="logo" class="w-8 h-8" />
+   <h5 class="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
       Logo
-    </h5>
+    </h5>-->
   </div>
         <div class="flex-col pb-12">
         <div class="flex-col space-y-2 text-gray-700 my-44">
@@ -12,19 +12,19 @@
 
          
 
-          <ng-container *ngFor="let route of sidebar_elements;"  >
+          <ng-container *ngFor="let route of sidebar_elements; let isLast = last"  >
 
-            <a   class=" relative flex pl-4  space-x-4 items-center py-2 rounded-md ease-out duration-300 transition-all hover:bg-primary   group  #itemEl"  
+            <a   [class]="isLast?'flex-row flex px-4 justify-between items-center py-2 rounded-md ease-out duration-300 transition-al bg-red-100  border-[1.5px] border-red-100':'flex-row flex px-4  justify-between items-center py-2 rounded-md ease-out duration-300 transition-all hover:bg-primary   group  #itemEl'"  
             [routerLink]='route.childs.length > 0?null:route.route_path' routerLinkActive="active"
-            (click)="route.isOpen=!route.isOpen" 
+            (click)="route.isOpen=!route.isOpen;isLast?logout():null" 
              >
-            
-            <div class="text-gray-500 group-hover:text-white "><i [class]="route.icon" ></i></div>
-            <div class=" text-gray-600 group-hover:text-white " >{{'sidebar.'+route?.label | translate}}</div>      
-            <div class="absolute  right-4 group-hover:text-white text-gray-400 " *ngIf="route.childs.length > 0 && !route.isOpen">
+            <div class="flex-row flex items-center"><div class="text-gray-500 group-hover:text-white  "><i [class]="route.icon" ></i></div>
+            <div class=" text-gray-600 group-hover:text-white px-2 text-s" >{{'sidebar.'+route?.label | translate}}</div>  </div>
+                
+            <div class="justify-end group-hover:text-white text-gray-400 " *ngIf="route.childs.length > 0 && !route.isOpen">
               <i class="pi pi-angle-up" ></i>
             </div>
-            <div class="absolute  right-4 group-hover:text-white text-gray-400" *ngIf="route.childs.length > 0 && route.isOpen ">
+            <div class="justify-end group-hover:text-white text-gray-400" *ngIf="route.childs.length > 0 && route.isOpen ">
               <i class="pi pi-angle-down" ></i>
             </div>
 
@@ -35,15 +35,15 @@
           </a>
 
             
-            <div *ngIf="route.isOpen" class="pl-8">
+            <div *ngIf="route.isOpen" class="px-4">
               <div class="flex-col p-x-1 divide-y">
               <ng-container *ngFor="let child of route.childs">
-                <a class="flex items-center pl-4 space-x-2 py-2 hover:rounded-md hover:bg-primary group"
+                <a class="flex items-center px-4 space-x-2 py-2 hover:rounded-md hover:bg-primary group"
                    [routerLink]="child.route_path" 
                    routerLinkActive="active_child"
                    >
                    
-                  <div class="text-gray-700 group-hover:text-white">{{'sidebar.'+child?.label | translate}}</div>
+                  <div class="text-gray-700 group-hover:text-white text-s poppins-thin">{{'sidebar.'+child?.label | translate}}</div>
                 </a>
               </ng-container>
             </div>
@@ -54,12 +54,6 @@
 
 
         </div>
-
-        <div class="flex justify-center ">
-        <button (click)="logout()" class="flex space-x-2 bg-neutral border-neutral border-2 px-8 py-[6px] text-xs font-medium  rounded-sm items-center text-white  hover:shadow-md">
-          <div>Logout</div> <i class="pi pi-sign-out "></i>
-        </button>
-      </div>
         </div>
 
         

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NgClass, NgIf } from '@angular/common';
 import {  Input } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-breadcrumb-steps',
@@ -8,6 +10,8 @@ import {  Input } from '@angular/core';
   imports: [
     NgIf,
     NgClass,
+    TranslateModule
+
   ],
   templateUrl: './breadcrumb.component.html',
   styleUrl: './breadcrumb.component.css'

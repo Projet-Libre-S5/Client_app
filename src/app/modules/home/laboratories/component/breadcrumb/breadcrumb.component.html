@@ -3,7 +3,7 @@
     <ol role="list" class="overflow-hidden">
       <li  class="relative pb-10">
         <div
-              class="absolute top-4 left-5 w-0.5 h-full "
+              [class]="'laboratories.bread-crumb-orientation' | translate"
               [ngClass]="step >= 1 ? 'bg-primary' :'bg-gray-400' "
              aria-hidden="true"></div>
 
@@ -22,16 +22,16 @@
                   </svg>
                 </span>
               </span>
-          <span class="ml-4 min-w-0 flex flex-col">
-                <span [ngClass]="step >= 1 ? 'text-black' :'text-gray-400' " class="text-md font-medium truncate max-md:hidden ">Informations du laboratoire</span>
+          <span class="px-4 min-w-0 flex flex-col">
+                <span [ngClass]="step >= 1 ? 'text-black' :'text-gray-400' " class="text-md font-medium truncate max-md:hidden ">{{'laboratories.laboratory_information' | translate}}</span>
               </span>
         </a>
       </li>
 
       <li class="relative pb-10">
         <div
-          class="absolute top-4 left-5 w-0.5 h-full "
-          [ngClass]="step >= 2 ? 'bg-primary' :'bg-gray-400' "
+        [class]="'laboratories.bread-crumb-orientation' | translate"
+        [ngClass]="step >= 2 ? 'bg-primary' :'bg-gray-400' "
           aria-hidden="true"></div>
 
         <a class="relative flex items-start group">
@@ -40,8 +40,8 @@
                   <i class="pi pi-cloud-upload text-white" style="font-size: 1.1rem"></i>
                 </span>
               </span>
-          <span class="ml-4 min-w-0 flex flex-col">
-                <span [ngClass]="step >= 2 ? 'text-black' :'text-gray-400' " class="text-md font-medium truncate max-md:hidden ">Logo et identité visuelle</span>
+          <span class="px-4 min-w-0 flex flex-col">
+                <span [ngClass]="step >= 2 ? 'text-black' :'text-gray-400' " class="text-md font-medium truncate max-md:hidden ">{{'laboratories.logo_and_visual_identity' | translate}}</span>
               </span>
         </a>
       </li>
@@ -53,8 +53,8 @@
                   <i class="pi pi-map  text-white" style="font-size: 1rem"></i>
                 </span>
               </span>
-          <span class="ml-4 min-w-0 flex flex-col">
-                <span [ngClass]="step >= 3 ? 'text-black' :'text-gray-400' " class="text-md font-medium truncate max-md:hidden">Adresse coordonnées</span>
+          <span class="px-4 min-w-0 flex flex-col">
+                <span [ngClass]="step >= 3 ? 'text-black' :'text-gray-400' " class="text-md font-medium truncate max-md:hidden">{{'laboratories.address_and_contact_details' | translate}}</span>
               </span>
         </a>
       </li>

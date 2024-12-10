@@ -1,10 +1,10 @@
 <div class="bg-white rounded-2xl">
-    <p class="text-primary-light pt-6 pl-10 text-xl font-semibold truncate">
-      Add laboratory
+    <p class="text-primary-light pt-6 px-10 text-xl font-semibold truncate">
+      {{'add-laboratory.title' | translate}}
     </p>
     <div class="grid grid-cols-6 gap-4 p-8 h-[70vh]">
       <!-- steps -->
-      <div class="col-span-2 border-r-2 pt-32 pr-6 px-2 min-w-[40px] border-gray-200">
+      <div [class]="'add-laboratory.laboratory_line' | translate">
         <app-breadcrumb-steps [step]="step"/>
       </div>
       <ng-container *ngIf="step == 1">
@@ -15,33 +15,33 @@
             <div class="grid grid-cols-2 gap-6 mb-6">
               <div class="col-span-1">
                 <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-nrc">
-                  NRC
+                  {{'add-laboratory.nrc' | translate}}
                 </label>
                 <input
                   formControlName="nrc"
                   class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
                   id="grid-nrc"
                   type="text"
-                  placeholder="Entrez le NRC"
+                  placeholder="{{'add-laboratory.nrc' | translate}}"
                 />
                 <p *ngIf="buildingFormStepOne.get('nrc')?.invalid && (buildingFormStepOne.get('nrc')?.dirty || buildingFormStepOne.get('nrc')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
-                  <span class="font-medium">*</span> Champs requis
+                  {{'add-laboratory.required' | translate}}
                 </p>
               </div>
       
               <div class="col-span-1">
                 <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-nom">
-                  Nom
+                  {{'add-laboratory.name' | translate}}
                 </label>
                 <input
                   formControlName="nom"
                   class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
                   id="grid-nom"
                   type="text"
-                  placeholder="Entrez le nom"
+                  placeholder="{{'add-laboratory.name' | translate}}"
                 />
                 <p *ngIf="buildingFormStepOne.get('nom')?.invalid && (buildingFormStepOne.get('nom')?.dirty || buildingFormStepOne.get('nom')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
-                  <span class="font-medium">*</span> Champs requis
+                  {{'add-laboratory.required' | translate}}
                 </p>
               </div>
             </div>
@@ -57,23 +57,23 @@
                     class="mr-2"
                     (change)="onActiveChange($event)"
                   />
-                  <label for="active" class="text-sm font-medium text-gray-700">Actif</label>
+                  <label for="active" class="text-sm font-medium text-gray-700 px-2">{{'add-laboratory.active' | translate}}</label>
                 </div>
               </div>
       
               <div class="col-span-1" *ngIf="buildingFormStepOne.get('active')?.value">
                 <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-dateActivation">
-                  Date d'activation
+                  {{'add-laboratory.activation_date' | translate}}
                 </label>
                 <input
                   formControlName="dateActivation"
                   class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
                   id="grid-dateActivation"
                   type="date"
-                  placeholder="Date d'activation"
+                  placeholder="{{'add-laboratory.activation_date' | translate}}"
                 />
                 <p *ngIf="buildingFormStepOne.get('dateActivation')?.invalid && (buildingFormStepOne.get('dateActivation')?.dirty || buildingFormStepOne.get('dateActivation')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
-                  <span class="font-medium">*</span> Champs requis
+                  {{'add-laboratory.required' | translate}}
                 </p>
               </div>
             </div>
@@ -82,27 +82,27 @@
             <div class="grid grid-cols-2 gap-6 mb-6">
               <div class="col-span-1">
                 <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-numTel">
-                  Numéro de Téléphone
+                  {{'add-laboratory.phone_number' | translate}}
                 </label>
                 <input
                   formControlName="numTel"
                   class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
                   id="grid-numTel"
                   type="text"
-                  placeholder="Entrez le numéro de téléphone"
+                  placeholder="{{'add-laboratory.phone_number' | translate}}"
                 />
               </div>
       
               <div class="col-span-1">
                 <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-fax">
-                  Fax
+                  {{'add-laboratory.fax' | translate}}
                 </label>
                 <input
                   formControlName="fax"
                   class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
                   id="grid-fax"
                   type="text"
-                  placeholder="Entrez le fax"
+                  placeholder="{{'add-laboratory.fax' | translate}}"
                 />
               </div>
             </div>
@@ -110,14 +110,14 @@
             <!-- Row 4: Email -->
             <div class="mb-6">
               <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-email">
-                Email
+                {{'add-laboratory.email' | translate}}
               </label>
               <input
                 formControlName="email"
                 class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
                 id="grid-email"
                 type="email"
-                placeholder="Entrez l'email"
+                placeholder="{{'add-laboratory.email' | translate}}"
               />
             </div>
       
@@ -131,12 +131,12 @@
               class="bg-primary text-white rounded-full px-8 py-2 text-sm md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
               (click)="onNextPage()"
             >
-              Next
+              {{'add-laboratory.next' | translate}}
             </button>
           </div>
         </div>
-          
       </ng-container>
+      
       
       <ng-container *ngIf="step == 2 ">
         <!-- form -->
@@ -197,22 +197,22 @@
           <ng-container *ngIf="showError">
             <p
             class="text-sm text-red-600 animate__animated animate__fadeInDown">
-              <span class="font-medium">*</span> champs requis
+              champs requis
             </p>
           </ng-container>
           <div class="absolute bottom-4 right-1 grid grid-cols-3 gap-2">
             
 
-          <div class="flex flex-row space-x-2 justify-center items-center h-full">
+          <div class="flex flex-row space-x-2 justify-center items-center ">
             <button
-            class="  border-2 border-primary text-primary bg-white rounded-full px-8 py-2 text-sm md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
+            class="  border-2 border-primary text-primary bg-white rounded-full scroll-px-36 py-2 text-s md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
             (click)="onBackPage()"
           >
             Previous
           </button>
             <button
             [disabled]="!image"
-            class=" bg-primary  text-white   rounded-full px-8 py-2 text-sm md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
+            class=" bg-primary  text-white   rounded-full px-3 py-2 text-s md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
             (click)="onNextPage()"
           >
             Next
@@ -244,7 +244,7 @@
                   placeholder="Entrez la rue"
                 />
                 <p *ngIf="buildingFormStepThree.get('rue')?.invalid && (buildingFormStepThree.get('rue')?.dirty || buildingFormStepThree.get('rue')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
-                  <span class="font-medium">*</span> Champs requis
+                  Champs requis
                 </p>
               </div>
           
@@ -260,7 +260,7 @@
                   placeholder="Entrez le code postal"
                 />
                 <p *ngIf="buildingFormStepThree.get('codePostal')?.invalid && (buildingFormStepThree.get('codePostal')?.dirty || buildingFormStepThree.get('codePostal')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
-                  <span class="font-medium">*</span> Champs requis
+                  Champs requis
                 </p>
               </div>
           
@@ -277,7 +277,7 @@
                   placeholder="Entrez la commune"
                 />
                 <p *ngIf="buildingFormStepThree.get('commune')?.invalid && (buildingFormStepThree.get('commune')?.dirty || buildingFormStepThree.get('commune')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
-                  <span class="font-medium">*</span> Champs requis
+                  Champs requis
                 </p>
               </div>
           
@@ -293,7 +293,7 @@
                   placeholder="Entrez la ville"
                 />
                 <p *ngIf="buildingFormStepThree.get('ville')?.invalid && (buildingFormStepThree.get('ville')?.dirty || buildingFormStepThree.get('ville')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
-                  <span class="font-medium">*</span> Champs requis
+                  Champs requis
                 </p>
               </div>
           

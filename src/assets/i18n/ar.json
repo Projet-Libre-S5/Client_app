@@ -1,0 +1,71 @@
+
+{
+"font":"scheherazade-new-semibold",
+"dir":"rtl",
+"sidebar":{
+    "dashboard": "الرئيسية",
+    "laboratories": "المختبرات",
+    "laboratories_list": "قائمة المختبرات",
+    "add_laboratory": "إضافة مختبر",
+    "adresses": "العناوين",
+    "contacts": "جهات الاتصال",
+    "analyses": "التحاليل",
+    "patients": "المرضى",
+    "epreuves": "العينات",
+    "tests": "الاختبارات",
+    "users": "المستخدمون",
+    "users_list": "قائمة المستخدمين",
+    "add_users": "إضافة مستخدم",
+    "roles_management": "إدارة الأدوار",
+    "historical": "السجل",
+    "logout":"تسجيل الخروج"
+
+  },
+  "navbar":{
+    "search":"بحث"
+  },
+  "add-laboratory": {
+    "title": "إضافة مختبر",
+        "nrc": "رقم السجل التجاري",
+        "name": "الاسم",
+        "active": "نشط",
+        "activation_date": "تاريخ التفعيل",
+        "phone_number": "رقم الهاتف",
+        "fax": "الفاكس",
+        "email": "البريد الإلكتروني",
+        "next": "التالي",
+        "enter_nrc": "أدخل رقم السجل التجاري",
+        "enter_name": "أدخل الاسم",
+        "enter_activation_date": "أدخل تاريخ التفعيل",
+        "enter_phone_number": "أدخل رقم الهاتف",
+        "enter_fax": "أدخل الفاكس",
+        "enter_email": "أدخل البريد الإلكتروني",
+        "required": "  هذا الحقل مطلوب *",
+        "rue": "الشارع",
+        "code_postal": "الرمز البريدي",
+        "commune": "البلدية",
+        "ville": "المدينة",
+        "enter_rue": "أدخل الشارع",
+        "enter_code_postal": "أدخل الرمز البريدي",
+        "enter_commune": "أدخل البلدية",
+        "enter_ville": "أدخل المدينة",
+        "laboratory_line":"col-span-2 border-l-2 pt-32 pl-6 px-2 min-w-[40px] border-gray-200"
+
+      
+},
+  "laboratories": {
+    "name": "مختبر",
+    "nrc": "رقم السجل التجاري",
+    "activation_date": "تاريخ التفعيل",
+    "address": "العنوان",
+    "view_details": "عرض التفاصيل",
+    "laboratory_information": "معلومات المختبر",
+    "logo_and_visual_identity": "الشعار والهوية البصرية",
+    "address_and_contact_details": "العنوان وبيانات الاتصال",
+    "bread-crumb-orientation":"absolute top-4 right-5 w-0.5 h-full"
+    
+
+}
+
+
+}

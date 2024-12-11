@@ -5,8 +5,8 @@
       Logo
     </h5>-->
   </div>
-        <div class="flex-col pb-12">
-        <div class="flex-col space-y-2 text-gray-700 my-44">
+        <div class="flex-col ">
+        <div class="flex-col space-y-2 text-gray-700 my-36">
          
 
 
@@ -14,7 +14,12 @@
 
           <ng-container *ngFor="let route of sidebar_elements; let isLast = last"  >
 
-            <a   [class]="isLast?'flex-row flex px-4 justify-between items-center py-2 rounded-md ease-out duration-300 transition-al bg-red-100  border-[1.5px] border-red-100':'flex-row flex px-4  justify-between items-center py-2 rounded-md ease-out duration-300 transition-all hover:bg-primary   group  #itemEl'"  
+            <a   
+            class="flex-row flex px-4 justify-between items-center py-2 rounded-md ease-out duration-300 transition-all"
+            [ngClass]="{
+              'bg-red-100 border-[1.5px] border-red-200 group': isLast,
+              'hover:bg-primary group': !isLast
+            }"
             [routerLink]='route.childs.length > 0?null:route.route_path' routerLinkActive="active"
             (click)="route.isOpen=!route.isOpen;isLast?logout():null" 
              >

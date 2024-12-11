@@ -40,7 +40,6 @@
        "enter_fax": "Enter Fax",
        "enter_email": "Enter Email",
        "required": "This field is required *",
-       "laboratory_line":"col-span-2 border-r-2 pt-32 pr-6 px-2 min-w-[40px] border-gray-200",
        "rue": "Street",
        "code_postal": "Postal Code",
        "commune": "Commune",
@@ -48,7 +47,13 @@
        "enter_rue": "Enter Street",
        "enter_code_postal": "Enter Postal Code",
        "enter_commune": "Enter Commune",
-       "enter_ville": "Enter City"
+       "enter_ville": "Enter City",
+       "bread-crumb-orientation":"absolute left-5 ",
+       "laboratory_line":"col-span-2 border-r-2 pt-32 pr-6 mb-6 mx-4 min-w-[40px] border-gray-200"
+
+
+
+
        
       },
       "laboratories":{
@@ -60,8 +65,7 @@
         "laboratory_information": "Laboratory information",
         "logo_and_visual_identity": "Logo and visual identity",
         "address_and_contact_details": "Address and contact details",
-        "icon_class":"pi pi-angle-double-right mt-1",
-        "bread-crumb-orientation":"absolute top-4 left-5 w-0.5 h-full"
+        "icon_class":"pi pi-angle-double-right mt-1"
 
 
        }

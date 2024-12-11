@@ -39,7 +39,7 @@ export class SidebarComponent {
       { label: "roles_management", route_path: "Users/roles"},
     ]},
     { label: "historical", route_path: "historical", icon:"pi pi-history",isOpen:false, childs: [] },
-    { label: "logout", route_path: "historical", icon:"pi pi-sign-out",isOpen:false, childs: [] }
+    { label: "logout", route_path: "#", icon:"pi pi-sign-out",isOpen:false, childs: [] }
 
     ]
 

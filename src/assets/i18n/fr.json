@@ -49,7 +49,11 @@
     "enter_commune": "Entrez la commune",
     "enter_ville": "Entrez la ville",
     "laboratory_line":"col-span-2 border-r-2 pt-32 pr-6 mb-6 mx-4 min-w-[40px] border-gray-200",
-    "bread-crumb-orientation":"absolute left-5"
+    "bread-crumb-orientation":"absolute left-5",
+    "description":"description",
+    "enter_description":"Entrez une description",
+    "validate":"Valider",
+    "previous":"Précédent"
 
   },
 
@@ -64,7 +68,30 @@
     "address_and_contact_details": "Adresse et coordonnées",
     "icon_class":"pi pi-angle-double-right mt-1"
 
-}
+},
+
+    "contacts": {
+        "contacts": "Contacts",
+        "phoneNumber": "Numéro du téléphone",
+        "fax": "Faxe",
+        "email": "Email",
+        "noData": "Aucune donnée à afficher"
+    },
+    "addresses": {
+      "title": "Adresses",
+      "street": "Rue",
+      "postalCode": "Code postal",
+      "city": "Ville",
+      "region": "Région",
+      "action": "Action",
+      "noData": "Aucune donnée à afficher"
+    },
+    "errors": {
+      "code": "404",
+      "title": "Oups ! Page introuvable",
+      "message": "Désolé, mais la page que vous recherchez n'existe pas, a été supprimée, son nom a changé ou elle est temporairement indisponible.",
+      "back": "Retour à la page d'accueil"
+    }
 
     
 

@@ -16,8 +16,8 @@ export class NavbarComponent {
 
   selectedLanguage: string = 'fr';
   constructor(private router: Router,private translate: TranslateService) {
-    this.translate.setDefaultLang('fr');
-    this.selectedLanguage = translate.currentLang || 'fr'
+    this.translate.setDefaultLang(localStorage.getItem('lang')||'fr');
+    this.selectedLanguage = localStorage.getItem('lang') || 'fr'
 
   }
 
@@ -25,11 +25,13 @@ export class NavbarComponent {
   updatePlaceholder() {
     if (this.selectedLanguage === 'fr') {
       this.switchLanguage('fr')
+      localStorage.setItem('lang', 'fr'); 
     } else if (this.selectedLanguage === 'en') {
       this.switchLanguage('en')
+      localStorage.setItem('lang', 'en'); 
     } else  {
       this.switchLanguage('ar')
-
+      localStorage.setItem('lang', 'ar'); 
     }
   }
 

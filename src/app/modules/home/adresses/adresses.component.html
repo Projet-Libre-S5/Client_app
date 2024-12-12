@@ -4,16 +4,15 @@
 
 
 <div class=" flex-col space-y-4 justify-center items-center animate__fadeIn animate__animated ">
-<div>
-    <h1 class="text-3xl poppins-medium text-gray-600">Adresses</h1>
+  <div>
+    <h1 class="text-3xl poppins-medium text-gray-600">{{'addresses.title' | translate}}</h1>
 </div>
 
-<!--First Card-->
-<div class="h-auto ">
-    <div class="flex flex-col rounded-3xl bg-white  ">
+<div class="h-auto">
+    <div class="flex flex-col rounded-3xl bg-white text-center">
       <p-table
         class="flex-1 overflow-auto"
-        styleClass="rounded-2xl text-[15px] font-DMsans overflow-hidden"
+        styleClass="rounded-2xl text-[15px] montserrat overflow-hidden"
         [value]="paginatedAdresses || []"
         [loading]="isLoading$"
         [selection]="[]"
@@ -21,27 +20,32 @@
         dataKey="code"
       >
         <ng-template pTemplate="header">
-          <tr class="bg-secondary-color">
-            <th>Adresses</th>
-            <th>Code postal</th>
-            <th>Ville</th>
-            <th>Région</th>
-            <th>Action</th>
+          <tr>
+            <th>{{'addresses.street' | translate}}</th>
+            <th>{{'addresses.postalCode' | translate}}</th>
+            <th>{{'addresses.city' | translate}}</th>
+            <th>{{'addresses.region' | translate}}</th>
+            <th class="text-center">{{'addresses.action' | translate}}</th>
           </tr>
         </ng-template>
 
         <ng-template pTemplate="body" let-item>
           <tr>
-            <td>{{ item.street }}</td>
-            <td>{{ item.code }}</td>
-            <td>{{ item.city }}</td>
-            <td>{{ item.region }}</td>
-            <td class="flex justify-center items-center w-3/4 text-slate-300 ">
-              <button class="h-14 w-9 object-contain  text-slate-500 hover:text-slate-500" (click)="updateModal=true;selected_item=item">
+            <td>{{ item.rue }}</td>
+            <td>{{ item.codePostal }}</td>
+            <td>{{ item.commune }}</td>
+            <td>{{ item.ville }}</td>
+            <td class="flex justify-center items-center w-3/4 text-slate-300">
+              <button
+                class="h-14 w-9 object-contain text-slate-500 hover:text-slate-500"
+                (click)="updateModal=true;selected_item=item"
+              >
                 <i class="pi pi-pencil"></i>
-
               </button>
-              <button class="h-14 w-9 object-contain text-red-300 hover:text-red-500" (click)="deleteModal=true;selected_item=item">
+              <button
+                class="h-14 w-9 object-contain text-red-300 hover:text-red-500"
+                (click)="deleteModal=true;selected_item=item"
+              >
                 <i class="pi pi-trash"></i>
               </button>
             </td>
@@ -50,23 +54,19 @@
 
         <ng-template pTemplate="emptymessage">
           <tr>
-            <td colspan="4">No data to show</td>
+            <td colspan="5" class="text-center text-sm font-light">{{'addresses.noData' | translate}}</td>
           </tr>
         </ng-template>
       </p-table>
-     <p-paginator
-     class="mt-auto"
+      <p-paginator
+        class="mt-auto"
         (onPageChange)="onPageChange($event)"
         [first]="pagination.current_page * pagination?.per_page"
         [rows]="pagination?.per_page"
         [totalRecords]="pagination?.total"
       ></p-paginator>
-  </div>
-
-    
-
+    </div>
 </div>
-
 
 
 

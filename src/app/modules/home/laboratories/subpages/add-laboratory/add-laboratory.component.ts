@@ -3,7 +3,7 @@ import { OnInit, inject } from '@angular/core';
 import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
 import { FileUploadModule } from 'primeng/fileupload';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule, NgForOf, NgIf } from '@angular/common';
 import { SharedModule } from 'primeng/api';
 import { TemplatePageComponent } from '../../../../../Layouts/template-page/template-page.component';
@@ -16,6 +16,7 @@ import { ActivitiesService } from '../../../../../services/home/activities/activ
 import { ContactsService } from '../../../../../services/home/contact/contacts.service';
 import { AdressService } from '../../../../../services/home/adress/adress.service';
 import { TranslateModule } from '@ngx-translate/core';
+
 
 
 
@@ -33,7 +34,9 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     ReactiveFormsModule,
     BreadcrumbStepsComponent,
-    TranslateModule],
+    TranslateModule,
+    CommonModule
+  ],
   templateUrl: './add-laboratory.component.html',
   styleUrl: './add-laboratory.component.css'
 })
@@ -54,7 +57,8 @@ export class AddLaboratoryComponent {
   buildingFormStepOne!: FormGroup;
   buildingFormStepThree!:FormGroup;
   showError : boolean = false
-parkingtypes$: any;
+  parkingtypes$: any; 
+  currentLang:any=localStorage.getItem("lang")
 
 
   constructor(private fb: FormBuilder , private router : Router , private laboratoryService : LaboratoryService , 
@@ -62,16 +66,18 @@ parkingtypes$: any;
     private adresseService:AdressService
   ) {
     this.buildingFormStepOne = this.fb.group({
-      numTel: ['', Validators.required],
-      fax: [''],
-      email: ['', [Validators.required, Validators.email]],
+      
       nrc: ['', Validators.required],
       nom: ['', Validators.required],
       active: [false],
       dateActivation: [{ value: '', disabled: true }, Validators.required],
+      description:['']
     });
 
     this.buildingFormStepThree = this.fb.group({
+      numTel: ['', Validators.required],
+      fax: [''],
+      email: ['', [Validators.required, Validators.email]],
       rue: ['', Validators.required],
       codePostal: ['', Validators.required],
       commune: ['', Validators.required],
@@ -116,23 +122,6 @@ parkingtypes$: any;
     reader.readAsDataURL(file);
   }
 
-
-  selectParking : any = {}
-  ChangeCapacite(event: any) {
-    const value = (event.target as HTMLSelectElement).value;
-    console.log(value)
-    this.selectParking = {...this.selectParking , quantity : value }
-  }
-
-
-
-    
-  onSelectParking(event: any) {
-    const selectedId = (event.target as HTMLSelectElement).value;
-
-    console.log(selectedId)
-    
-  }
 
   onFileSelected(event: any): void {
     const file = event.target.files[0];
@@ -180,18 +169,56 @@ parkingtypes$: any;
           nom: this.buildingFormStepOne.value['nom'],
           active: active,
           dateActivation: dateActivation,
+          description:this.buildingFormStepOne.value['description'],
           logo: this.image || null,
           rue: this.buildingFormStepThree.value['rue'],
           codePostal: this.buildingFormStepThree.value['codePostal'],
           commune:this.buildingFormStepThree.value['commune'],
-          ville: this.buildingFormStepThree.value['ville']
+          ville: this.buildingFormStepThree.value['ville'],
+          numTel: this.buildingFormStepThree.value['numTel'],
+          fax: this.buildingFormStepThree.value['fax'],
+          email: this.buildingFormStepThree.value['email']
+
         };
+
+        let req_contact:any ={
+          numTel: this.buildingFormStepThree.value['numTel'],
+          fax: this.buildingFormStepThree.value['fax'],
+          email: this.buildingFormStepThree.value['email']
+        }
+
+        let req_adresse:any={
+          rue: this.buildingFormStepThree.value['rue'],
+          codePostal: this.buildingFormStepThree.value['codePostal'],
+          commune:this.buildingFormStepThree.value['commune'],
+          ville: this.buildingFormStepThree.value['ville']
+        }
+
+
 
 
 
   
         this.laboratoryService.create(req_lab).subscribe(
           () => {
+
+            let Success:boolean=false;
+
+             this.ContactsService.create(req_contact).subscribe (()=>{
+                  Success=true;
+             });
+
+
+             console.log(req_contact);
+                  Success=false;
+
+             this.adresseService.create(req_adresse).subscribe(()=>{
+                  Success=true;
+             })
+
+
+
+
             
             const activity = {
               event: "created",
@@ -203,9 +230,12 @@ parkingtypes$: any;
             };
             this.ActivityService.create(activity).subscribe(
               ()=> {
-
-                this.AlertService.showSuccessAlert('Succes', 'Laboratory added succefuly');
+                if ( Success) {
+                  this.AlertService.showSuccessAlert('Succes', 'Laboratory added succefuly');
                 this.router.navigate(['/dashboard/Laboratories/liste']);
+                }
+
+                
               } ,
               (err) => {
                 this.AlertService.showErrorAlert('Errorr', err?.error?.message);

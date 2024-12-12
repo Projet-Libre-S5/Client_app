@@ -8,12 +8,13 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {SharedModule} from "primeng/api";
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
-import { UpdateModalComponent } from "../laboratories/subpages/update-modal/update-modal.component";
-import { DeleteModalComponent } from "../laboratories/subpages/delete-modal/delete-modal.component";
 import { Observable } from 'rxjs';
 import { FormBuilder, Validators } from '@angular/forms';
 import { SweetAlertService } from '../../../shared/services/sweet-alert/sweet-alert.service';
 import { ContactsService } from '../../../services/home/contact/contacts.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { UpdateModalComponent } from './subpages/update-modal/update-modal.component';
+import { DeleteModalComponent } from './subpages/delete-modal/delete-modal.component';
 @Component({
   selector: 'app-contact',
   standalone: true,
@@ -26,7 +27,9 @@ import { ContactsService } from '../../../services/home/contact/contacts.service
     SharedModule,
     PaginatorModule,
     UpdateModalComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    TranslateModule
+
 ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
@@ -36,12 +39,7 @@ export class ContactComponent implements OnInit {
   updateModal:boolean=false;
   deleteModal:boolean=false;
   Contacts:any;
-  selected_item:any={
-    street:'',
-    city:'',
-    code:'',
-    region:''
-  };
+  selected_item:any;
 
   pagination:any;
 
@@ -86,6 +84,8 @@ export class ContactComponent implements OnInit {
       this.Contacts = data;             // Store all data
       this.pagination.total = data.length; // Update total items based on fetched data
       this.updatePaginatedContacts();  
+
+      console.log(data)
      
     },
       (err) => {
@@ -109,7 +109,7 @@ export class ContactComponent implements OnInit {
     console.log(value.street);
     this.service.update(value.id,value).subscribe (
       ()=> {
-        this.AlertService.showSuccessAlert("Succès" , "adresse modifiée") 
+        this.AlertService.showSuccessAlert("Succès" , "contact modifiée") 
         this.getContacts();
         this.updateModal=false;
       } , 
@@ -124,7 +124,7 @@ export class ContactComponent implements OnInit {
   OnDelete(value:any){
     this.service.delete(value.id).subscribe(
       ()=> {
-        this.AlertService.showSuccessAlert("Succès" , "adresse supprimée") 
+        this.AlertService.showSuccessAlert("Succès" , "contact supprimé") 
         this.getContacts();
         this.deleteModal=false;
       }, 

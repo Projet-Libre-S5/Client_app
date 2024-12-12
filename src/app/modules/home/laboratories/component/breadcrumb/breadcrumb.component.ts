@@ -18,4 +18,7 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class BreadcrumbStepsComponent {
   @Input() step: number = 1;
+
+  currentLang=localStorage.getItem("lang")
+
 }

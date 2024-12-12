@@ -11,6 +11,7 @@ import { DeleteModalComponent } from "./subpages/delete-modal/delete-modal.compo
 import { InputTextModule } from "primeng/inputtext"; 
 import { AdressService } from '../../../services/home/adress/adress.service';
 import { SweetAlertService } from '../../../shared/services/sweet-alert/sweet-alert.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 //import * as citiesData from '../../../../assets/data/moroccan-cities.json';
@@ -24,7 +25,7 @@ import { SweetAlertService } from '../../../shared/services/sweet-alert/sweet-al
     ReactiveFormsModule,
     CommonModule,
     PaginatorModule,
-    TableModule, UpdateModalComponent, DeleteModalComponent,InputTextModule
+    TableModule, UpdateModalComponent, DeleteModalComponent,InputTextModule,TranslateModule
   ],
   templateUrl: './adresses.component.html',
   styleUrl: './adresses.component.css'

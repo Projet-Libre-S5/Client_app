@@ -2,140 +2,116 @@
     <p class="text-primary-light pt-6 px-10 text-xl font-semibold truncate">
       {{'add-laboratory.title' | translate}}
     </p>
-    <div class="grid grid-cols-6 gap-4 px-10 pt-16 pb-44 h-[70vh]">
+    <div class="grid grid-cols-6 gap-4 px-10 pt-20 pb-44 h-[70vh]">
       <!-- steps -->
-      <div [class]="'add-laboratory.laboratory_line' | translate">
+      <div class="col-span-2  pt-32 pl-6 ml-4 mb-6 border-r-2  min-w-[40px] border-gray-200"
+      >
         <app-breadcrumb-steps [step]="step"/>
       </div>
-      <ng-container *ngIf="step == 1">
-        <!-- form -->
-        <div class="animate__animated m-auto ml-8 py-2 animate__zoomIn col-span-3 xl:col-span-3 max-xl:col-span-4 relative w-full">
-          <form [formGroup]="buildingFormStepOne" class="w-full max-w-lg ml-4">
-            <!-- Row 1: NRC / Nom -->
-            <div class="grid grid-cols-2 gap-6 mb-6">
-              <div class="col-span-1">
-                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm " for="grid-nrc">
-                  {{'add-laboratory.nrc' | translate}}
-                </label>
-                <input
-                  formControlName="nrc"
-                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
-                  id="grid-nrc"
-                  type="text"
-                  placeholder="{{'add-laboratory.nrc' | translate}}"
-                />
-                <p *ngIf="buildingFormStepOne.get('nrc')?.invalid && (buildingFormStepOne.get('nrc')?.dirty || buildingFormStepOne.get('nrc')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
-                  {{'add-laboratory.required' | translate}}
-                </p>
-              </div>
-      
-              <div class="col-span-1">
-                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-nom">
-                  {{'add-laboratory.name' | translate}}
-                </label>
-                <input
-                  formControlName="nom"
-                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
-                  id="grid-nom"
-                  type="text"
-                  placeholder="{{'add-laboratory.name' | translate}}"
-                />
-                <p *ngIf="buildingFormStepOne.get('nom')?.invalid && (buildingFormStepOne.get('nom')?.dirty || buildingFormStepOne.get('nom')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
-                  {{'add-laboratory.required' | translate}}
-                </p>
-              </div>
-            </div>
-      
-            <!-- Row 2: Checkbox / Date d'activation -->
-            <div class="grid grid-cols-2 gap-6 mb-6">
-              <div class="col-span-1">
-                <div class="flex items-center h-20">
-                  <input
-                    type="checkbox"
-                    id="active"
-                    formControlName="active"
-                    class="mr-2"
-                    (change)="onActiveChange($event)"
-                  />
-                  <label for="active" class="text-sm font-medium text-gray-700 px-2">{{'add-laboratory.active' | translate}}</label>
-                </div>
-              </div>
-      
-              <div class="col-span-1" *ngIf="buildingFormStepOne.get('active')?.value">
-                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-dateActivation">
-                  {{'add-laboratory.activation_date' | translate}}
-                </label>
-                <input
-                  formControlName="dateActivation"
-                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
-                  id="grid-dateActivation"
-                  type="date"
-                  placeholder="{{'add-laboratory.activation_date' | translate}}"
-                />
-                <p *ngIf="buildingFormStepOne.get('dateActivation')?.invalid && (buildingFormStepOne.get('dateActivation')?.dirty || buildingFormStepOne.get('dateActivation')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
-                  {{'add-laboratory.required' | translate}}
-                </p>
-              </div>
-            </div>
-      
-            <!-- Row 3: Téléphone / Fax -->
-            <div class="grid grid-cols-2 gap-6 mb-6">
-              <div class="col-span-1">
-                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-numTel">
-                  {{'add-laboratory.phone_number' | translate}}
-                </label>
-                <input
-                  formControlName="numTel"
-                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
-                  id="grid-numTel"
-                  type="text"
-                  placeholder="{{'add-laboratory.phone_number' | translate}}"
-                />
-              </div>
-      
-              <div class="col-span-1">
-                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-fax">
-                  {{'add-laboratory.fax' | translate}}
-                </label>
-                <input
-                  formControlName="fax"
-                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
-                  id="grid-fax"
-                  type="text"
-                  placeholder="{{'add-laboratory.fax' | translate}}"
-                />
-              </div>
-            </div>
-      
-            <!-- Row 4: Email -->
-            <div class="mb-6">
-              <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-email">
-                {{'add-laboratory.email' | translate}}
-              </label>
-              <input
-                formControlName="email"
-                class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
-                id="grid-email"
-                type="email"
-                placeholder="{{'add-laboratory.email' | translate}}"
-              />
-            </div>
-      
-            <div class="h-16"></div>
-          </form>
-      
-          <!-- Next Button -->
-          <div class="flex justify-center items-center h-full">
-            <button
-              [disabled]="!buildingFormStepOne.valid"
-              class="bg-primary text-white rounded-full px-8 py-2 text-sm md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
-              (click)="onNextPage()"
-            >
-              {{'add-laboratory.next' | translate}}
-            </button>
+   <ng-container *ngIf="step == 1">
+  <!-- form -->
+  <div class="animate__animated m-auto ml-8 py-2 animate__zoomIn col-span-3 xl:col-span-3 max-xl:col-span-4 relative w-full">
+    <form [formGroup]="buildingFormStepOne" class="w-full max-w-lg ml-4">
+      <!-- Row 1: NRC / Nom -->
+      <div class="grid grid-cols-2 gap-6 mb-6">
+        <div class="col-span-1">
+          <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm " for="grid-nrc">
+            {{'add-laboratory.nrc' | translate}}
+          </label>
+          <input
+            formControlName="nrc"
+            class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+            id="grid-nrc"
+            type="text"
+            placeholder="{{'add-laboratory.enter_nrc' | translate}}"
+          />
+          <p *ngIf="buildingFormStepOne.get('nrc')?.invalid && (buildingFormStepOne.get('nrc')?.dirty || buildingFormStepOne.get('nrc')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
+            {{'add-laboratory.required' | translate}}
+          </p>
+        </div>
+
+        <div class="col-span-1">
+          <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-nom">
+            {{'add-laboratory.name' | translate}}
+          </label>
+          <input
+            formControlName="nom"
+            class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+            id="grid-nom"
+            type="text"
+            placeholder="{{'add-laboratory.enter_name' | translate}}"
+          />
+          <p *ngIf="buildingFormStepOne.get('nom')?.invalid && (buildingFormStepOne.get('nom')?.dirty || buildingFormStepOne.get('nom')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
+            {{'add-laboratory.required' | translate}}
+          </p>
+        </div>
+      </div>
+
+      <!-- Row 2: Checkbox / Date d'activation -->
+      <div class="grid grid-cols-2 gap-6 mb-6">
+        <div class="col-span-1">
+          <div class="flex items-center h-20">
+            <input
+              type="checkbox"
+              id="active"
+              formControlName="active"
+              class="mr-2"
+              (change)="onActiveChange($event)"
+            />
+            <label for="active" class="text-sm font-medium text-gray-700 px-2">{{'add-laboratory.active' | translate}}</label>
           </div>
         </div>
-      </ng-container>
+
+        <div class="col-span-1" *ngIf="buildingFormStepOne.get('active')?.value">
+          <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-dateActivation">
+            {{'add-laboratory.activation_date' | translate}}
+          </label>
+          <input
+            formControlName="dateActivation"
+            class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+            id="grid-dateActivation"
+            type="date"
+            placeholder="{{'add-laboratory.enter_activation_date' | translate}}"
+          />
+          <p *ngIf="buildingFormStepOne.get('dateActivation')?.invalid && (buildingFormStepOne.get('dateActivation')?.dirty || buildingFormStepOne.get('dateActivation')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
+            {{'add-laboratory.required' | translate}}
+          </p>
+        </div>
+      </div>
+
+      <!-- Row 3: Description -->
+      <div class="mb-6">
+        <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-description">
+          {{'add-laboratory.description' | translate}}
+        </label>
+        <textarea
+          formControlName="description"
+          class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+          id="grid-description"
+          rows="4"
+          placeholder="{{'add-laboratory.enter_description' | translate}}"
+        ></textarea>
+        <p *ngIf="buildingFormStepOne.get('description')?.invalid && (buildingFormStepOne.get('description')?.dirty || buildingFormStepOne.get('description')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
+          {{'add-laboratory.required' | translate}}
+        </p>
+      </div>
+
+      <div class="h-16"></div>
+    </form>
+
+    <!-- Next Button -->
+    <div class="flex justify-center items-center h-full">
+      <button
+        [disabled]="!buildingFormStepOne.valid"
+        class="bg-primary text-white rounded-full px-8 py-2 text-sm md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
+        (click)="onNextPage()"
+      >
+        {{'add-laboratory.next' | translate}}
+      </button>
+    </div>
+  </div>
+</ng-container>
+
       
       
       <ng-container *ngIf="step == 2 ">
@@ -197,8 +173,8 @@
           <ng-container *ngIf="showError">
             <p
             class="text-sm text-red-600 animate__animated animate__fadeInDown">
-              champs requis
-            </p>
+            {{'add-laboratory.required' | translate}}
+          </p>
           </ng-container>
           <div class="absolute bottom-4 right-1 grid grid-cols-3 gap-2">
             
@@ -208,14 +184,16 @@
             class="  border-2 border-primary text-primary bg-white rounded-full scroll-px-36 py-2 text-s md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
             (click)="onBackPage()"
           >
-            Previous
+          {{'add-laboratory.previous' | translate}}
+
           </button>
             <button
             [disabled]="!image"
             class=" bg-primary  text-white   rounded-full px-3 py-2 text-s md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
             (click)="onNextPage()"
           >
-            Next
+          {{'add-laboratory.next' | translate}}
+
           </button>
           </div>
           </div>
@@ -224,76 +202,121 @@
       </ng-container>
 
 
-    <ng-container *ngIf="step == 3">
+    <ng-container  *ngIf="step == 3" >
       <!-- form -->
       <div class="animate__animated my-auto bg animate__zoomIn xl:col-span-4 max-xl:col-span-5">
-        <ng-container *ngIf="step == 3">
+        <ng-container>
           <!-- Step 3: Address Form -->
           <div class="animate__animated m-auto ml-8 animate__zoomIn col-span-3 xl:col-span-3 max-xl:col-span-4 relative w-full">
             <form [formGroup]="buildingFormStepThree" class="w-full max-w-lg ml-4 grid grid-cols-2 gap-6">
+               <!-- Row 1: numTel / fax -->
+              <div class="">
+                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-numTel">
+                  {{'add-laboratory.phone_number' | translate}}
+                </label>
+                <input
+                  formControlName="numTel"
+                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+                  id="grid-numTel"
+                  type="text"
+                  placeholder="{{'add-laboratory.phone_number' | translate}}"
+                />
+              </div>
+              <div class="">
+                <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-fax">
+                  {{'add-laboratory.fax' | translate}}
+                </label>
+                <input
+                  formControlName="fax"
+                  class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+                  id="grid-fax"
+                  type="text"
+                  placeholder="{{'add-laboratory.fax' | translate}}"
+                />
+            </div>
+
+
+  <!-- Row 2: Email -->
+  <div class="mb-6 col-span-2">
+    <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-email">
+      {{'add-laboratory.email' | translate}}
+    </label>
+    <input
+      formControlName="email"
+            class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+            id="grid-email"
+            type="email"
+            placeholder="{{'add-laboratory.email' | translate}}"
+            />
+            </div>
+
+
+
+
               <!-- Row 1: Rue and Code Postal -->
               <div class="mb-6">
                 <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-rue">
-                  Rue
+                  {{'add-laboratory.rue' | translate}}
                 </label>
                 <input
                   formControlName="rue"
                   class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
                   id="grid-rue"
                   type="text"
-                  placeholder="Entrez la rue"
+                  placeholder="{{'add-laboratory.enter_rue' | translate}}"
                 />
                 <p *ngIf="buildingFormStepThree.get('rue')?.invalid && (buildingFormStepThree.get('rue')?.dirty || buildingFormStepThree.get('rue')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
-                  Champs requis
+                  {{'add-laboratory.required' | translate}}
                 </p>
               </div>
           
               <div class="mb-6">
                 <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-codePostal">
-                  Code Postal
+                  {{'add-laboratory.code_postal' | translate}}
                 </label>
                 <input
                   formControlName="codePostal"
                   class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
                   id="grid-codePostal"
                   type="text"
-                  placeholder="Entrez le code postal"
+                  placeholder="{{'add-laboratory.enter_code_postal' | translate}}"
                 />
                 <p *ngIf="buildingFormStepThree.get('codePostal')?.invalid && (buildingFormStepThree.get('codePostal')?.dirty || buildingFormStepThree.get('codePostal')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
-                  Champs requis
+                  {{'add-laboratory.required' | translate}}
                 </p>
               </div>
           
               <!-- Row 2: Commune and Ville -->
               <div class="mb-6">
                 <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-commune">
-                  Commune
+                  {{'add-laboratory.commune' | translate}}
+
                 </label>
                 <input
                   formControlName="commune"
                   class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
                   id="grid-commune"
                   type="text"
-                  placeholder="Entrez la commune"
+                  placeholder="{{'add-laboratory.enter_commune' | translate}}"
                 />
                 <p *ngIf="buildingFormStepThree.get('commune')?.invalid && (buildingFormStepThree.get('commune')?.dirty || buildingFormStepThree.get('commune')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
-                  Champs requis
+                  {{'add-laboratory.required' | translate}}
                 </p>
               </div>
           
               <div class="mb-6">
                 <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-ville">
-                  Ville
+                  {{'add-laboratory.ville' | translate}}
                 </label>
                 <input
                   formControlName="ville"
                   class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
                   id="grid-ville"
                   type="text"
-                  placeholder="Entrez la ville"
+                  placeholder="{{'add-laboratory.enter_ville' | translate}}"
                 />
                 <p *ngIf="buildingFormStepThree.get('ville')?.invalid && (buildingFormStepThree.get('ville')?.dirty || buildingFormStepThree.get('ville')?.touched)" class="pl-2 mt-2 text-xs text-red-600">
-                  Champs requis
+                  {{'add-laboratory.required' | translate}}
                 </p>
               </div>
           
@@ -303,14 +326,14 @@
             class="  border-2 border-primary text-primary bg-white rounded-full px-8 py-2 text-sm md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
             (click)="onBackPage()"
           >
-            Previous
+          {{'add-laboratory.previous' | translate}}
           </button>
             <button
             [disabled]="!buildingFormStepThree.valid"
             class=" bg-primary  text-white   rounded-full px-8 py-2 text-sm md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
             (click)="onNextPage()"
           >
-            Validate
+          {{'add-laboratory.validate' | translate}}
           </button>
               </div>
             </form>

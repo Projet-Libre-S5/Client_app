@@ -1,10 +1,10 @@
 <div>
 <nav aria-label="Progress">
     <ol role="list" class="overflow-hidden">
-      <li  class="relative pb-10">
+      <li  class="relative flex flex-col justify-center pb-10">
         <div
-              [class]="'add-laboratory.bread-crumb-orientation'| translate "
-              [ngClass]="step >= 1 ? 'bg-primary  w-0.5 h-full' :'bg-gray-400  w-0.5 h-full' "
+              class="absolute top-4 left-5 "
+              [ngClass]="step >= 1 ? 'bg-primary  w-0.5 h-full ' :'bg-gray-400  w-0.5 h-full ' "
              aria-hidden="true"></div>  
 
         <a class="relative flex items-start group">
@@ -30,6 +30,7 @@
 
       <li class="relative pb-10">
         <div
+        class="absolute top-4 left-5"
         [class]="'add-laboratory.bread-crumb-orientation'| translate "
         [ngClass]="step >= 2 ? 'bg-primary w-0.5 h-full' :'bg-gray-400 w-0.5 h-full' "
           aria-hidden="true"></div>

@@ -1,4 +1,4 @@
-<app-update-modal  (closeMeEvent)="updateModal=false" (confirmEvent)="OnUpdate($event)"></app-update-modal>
+<app-update-modal  [item]="selected_item" (closeMeEvent)="updateModal=false" [isVisible]="updateModal" (confirmEvent)="OnUpdate($event)"></app-update-modal>
 <app-delete-modal [item]="selected_item" [isVisible]="deleteModal" (closeMeEvent)="deleteModal=false" (confirmEvent)="OnDelete($event)"></app-delete-modal>
 
 
@@ -12,8 +12,8 @@
   <div class="h-auto">
     <div class="flex flex-col rounded-3xl bg-white">
       <p-table
-        class="flex-1 overflow-auto"
-        styleClass="rounded-2xl text-[15px] montserrat overflow-hidden"
+        class="flex-1 overflow-auto "
+        styleClass="rounded-2xl text-[15px] montserrat   overflow-hidden"
         [value]="paginatedContacts || []"
         [loading]="isLoading$"
         [selection]="[]"
@@ -22,14 +22,18 @@
       >
         <ng-template pTemplate="header">
           <tr >
+            <th>{{'contacts.laboratory' | translate}}</th>
             <th>{{'contacts.phoneNumber' | translate}}</th>
             <th>{{'contacts.fax' | translate}}</th>
             <th>{{'contacts.email' | translate}}</th>
+            <th class="text-center">{{'contacts.action' | translate}}</th>
+
           </tr>
         </ng-template>
 
         <ng-template pTemplate="body" let-item>
           <tr>
+            <td>{{ item.nom }}</td>
             <td>{{ item.numTel }}</td>
             <td>{{ item.fax }}</td>
             <td>{{ item.email }}</td>

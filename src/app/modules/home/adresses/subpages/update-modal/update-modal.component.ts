@@ -3,13 +3,14 @@ import { ModalComponent } from '../../../../../shared/components/modal/modal.com
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule} from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-update-modal',
   standalone: true,
   imports: [ModalComponent,CommonModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,TranslateModule,
     CommonModule],
   templateUrl: './update-modal.component.html',
   styleUrl: './update-modal.component.css'
@@ -32,20 +33,20 @@ export class UpdateModalComponent implements OnInit,OnChanges {
 
  ngOnInit(): void {
   this.adresseForm=this.fb.group({
-    street:['',Validators.required],
-    city:['',Validators.required],
-    code:['',Validators.required],
-    region:['',Validators.required]
+    rue:['',Validators.required],
+    ville:['',Validators.required],
+    codePostal:['',Validators.required],
+    commune:['',Validators.required]
   })
 
 }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.adresseForm=this.fb.group({
-      street:[this.item.street,Validators.required],
-      city:[this.item.city,Validators.required],
-      code:[this.item.code,Validators.required],
-      region:[this.item.region,Validators.required]
+      rue:[this.item.rue,Validators.required],
+      ville:[this.item.ville,Validators.required],
+      codePostal:[this.item.codePostal,Validators.required],
+      commune:[this.item.commune,Validators.required]
     })
   }
 

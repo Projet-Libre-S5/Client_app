@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ModalComponent } from "../../../../../shared/components/modal/modal.component";
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-delete-modal',
   standalone: true,
-  imports: [CommonModule, ModalComponent],
+  imports: [CommonModule, ModalComponent,TranslateModule],
   templateUrl: './delete-modal.component.html',
   styleUrl: './delete-modal.component.css'
 })

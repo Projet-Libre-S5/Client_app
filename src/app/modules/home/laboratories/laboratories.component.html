@@ -3,20 +3,74 @@
 
 <div class="h-full flex-col space-y-4 justify-center items-center animate__fadeIn animate__animated ">
   <!-- <app-actions-table (OnSearch)="OnSearch($event)"  [exporter]="false" (SelectedEvent)="HandleSelectedActions($event)" />-->
-   <div class="rounded-3xl bg-white">
+   <div class="bg-white py-3 px-6 flex justify-center rounded-full">
+
+    <div class="w-96 flex-2 m-auto  md:px-8 lg:px-0 xl:col-span-6">
+      <div class="relative ">
+        <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
+          <img class="h-4 w-4" src="assets/svg/search.svg" alt="search icon">
+        </div>
+        <input id="search" name="search" class="block w-full text-black font-light   bg-slate-100 border border-gray-300 rounded-3xl py-[10px] pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm" [placeholder]="'navbar.search'| translate"  type="search"/>
+      </div>
+          </div>
+
+    <input
+    type="file"
+    class="hidden"
+    id="logo"
+    accept="" 
+    #fileInput
+    (change)="onFileChange($event)"
+  />
+  
+    <div class="flex flex-row ">
+  
+    <button
+    type="button"
+    class="flex flex-row justify-between h-10 px-3 mx-2  text-sm  py-2  bg-opacity-90  bg-primary    text-white   rounded-md drop-shadow-md hover:animate__animated hover:shadow-sm"
+    > <span class="mt-[3px] px-1 " > <i class="pi pi-plus" style="font-size: 1.1rem"></i>
+   
+     </span>  <span > {{ 'laboratories.add_new' | translate }}</span> </button>
+  <button
+  type="button"
+  class="flex flex-row justify-between h-10 px-3  text-sm mx-2  py-2  bg-opacity-30  bg-emerald-500   text-green-700   rounded-md drop-shadow-md hover:animate__animated hover:shadow-sm"
+  (click)="fileInput.click()"
+  > <span class="px-1" > <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path stroke="#15803d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1v6M5 19v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1M10 3v4a1 1 0 0 1-1 1H5m2.665 9H6.647A1.647 1.647 0 0 1 5 15.353v-1.706A1.647 1.647 0 0 1 6.647 12h1.018M16 12l1.443 4.773L19 12m-6.057-.152-.943-.02a1.34 1.34 0 0 0-1.359 1.22 1.32 1.32 0 0 0 1.172 1.421l.536.059a1.273 1.273 0 0 1 1.226 1.718c-.2.571-.636.754-1.337.754h-1.13"/>
+  </svg>
+   </span>  <span > {{ 'laboratories.import' | translate }} </span> </button>
+  
+  
+  
+  
+   <button
+  type="button"
+  class="flex flex-row justify-between  px-3 h-10 text-sm  py-2 mx-2  bg-opacity-30  bg-red-800   text-red-950   rounded-md drop-shadow-md hover:animate__animated hover:shadow-sm"
+  > <span class="px-1" > <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path stroke="#450a0a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17v-5h1.5a1.5 1.5 0 1 1 0 3H5m12 2v-5h2m-2 3h2M5 10V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1v6M5 19v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1M10 3v4a1 1 0 0 1-1 1H5m6 4v5h1.375A1.627 1.627 0 0 0 14 15.375v-1.75A1.627 1.627 0 0 0 12.375 12H11Z"/>
+  </svg>
+   </span>  <span > {{ 'laboratories.save' | translate }}</span> </button>
+  
+  
+  
+  
+  </div>
+   </div>
  
+   <div class="rounded-3xl   bg-white">
+   
    <div class="mt-10  flex flex-wrap p-2  animate__fadeIn animate__animated ">
      <ng-container *ngIf="laboratories.length>0">
        <!-- *ngIf="!(isLoading$ | async)"-->
-       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4  ">
          <ng-container *ngFor="let laboratory of laboratories">
-           <p-card class=" animate__fadeIn animate__animated rounded-3xl m-4 w-72 overflow-hidden shadow-xl">
+           <p-card class=" animate__fadeIn animate__animated rounded-3xl m-4 w-72 overflow-hidden shadow-xl group">
              <!-- Card Header -->
              <ng-template pTemplate="header">
                <img
                  *ngIf="laboratory.logo"
                  [src]="'data:image/png;base64,' + laboratory.logo"
-                 class="h-36 w-full object-cover"
+                 class="h-36 w-full object-cover group-hover:grayscale"
                  alt="Logo du laboratoire"
                />
                <img
@@ -28,10 +82,36 @@
              </ng-template>
        
              <!-- Card Content -->
-             <div class=" p-2 h-52">
+             <div class=" px-2 h-36" [class]="'font'|translate" >
+               <!-- h-40 -->
+
+              <div  class="flex justify-end ">
+               <div class="relative -mt-44 -mx-4 flex justify-end"> 
+                <button class="flex bg-gray-700 text-white hover:bg-slate-200 group h-7 w-7 items-center justify-center rounded-full " (click)="toggleMenu(laboratory);$event.stopPropagation()">
+               <i class="pi pi-ellipsis-v hover:text-black" style="font-size: 1rem"></i></button>
+               <div
+               *ngIf="laboratory.menuVisible"
+               id="menu"
+               class="absolute top-3  mt-2 w-32 bg-white shadow-lg  overflow-hidden rounded-lg border-black"
+             >
+               <ul >
+                 <li class="px-5 py-[7px] border-b-[1.6px]  border-slate-200 hover:bg-gray-200  text-xs flex  items-center  cursor-pointer"> <i class="pi pi-info-circle text-slate-600 " style="font-size: 0.8rem"></i> 
+                  <span class="mx-2">{{'laboratories.view_details' | translate}} </span></li>
+                 <li class="px-5 py-[7px] border-b-[1.5px] border-slate-200 hover:bg-gray-200  text-xs flex  items-center   cursor-pointer"><i class="pi pi-pencil text-slate-600 " style="font-size: 0.8rem"></i> 
+                  <span class="mx-2">{{'laboratories.edit' | translate}}</span></li>
+                 <li class="px-5 py-[7px] border-b-[1.5px] border-slate-200 hover:bg-gray-200  text-xs flex  items-center cursor-pointer  text-red-500 "><i class="pi pi-trash " style="font-size: 0.8rem"></i> 
+                  <span class="mx-2">{{'laboratories.delete' | translate}}</span></li>
+               </ul>
+              </div>
+             </div>
+             
+              </div>
+           
+
+
 
                    <!-- Name -->
-             <div class="flex items-center mt-4">
+             <div class="flex items-center">
                 <i class="pi pi-building" style="font-size: 1rem"></i>
                 <span class="text-xs px-2">{{'laboratories.name' | translate}} : </span>
                <span class="text-[14px] font-semibold">{{ laboratory.nom || '--' }}</span>
@@ -41,7 +121,7 @@
                <!-- NRC -->
                <p class="flex items-center mt-4">
                  <i class="pi pi-id-card" style="font-size: 1rem"></i>
-                 <span class="text-xs px-2">{{'laboratories.nrc' | translate}} </span>
+                 <span class="text-xs px-2">{{'laboratories.nrc' | translate}} :  </span>
                  <span class="text-[14px] font-semibold truncate">{{ laboratory.nrc || '--' }}</span>
                  <p-tag  severity="warning" *ngIf="!laboratory.active" value="Inactive" [rounded]="true" />
 
@@ -52,7 +132,7 @@
                <!-- Activation Date -->
                <p  *ngIf="laboratory.dateActivation" class="flex items-center mt-4">
                 <i class="pi pi-calendar-plus" style="font-size: 1rem"></i>
-                 <span class="text-xs px-2">{{'laboratories.activation_date' | translate}}  </span>
+                 <span class="text-xs px-2">{{'laboratories.activation_date' | translate}} :  </span>
                  <span class="text-[14px] font-semibold">
                    {{ laboratory.dateActivation | date: 'dd/MM/yyyy' }}
                  </span>
@@ -60,7 +140,7 @@
                <p class="flex items-center mt-4">
                 <i class="pi pi-map-marker" style="font-size: 1rem"></i>
                 
-                <span class="text-xs px-2">{{'laboratories.address' | translate}} </span>
+                <span class="text-xs px-2">{{'laboratories.address' | translate}} : </span>
                 <span class="text-[14px] font-semibold">
                   {{ laboratory.rue}}, {{ laboratory.ville}}
                 </span>
@@ -69,13 +149,13 @@
 
              
        
-             <!-- Card Footer -->
+             <!-- Card Footer
              <ng-template pTemplate="footer">
                <div class="flex justify-end  align-middle gap-1 mt-1">
                    <span>{{'laboratories.view_details' | translate}} </span> <i  [class]="'laboratories.icon_class'| translate" style="font-size: 1rem"></i>
                   
                </div>
-             </ng-template>
+             </ng-template> -->
            </p-card>
          </ng-container>
        </div>

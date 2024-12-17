@@ -5,6 +5,8 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
+@import 'simple-keyboard/build/css/index.css';
+
 
 @import 'animate.css';
 
@@ -131,6 +133,13 @@
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 450;
+  font-style: normal;
+}
+
+.montserrat-semibold{
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
   font-style: normal;
 }
 

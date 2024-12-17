@@ -69,21 +69,30 @@
     "laboratory_information": "معلومات المختبر",
     "logo_and_visual_identity": "الشعار والهوية البصرية",
     "address_and_contact_details": "العنوان وبيانات الاتصال",
-    "icon_class":"pi pi-angle-double-left mt-1"
+    "add_new": "إضافة جديد",
+    "import": "استيراد قائمة",
+    "save": "حفظ",
+    "icon_class":"pi pi-angle-double-left mt-1",
+    "delete":"حذف",
+    "edit":"تعديل"
      
     
 
 },
 
   "contacts": {
+    "laboratory":"مختبر",
     "contacts":"جهات الاتصال",
     "phoneNumber": "رقم الهاتف",
     "fax": "فاكس",
     "email": "البريد الإلكتروني",
-    "noData": "لا توجد بيانات لعرضها"
+    "noData": "لا توجد بيانات لعرضها",
+    "action": "الإجراء"
+
   },
 
   "addresses": {
+    "laboratory":"مختبر",
     "title": "العناوين",
     "street": "الشارع",
     "postalCode": "الرمز البريدي",
@@ -98,7 +107,32 @@
     "title": "عذرًا! الصفحة غير موجودة",
     "message": " الصفحة التي تبحث عنها غير موجودة، قد تمت إزالتها، أو تغير اسمها، أو هي غير متوفرة مؤقتًا",
     "back": "العودة إلى الصفحة الرئيسية"
+  },
+
+  "delete-adress":{
+    "delete_address": "هل تريد حذف هذا العنوان ؟",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "delete_the_address": "حذف العنوان"
+}  ,
+
+
+"delete-contact":{
+  "delete_address": "هل تريد حذف جهة الاتصال هذه ؟",
+  "cancel": "إلغاء",
+  "delete": "حذف",
+  "delete_the_contact": "حذف جهة الاتصال"
+}  ,
+
+   "modal": {
+    "cancel": "إلغاء"
+   },
+
+   "update-laboratory":{
+   "edit_address": "تعديل  العنوان",
+    "save": "حفظ"
   }
+
 }
 
 

@@ -4,6 +4,7 @@ import { SidebarComponent } from "../sidebar/sidebar.component";
 import { TranslateModule } from '@ngx-translate/core';
 
 
+
 @Component({
   selector: 'template-page',
   standalone: true,
@@ -12,5 +13,7 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './template-page.component.css'
 })
 export class TemplatePageComponent {
+
+ 
 
 }

@@ -182,12 +182,14 @@ export class AddLaboratoryComponent {
         };
 
         let req_contact:any ={
+          nom: this.buildingFormStepOne.value['nom'],
           numTel: this.buildingFormStepThree.value['numTel'],
           fax: this.buildingFormStepThree.value['fax'],
           email: this.buildingFormStepThree.value['email']
         }
 
         let req_adresse:any={
+          nom: this.buildingFormStepOne.value['nom'],
           rue: this.buildingFormStepThree.value['rue'],
           codePostal: this.buildingFormStepThree.value['codePostal'],
           commune:this.buildingFormStepThree.value['commune'],

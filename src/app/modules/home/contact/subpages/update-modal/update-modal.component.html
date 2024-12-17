@@ -1,1 +1,51 @@
-<p>update-modal works!</p>
+<app-modal title="{{'update-laboratory.edit_address'|translate}}" [isVisible]="isVisible" ConfirmationLabel="{{'update-laboratory.save'|translate}}" (closeMeEvent)="closeMe()" (confirmEvent)="confirm()" >
+    <div class="px-10  montserrat-semibold">
+        <form [formGroup]="contactForm" class="w-full max-w-lg ml-4 grid grid-cols-2 gap-6">
+            <!-- Row 1: numTel / fax -->
+           <div class="">
+             <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-numTel">
+               {{'add-laboratory.phone_number' | translate}}
+             </label>
+             <input
+               formControlName="numTel"
+               class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+               id="grid-numTel"
+               type="text"
+               placeholder="{{'add-laboratory.phone_number' | translate}}"
+             />
+           </div>
+           <div class="">
+             <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-fax">
+               {{'add-laboratory.fax' | translate}}
+             </label>
+             <input
+               formControlName="fax"
+               class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+               id="grid-fax"
+               type="text"
+               placeholder="{{'add-laboratory.fax' | translate}}"
+             />
+         </div>
+
+
+<!-- Row 2: Email -->
+<div class="mb-6 col-span-2">
+ <label class="block tracking-wide text-gray-700 font-[300] mb-2 text-sm" for="grid-email">
+   {{'add-laboratory.email' | translate}}
+ </label>
+ <input
+   formControlName="email"
+         class="appearance-none block w-full text-gray-700 font-[200] border border-gray-200 rounded focus:outline-none focus:bg-white peer min-h-[auto] focus:border-[1.5px] focus:border-primary px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary bg-slate-100"
+         id="grid-email"
+         type="email"
+         placeholder="{{'add-laboratory.email' | translate}}"
+         />
+         </div>
+       
+         </form>
+
+
+
+
+ </div>
+ </app-modal>

@@ -66,18 +66,26 @@
     "laboratory_information": "Informations du laboratoire",
     "logo_and_visual_identity": "Logo et identité visuelle",
     "address_and_contact_details": "Adresse et coordonnées",
-    "icon_class":"pi pi-angle-double-right mt-1"
+    "add_new": "Ajouter nouveau",
+    "import": "Importer la liste",
+    "save": "Sauvegarder",
+    "icon_class":"pi pi-angle-double-right mt-1",
+    "edit":"Modifier",
+    "delete":"Supprimer"
 
 },
 
     "contacts": {
+        "laboratory":"laboratoire",
         "contacts": "Contacts",
         "phoneNumber": "Numéro du téléphone",
         "fax": "Faxe",
         "email": "Email",
+        "action": "Action",
         "noData": "Aucune donnée à afficher"
     },
     "addresses": {
+      "laboratory":"laboratoire",
       "title": "Adresses",
       "street": "Rue",
       "postalCode": "Code postal",
@@ -91,6 +99,27 @@
       "title": "Oups ! Page introuvable",
       "message": "Désolé, mais la page que vous recherchez n'existe pas, a été supprimée, son nom a changé ou elle est temporairement indisponible.",
       "back": "Retour à la page d'accueil"
+    },
+    "delete-adress":{
+      "delete_address": "Voulez-vous supprimer cette adresse ?",
+      "cancel": "Annuler",
+      "delete": "Supprimer",
+      "delete_the_address": "Supprimer l'adresse"
+  },
+  "delete-contacts":{
+    "delete_address": "Voulez-vous supprimer ce contact ?",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "delete_the_contact": "Supprimer le contact "
+},
+
+     "modal": {
+      "cancel": "Annuler"
+    },
+
+    "update-laboratory":{
+      "edit_address": "Modifier l'adresse",
+    "save": "Sauvegarder"
     }
 
     

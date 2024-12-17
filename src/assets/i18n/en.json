@@ -64,19 +64,27 @@
         "laboratory_information": "Laboratory information",
         "logo_and_visual_identity": "Logo and visual identity",
         "address_and_contact_details": "Address and contact details",
-        "icon_class":"pi pi-angle-double-right mt-1"
+        "add_new": "Add New",
+        "import": "Import List",
+        "save": "Save",
+        "icon_class":"pi pi-angle-double-right mt-1",
+        "edit":"Edit",
+        "delete":"Delete"
 
 
        },
        "contacts": {
+        "laboratory":"laboratory",
         "contacts": "Contacts",
         "phoneNumber": "Phone Number",
         "fax": "Fax",
         "email": "Email",
+        "action": "Action",
         "noData": "No data to show"
       },
 
       "addresses": {
+        "laboratory":"laboratory",
         "title": "Addresses",
         "street": "Street",
         "postalCode": "Postal Code",
@@ -91,6 +99,27 @@
         "title": "Oops! Page Not Found",
         "message": "Sorry, but the page you are looking for does not exist, has been removed, name changed, or is temporarily unavailable.",
         "back": "Back to homepage"
+      },
+      "delete-adress":{
+        "delete_address": "Do you want to delete this address?",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "delete_the_address": "Delete the address"
+    },
+
+    "delete-contact":{
+      "delete_address": "Do you want to delete this contact?",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "delete_the_contact": "Delete the contact"
+  },
+      "modal": {
+        "cancel": "Cancel"
+
+      },
+      "update-laboratory":{
+          "edit_address": "Edit the address",
+          "save": "Save"
       }
 
       

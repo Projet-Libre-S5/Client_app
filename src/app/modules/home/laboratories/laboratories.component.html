@@ -1,4 +1,4 @@
-<app-update-modal [item]="selected_item" [isVisible]="updateModal" (closeMeEvent)="updateModal=false" (confirmEvent)="OnUpdate($event)"></app-update-modal>
+<app-update-modal *ngIf="selected_item" [item]="selected_item" [isVisible]="updateModal" (closeMeEvent)="updateModal=false" (confirmEvent)="OnUpdate($event)"></app-update-modal>
 <app-delete-modal [item]="selected_item" [isVisible]="deleteModal" (closeMeEvent)="deleteModal=false" (confirmEvent)="OnDelete($event)"></app-delete-modal>
 
 <div class="h-full flex-col space-y-4 justify-center items-center animate__fadeIn animate__animated ">
@@ -60,7 +60,7 @@
    <div class="rounded-3xl   bg-white">
    
    <div class="mt-10  flex flex-wrap p-2  animate__fadeIn animate__animated ">
-     <ng-container *ngIf="laboratories.length>0">
+     <ng-container *ngIf="laboratories.length > 0 ">
        <!-- *ngIf="!(isLoading$ | async)"-->
        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4  ">
          <ng-container *ngFor="let laboratory of laboratories">
@@ -75,7 +75,7 @@
                />
                <img
                  *ngIf="!laboratory.logo"
-                 src="assets/Lab.jpg"
+                 src="assets/blank-image.jpg"
                  class="h-36 w-full object-cover"
                  alt="Default Lab Image"
                />
@@ -97,10 +97,10 @@
                <ul >
                  <li class="px-5 py-[7px] border-b-[1.6px]  border-slate-200 hover:bg-gray-200  text-xs flex  items-center  cursor-pointer"> <i class="pi pi-info-circle text-slate-600 " style="font-size: 0.8rem"></i> 
                   <span class="mx-2">{{'laboratories.view_details' | translate}} </span></li>
-                 <li class="px-5 py-[7px] border-b-[1.5px] border-slate-200 hover:bg-gray-200  text-xs flex  items-center   cursor-pointer"><i class="pi pi-pencil text-slate-600 " style="font-size: 0.8rem"></i> 
-                  <span class="mx-2">{{'laboratories.edit' | translate}}</span></li>
-                 <li class="px-5 py-[7px] border-b-[1.5px] border-slate-200 hover:bg-gray-200  text-xs flex  items-center cursor-pointer  text-red-500 "><i class="pi pi-trash " style="font-size: 0.8rem"></i> 
-                  <span class="mx-2">{{'laboratories.delete' | translate}}</span></li>
+                 <li class="px-5 py-[7px] border-b-[1.5px] border-slate-200 hover:bg-gray-200  text-xs flex  items-center   cursor-pointer"><button  (click)="updateModal=true;selected_item=laboratory"><i class="pi pi-pencil text-slate-600 " style="font-size: 0.8rem"></i> 
+                  <span class="mx-2">{{'laboratories.edit' | translate}}</span></button></li>
+                 <li class="px-5 py-[7px] border-b-[1.5px] border-slate-200 hover:bg-gray-200  text-xs flex  items-center cursor-pointer  text-red-500 "><button  (click)="deleteModal=true;selected_item=laboratory"><i class="pi pi-trash " style="font-size: 0.8rem"></i> 
+                  <span class="mx-2">{{'laboratories.delete' | translate}}</span></button></li>
                </ul>
               </div>
              </div>

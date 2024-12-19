@@ -74,7 +74,10 @@
     "save": "حفظ",
     "icon_class":"pi pi-angle-double-left mt-1",
     "delete":"حذف",
-    "edit":"تعديل"
+    "edit":"تعديل",
+    "edit_title":"تعديل المختبر",
+    "delete_title":"حذف",
+    "delete-laboratory-confirmation": "هل تريد حذف هذا المختبر؟"
      
     
 

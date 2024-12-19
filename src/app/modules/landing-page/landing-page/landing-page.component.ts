@@ -40,7 +40,7 @@ export class LandingPageComponent implements OnInit{
     this.service.getAll().subscribe(
       (data: any) => {
         this.articles = data.articles
-          .filter((article: any) => article.title !== "[Removed]")
+          .filter((article: any) => article.title !== "[Removed]" && article.urlToImage !== null)
           .slice(0, 6);
         this.isLoading=false;
         console.log(this.articles); 

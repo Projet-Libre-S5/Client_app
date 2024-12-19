@@ -45,7 +45,7 @@ export class LaboratoriesComponent implements OnInit {
   deleteModal:boolean=false;
   menuVisible=false;
   laboratoryForm:any;
-  laboratories:any;
+  laboratories!:any;
   selected_item:any={
       nom:"",
       logo:"",
@@ -76,7 +76,8 @@ export class LaboratoriesComponent implements OnInit {
     private service:LaboratoryService,
     private AlertService:SweetAlertService,
     private sanitizer: DomSanitizer,
-    private papa: Papa
+    private papa: Papa,
+    private laboratoryService:LaboratoryService
   ) {
 
   }
@@ -115,25 +116,25 @@ onDocumentClick(event: MouseEvent): void {
 }
 
 
-  getLaboratories():void{
-    this.service.getAll().subscribe((data: any) => {
-      this.laboratories = data.map((laboratory: any) => ({
-        ...laboratory,
-        menuVisible: false, // Initialisation à false
-      }));         
-      this.pagination.total = data.length;
-      this.updatePaginatedLaboratories();  
-      this.isLoading$=false;
-      
+    getLaboratories():void{
+      this.service.getAll().subscribe((data: any) => {
+        this.laboratories = data.map((laboratory: any) => ({
+          ...laboratory,
+          menuVisible: false, // Initialisation à false
+        }));         
+        this.pagination.total = data.length;
+        this.updatePaginatedLaboratories();  
+        this.isLoading$=false;
+        
 
-    },
-      (err) => {
-        this.isLoading$=true;
-        console.log(err)
+      },
+        (err) => {
+          this.isLoading$=true;
+          console.log(err)
 
-      }
-    )
-  }
+        }
+      )
+    }
 
 
 
@@ -216,26 +217,40 @@ onDocumentClick(event: MouseEvent): void {
       reader.readAsBinaryString(target.files[0]);
     }
   
-    // Fonction pour traiter et convertir les données
     processLaboratories(data: any[]): void {
       try {
         const keys = data[0]; // Les titres des colonnes
-        this.laboratories = data.slice(1).map((row) => {
+        const importedLaboratories = data.slice(1).map((row) => {
           const laboratory: any = {};
           keys.forEach((key: string, index: number) => {
-            laboratory[key] = row[index] || ''; // Associe chaque colonne à un objet
+            laboratory[key] = row[index] || ''; 
           });
-          laboratory.menuVisible = false; // Ajout de l'état menuVisible
+          laboratory.menuVisible = false; 
           return laboratory;
         });
-  
-        this.pagination.total = this.laboratories.length; // Mettre à jour la pagination
+    
+        // Sauvegarde des nouveaux laboratoires dans la base de données
+        importedLaboratories.forEach((lab) => {
+          this.laboratoryService.create(lab).subscribe(
+            (response) => {
+              console.log('Laboratoire sauvegardé :', response);
+              // Ajout dans this.laboratories sans remplacer les données actuelles
+              this.laboratories.push({ ...response, menuVisible: false });
+              this.pagination.total = this.laboratories.length;
+            },
+            (error) => {
+              console.error('Erreur lors de la sauvegarde du laboratoire', error);
+            }
+          );
+        });
+    
         this.isLoading$ = false;
-  
-        console.log('Laboratoires importés :', this.laboratories);
+    
+        console.log('Laboratoires importés et sauvegardés :', this.laboratories);
       } catch (error) {
         console.error('Erreur lors du traitement du fichier Excel', error);
         this.isLoading$ = false;
       }
     }
+    
   }

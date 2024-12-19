@@ -71,7 +71,11 @@
     "save": "Sauvegarder",
     "icon_class":"pi pi-angle-double-right mt-1",
     "edit":"Modifier",
-    "delete":"Supprimer"
+    "delete":"Supprimer",
+    "edit_title":"Modifier le laboratoire",
+    "delete_title":"Supprimer le laboratoire",
+    "delete-laboratory-confirmation": "Voulez-vous supprimer ce laboratoire ?"
+
 
 },
 

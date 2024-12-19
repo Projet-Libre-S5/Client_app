@@ -1,7 +1,7 @@
-<app-modal ConfirmationLabel="Supprimer" title="Supprimer l'adresse" [isVisible]="isVisible" (closeMeEvent)="closeMe()" (confirmEvent)="confirm()" >
+<app-modal ConfirmationLabel="{{'laboratories.delete'|translate}}" title="{{'laboratories.delete_title'|translate}}" [isVisible]="isVisible" (closeMeEvent)="closeMe()" (confirmEvent)="confirm()" >
   
     <div class="p-8">
-    <h1 class="font-semibold  text-2xl">Voulez vous supprimer ce laboratoire ?</h1>
+    <h1 class="font-semibold  text-2xl">"{{'laboratories.delete-laboratory-confirmation'|translate}}</h1>
     </div>
 
 

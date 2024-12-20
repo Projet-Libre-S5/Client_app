@@ -22,8 +22,7 @@
       "role": "patient"
     }
   ],
-  "activities": [
-  ],
+  "activities": [],
   "adresses": [
     {
       "id": "93d6",
@@ -66,7 +65,13 @@
       "active": true,
       "description": null,
       "numTel": null,
-      "fax": null
+      "fax": null,
+      "rue": null,
+      "code_postal": null,
+      "commun": null,
+      "ville": null,
+      "email": null,
+      "codePostal": null
     },
     {
       "id": "34a9",

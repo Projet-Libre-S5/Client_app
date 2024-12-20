@@ -9,7 +9,7 @@ import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { Observable } from 'rxjs';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { SweetAlertService } from '../../../../shared/services/sweet-alert/sweet-alert.service';
+import { SweetAlertService } from '../../../shared/services/sweet-alert/sweet-alert.service';
 
 
 @Component({

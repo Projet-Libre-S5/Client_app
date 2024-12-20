@@ -134,6 +134,24 @@
    "update-laboratory":{
    "edit_address": "تعديل  العنوان",
     "save": "حفظ"
+  },
+
+  "historical": {
+  "laboratories": "مختبرات",
+  "Analyses": "تحليلات",
+  "no_activity": "لا توجد أنشطة"
+},
+
+  "user": {
+    "users":"المستخدمون",
+    "profil": "صورة الملف الشخصي",
+    "phoneNumber": "رقم الهاتف",
+    "email": "البريد الإلكتروني",
+    "profession": "المهنة",
+    "role": "الدور",
+    "record": "السجل",
+    "action":"الإجراء",
+    "noData":"لا توجد بيانات لعرضها"
   }
 
 }

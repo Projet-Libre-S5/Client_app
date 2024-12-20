@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { LanguageService } from '../../services/home/language/language.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 export class NavbarComponent {
 
   selectedLanguage: string = 'fr';
-  constructor(private router: Router,private translate: TranslateService) {
+  constructor(private router: Router,private translate: TranslateService,private translateLang: LanguageService) {
     this.translate.setDefaultLang(localStorage.getItem('lang')||'fr');
     this.selectedLanguage = localStorage.getItem('lang') || 'fr'
 
@@ -37,6 +38,8 @@ export class NavbarComponent {
 
   switchLanguage(language: string) {
       this.translate.use(language);
+      this.translateLang.setLang(language);
+    
   }
 
 }

@@ -125,7 +125,22 @@
       "edit_address": "Modifier l'adresse",
     "save": "Sauvegarder"
     }
-
+    ,
+    "historical": {
+  "laboratories": "Laboratoires",
+  "Analyses": "Analyses",
+  "no_activity": "Aucune activité"
+},
+"user": {
+  "users":"Utilisateurs",
+  "profil": "Profil",
+  "phoneNumber": "Numéro de téléphone",
+  "email": "Adresse e-mail",
+  "profession": "Profession",
+  "role": "Rôle",
+  "record": "Enregistrement",
+  "noData":"Aucune donnée à afficher"
+}
     
 
 }

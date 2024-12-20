@@ -2,9 +2,11 @@
 
 <div class="grid grid-cols-1 mt-16 gap-4 lg:grid-cols-2  ">
 <ng-container >
-    <app-activities-card card_title="Laboratories" [activities]="activitiesLaboratories" ></app-activities-card>
-    <app-activities-card card_title="Analyses" [activities]="activitiesAnalyses" ></app-activities-card>
+    <app-activities-card [card_title]="'historical.laboratories'|translate" [activities]="activitiesLaboratories" ></app-activities-card>
+    <app-activities-card [card_title]="'historical.Analyses'|translate" [activities]="activitiesAnalyses" ></app-activities-card>
 </ng-container>
+
+HELLO
 <!--<ng-template #loading>
     <div class="bg-white rounded-xl mt-6 flex-col space-y-6 justify-start p-6">
         <div>

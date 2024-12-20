@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgClass, NgIf } from '@angular/common';
 import {  Input } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { LanguageService } from '../../../../../services/home/language/language.service';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [
     NgIf,
     NgClass,
-    TranslateModule
+    TranslateModule,
 
   ],
   templateUrl: './breadcrumb.component.html',
@@ -19,6 +20,16 @@ import { TranslateModule } from '@ngx-translate/core';
 export class BreadcrumbStepsComponent {
   @Input() step: number = 1;
 
-  currentLang=localStorage.getItem("lang")
+  currentLang:any;
+ 
+  constructor(private   langService:LanguageService  ){}
+
+
+  ngOnInit(): void {
+    this.langService.lang$.subscribe(lang => {
+      this.currentLang = lang;
+      console.log(this.currentLang);
+    });
+  }
 
 }

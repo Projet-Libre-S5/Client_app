@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, FormsModule, NgModel, ReactiveFormsModule, Vali
 import { CommonModule, NgForOf, NgIf } from '@angular/common';
 import { SharedModule } from 'primeng/api';
 import { TemplatePageComponent } from '../../../../../Layouts/template-page/template-page.component';
-import { Observable } from 'rxjs';
+import { Observable, Subscriber } from 'rxjs';
 import { Router } from '@angular/router';
 import { SweetAlertService } from '../../../../../shared/services/sweet-alert/sweet-alert.service';
 import { LaboratoryService } from '../../../../../services/home/laboratory/laboratory.service';
@@ -16,6 +16,7 @@ import { ActivitiesService } from '../../../../../services/home/activities/activ
 import { ContactsService } from '../../../../../services/home/contact/contacts.service';
 import { AdressService } from '../../../../../services/home/adress/adress.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { LanguageService } from '../../../../../services/home/language/language.service';
 
 
 
@@ -40,33 +41,42 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './add-laboratory.component.html',
   styleUrl: './add-laboratory.component.css'
 })
-export class AddLaboratoryComponent {
+export class AddLaboratoryComponent implements OnInit {
 
 
   public step: number = 1;
 
   public logoPreview:any;
 
-
-
-
   totalSize = 0;
   totalSizePercent = 0;
-
   buildingFormStepTwo!: FormGroup;
   buildingFormStepOne!: FormGroup;
   buildingFormStepThree!:FormGroup;
   showError : boolean = false
   parkingtypes$: any; 
-  currentLang:any=localStorage.getItem("lang")
+  currentLang:any;
+
+
+
+
+
+
+
+
+
 
 
   constructor(private fb: FormBuilder , private router : Router , private laboratoryService : LaboratoryService , 
     private AlertService : SweetAlertService , private ActivityService:ActivitiesService ,private ContactsService:ContactsService,
-    private adresseService:AdressService
+    private adresseService:AdressService,
+    private langService: LanguageService
   ) {
     this.buildingFormStepOne = this.fb.group({
       
+    
+
+
       nrc: ['', Validators.required],
       nom: ['', Validators.required],
       active: [false],
@@ -83,7 +93,20 @@ export class AddLaboratoryComponent {
       commune: ['', Validators.required],
       ville: ['', Validators.required],
     });
+
+
+
    }
+  
+   ngOnInit(): void {
+  
+    this.langService.lang$.subscribe(lang => {
+      this.currentLang = lang;
+      console.log(this.currentLang);
+    });
+  }
+
+  
   
 
   onActiveChange(event: Event): void {

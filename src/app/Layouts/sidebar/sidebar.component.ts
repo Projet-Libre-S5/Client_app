@@ -23,11 +23,9 @@ export class SidebarComponent {
     { label: "dashboard", route_path: "home", icon:"pi pi-th-large",isOpen:false, childs: [] },
     { label: "laboratories",route_path: "" ,icon:"pi pi-building",isOpen:false,childs: [
       { label: "laboratories_list", route_path: "Laboratories/liste"},
-      { label: "add_laboratory", route_path: "Laboratories/Add-laboratory"},
-      
+      { label: "contacts", route_path: "Contacts"},
+      { label: "adresses", route_path: "Adresses"}
     ]},
-    { label: "contacts",route_path: "Contacts" ,icon:"pi pi-address-book",isOpen:false,childs: []},
-    { label: "adresses",route_path: "Adresses" ,icon:"pi pi-map",isOpen:false,childs: []},
     { label: "analyses",route_path: "Analyses",icon:"pi pi-clipboard",isOpen:false,childs: [
       { label: "patients", route_path: "Analyses/Patients"},
       { label: "epreuves", route_path: "Analyses/Epreuves"},

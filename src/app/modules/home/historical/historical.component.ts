@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivitiesCardComponent } from '../../../shared/components/activities-card/activities-card.component';
-import { NgIf } from '@angular/common';
 import { ActivitiesService } from '../../../services/home/activities/activities.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-historical',
   standalone: true,
-  imports: [ActivitiesCardComponent,NgIf ],
+  imports: [ActivitiesCardComponent,TranslateModule ],
   templateUrl: './historical.component.html',
   styleUrl: './historical.component.css'
 })

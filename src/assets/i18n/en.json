@@ -126,5 +126,26 @@
           "save": "Save"
       }
 
+      ,
+
+      "historical":{
+        "laboratories":"Laboratories",
+        "Analyses":"Analyses",
+        "no_activity":"No activity"
+      }
+
+      ,
+
+      "user":{
+       "users":"Users",
+       "profil" : "Profil"  ,
+       "phoneNumber" : "Phone Number",
+       "email" :"Email" ,
+       "profession": "Profession" ,
+       "role" :"Role" ,
+       "record": "Record",
+       "action":"Action",
+       "noData":"No data to show"
+      }
       
     }

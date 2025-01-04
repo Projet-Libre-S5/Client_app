@@ -14,6 +14,7 @@ import { CommonModule, NgForOf, NgIf } from '@angular/common';
 import { SharedModule } from 'primeng/api';
 import { Observable, Subscriber } from 'rxjs';
 import {BreadCrumbStepsComponent} from './component/bread-crumb-steps/bread-crumb-steps.component'
+import { UserService } from '../../../../services/user/user.service';
 
 @Component({
   selector: 'app-add-user',
@@ -37,9 +38,7 @@ export class AddUserComponent implements OnInit {
 
   totalSize = 0;
   totalSizePercent = 0;
-  UserFormStepTwo!: FormGroup;
   UserFormStepOne!: FormGroup;
-  UserFormStepThree!:FormGroup;
   showError : boolean = false
   parkingtypes$: any; 
   currentLang:any;
@@ -54,7 +53,7 @@ export class AddUserComponent implements OnInit {
 
 
 
-  constructor(private fb: FormBuilder , private router : Router , private laboratoryService : LaboratoryService , 
+  constructor(private fb: FormBuilder , private router : Router , private userService : UserService , 
     private AlertService : SweetAlertService , private ActivityService:ActivitiesService ,
     private langService: LanguageService 
   ) {
@@ -64,18 +63,8 @@ export class AddUserComponent implements OnInit {
       numTel: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       profession: ['chercheur', Validators.required],
-      role: ['', Validators.required],
-    });
-
-    this.UserFormStepThree = this.fb.group({
-      numTel: ['', Validators.required],
-      fax: [''],
-      email: ['', [Validators.required, Validators.email]],
-      rue: ['', Validators.required],
-      codePostal: ['', Validators.required],
-      commune: ['', Validators.required],
-      ville: ['', Validators.required],
-    });
+      role: ['employe'],
+    }); 
 
 
 
@@ -150,7 +139,8 @@ export class AddUserComponent implements OnInit {
 
 
   onNextPage() {
-    if (this.step > 3) return;
+    if (this.step > 2) return;
+    console.log("here");
   
     if (this.step == 1) {
       if (this.UserFormStepOne.valid) {
@@ -162,69 +152,64 @@ export class AddUserComponent implements OnInit {
         });
       }
     } else if (this.step == 2) {
-      if (this.image) {
-        this.showError = false;
-        this.step++;
-      } else {
-        this.showError = true;
-      }
-    } else if (this.step == 3) {
-      if (this.UserFormStepOne.valid) {
-        const active = this.UserFormStepOne.get('active')?.value;
-        const dateActivation = active
-          ? this.UserFormStepOne.get('dateActivation')?.value
-          : null;
+
+        if (this.UserFormStepOne.value['profession'] === 'Patient') { 
+          let patient_req: any = {
+            nrc: this.UserFormStepOne.value['nrc'],
+            nom: this.UserFormStepOne.value['nom'],
+            prenom: this.UserFormStepOne.value['prenom'],
+            numTel: this.UserFormStepOne.value['numTel'],
+            email: this.UserFormStepOne.value['email'],
+            role: this.UserFormStepOne.value['role'],
+        } }
   
-        let req_lab: any = {
+        let user_req: any = {
           nrc: this.UserFormStepOne.value['nrc'],
           nom: this.UserFormStepOne.value['nom'],
-          active: active,
-          dateActivation: dateActivation,
-          description:this.UserFormStepOne.value['description'],
-          logo: this.image || null,
-          rue: this.UserFormStepThree.value['rue'],
-          codePostal: this.UserFormStepThree.value['codePostal'],
-          commune:this.UserFormStepThree.value['commune'],
-          ville: this.UserFormStepThree.value['ville'],
-          numTel: this.UserFormStepThree.value['numTel'],
-          fax: this.UserFormStepThree.value['fax'],
-          email: this.UserFormStepThree.value['email']
+          prenom: this.UserFormStepOne.value['prenom'],
+          numTel: this.UserFormStepOne.value['numTel'],
+          email: this.UserFormStepOne.value['email'],
+          profession: this.UserFormStepOne.value['profession'],
+          role: this.UserFormStepOne.value['role']
 
         };
 
-        let req_contact:any ={
-          nom: this.UserFormStepOne.value['nom'],
-          numTel: this.UserFormStepThree.value['numTel'],
-          fax: this.UserFormStepThree.value['fax'],
-          email: this.UserFormStepThree.value['email']
-        }
+        console.log(user_req);
+        
+        this.userService.create(user_req).subscribe(
+          ()=> {
+            if(this.UserFormStepOne.value['profession'] === 'Patient') {
+              this.userService.create(user_req).subscribe(
+                ()=> {
+                  this.AlertService.showSuccessAlert('Succes', 'User added succefuly');
+                  this.router.navigate(['/dashboard/Laboratories/liste']);
+                } 
+              )
+            } else  {
+              this.AlertService.showSuccessAlert('Succes', 'User added succefuly');
+              this.router.navigate(['/dashboard/Laboratories/liste']);
+            }
+           
+            
+          } ,
+          (err) => {
+            this.AlertService.showErrorAlert('Errorr', err?.error?.message);
+          }
+        )
 
-        let req_adresse:any={
-          nom: this.UserFormStepOne.value['nom'],
-          rue: this.UserFormStepThree.value['rue'],
-          codePostal: this.UserFormStepThree.value['codePostal'],
-          commune:this.UserFormStepThree.value['commune'],
-          ville: this.UserFormStepThree.value['ville']
-        }
+      
 
-      }
-    }
 
-  }
+   
+    }}
+
 
   onBackPage() {
     if(this.step <= 1 ) return ;
     this.step--;
   }
 
-  formatSize(bytes: number): string {
-    if (bytes === 0) return '0 Bytes';
-    const k = 1024;
-    const dm = 2;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
-  }
+
 
   choose(event: any, chooseCallback: any) {
     chooseCallback();

@@ -180,7 +180,8 @@
        "noRoles": "No roles available",
        "modify_logo":"Modify image",
        "add_logo":"Import image",
-       "previous":"Previous"
+       "previous":"Previous",
+       "validate":"Valider"
       
       }
       }

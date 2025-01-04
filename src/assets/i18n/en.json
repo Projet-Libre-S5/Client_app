@@ -53,7 +53,13 @@
        "description":"description",
        "enter_description":"Enter description",
        "validate":"Validate",
-       "Previous":"Previous"
+       "Previous":"Previous",
+       "modify_logo":"Modify logo",
+       "ajouter_logo":"Add logo",
+       "previous":"Previous",
+       "upload_image":"Upload image",
+       "update_image":"Update image"
+
       },
       "laboratories":{
         "name":"laboratory",
@@ -72,7 +78,10 @@
         "delete":"Delete",
         "edit_title":"Edit the laboratory",
         "delete_title":"Delete laboratory",
-        "delete-laboratory-confirmation": "Do you want to delete this laboratory?"
+        "delete-laboratory-confirmation": "Do you want to delete this laboratory?",
+        "new_laboratory": "New laboratory",
+        "create_new": "Create new",
+        "no_laboratory":"No laboratory to show"
 
 
 
@@ -145,7 +154,36 @@
        "role" :"Role" ,
        "record": "Record",
        "action":"Action",
-       "noData":"No data to show"
-      }
+       "noData":"No data to show",
+       "nom": "Last Name",
+       "enter_nom": "Enter last name",
+       "prenom": "First Name",
+       "enter_prenom": "Enter first name",
+       "numTel": "Phone Number",
+       "enter_numTel": "Enter phone number",
+       "enter_email": "Enter email",
+       "chercheur": "Researcher",
+       "medecin": "Doctor",
+       "patient": "Patient",
+       "admin": "Administrator",
+       "employe": "Employee",
+       "utilisateur": "User",
+       "title": "Add User",
+       "personnal_information": "Personal Information",
+       "personnal_image": "Personal Image",
+       "next":"Next",
+       "roles": "Roles",
+       "addUser": "Add User",
+       "modifyData": "Modify Data",
+       "deleteUserOrData": "Delete User/Data",
+       "exportReports": "Export Reports",
+       "noRoles": "No roles available",
+       "modify_logo":"Modify image",
+       "add_logo":"Import image",
+       "previous":"Previous"
       
-    }
+      }
+      }
+    
+      
+    

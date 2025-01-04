@@ -54,7 +54,11 @@
         "description":"الوصف",
         "enter_description":"أدخل الوصف",
         "validate":"تأكيد",
-        "previous":"السابق"
+        "previous":"السابق",
+         "modify_logo":"تعديل الشعار",
+         "add_logo":"إضافة شعار",
+          "upload_image":"تحميل الصورة" ,
+          "update_image":"تحديث الصورة"
 
 
 
@@ -77,7 +81,10 @@
     "edit":"تعديل",
     "edit_title":"تعديل المختبر",
     "delete_title":"حذف",
-    "delete-laboratory-confirmation": "هل تريد حذف هذا المختبر؟"
+    "delete-laboratory-confirmation": "هل تريد حذف هذا المختبر؟",
+    "new_laboratory": "مختبر جديد",
+    "create_new": "إنشاء جديد",
+    "no_laboratory":"لا توجد مختبرات لعرضها"
      
     
 
@@ -151,8 +158,34 @@
     "role": "الدور",
     "record": "السجل",
     "action":"الإجراء",
-    "noData":"لا توجد بيانات لعرضها"
-  }
+    "noData":"لا توجد بيانات لعرضها",
+    "nom": "الاسم الأخير",
+    "enter_nom": "أدخل الاسم الأخير",
+    "prenom": "الاسم الأول",
+    "enter_prenom": "أدخل الاسم الأول",
+    "numTel": "رقم الهاتف",
+    "enter_numTel": "أدخل رقم الهاتف",
+    "enter_email": "أدخل البريد الإلكتروني",
+    "chercheur": "باحث",
+    "medecin": "طبيب",
+    "patient": "مريض",
+      "admin": "مسؤول",
+    "employe": "موظف",
+    "utilisateur": "مستخدم",
+    "title": "إضافة مستخدم",
+    "personnal_information": "المعلومات الشخصية",
+    "personnal_image": "الصورة الشخصية  ",
+     "next":"التالي",
+     "roles": "الأدوار",
+     "addUser": "إضافة مستخدم",
+     "modifyData": "تعديل البيانات",
+     "deleteUserOrData": "حذف المستخدمين/البيانات",
+     "exportReports": "تصدير التقارير",
+     "noRoles": "لا توجد أدوار متاحة",
+     "modify_logo":"تعديل الصورة الشخصية ",
+     "add_logo":"إضافة الصورة الشخصية ",
+     "previous":"السابق"
+      }
 
 }
 

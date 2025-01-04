@@ -11,7 +11,7 @@ import { LanguageService } from '../../../../../services/home/language/language.
   imports: [
     NgIf,
     NgClass,
-    TranslateModule,
+    TranslateModule
 
   ],
   templateUrl: './breadcrumb.component.html',

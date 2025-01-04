@@ -1,10 +1,16 @@
 import { Component, Input } from '@angular/core';
 import { LanguageService } from '../../../../../../services/home/language/language.service';
+import { NgClass, NgIf } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-breadcrumb-steps',
   standalone: true,
-  imports: [],
+  imports: [
+    NgIf,
+        NgClass,
+        TranslateModule,
+  ],
   templateUrl: './bread-crumb-steps.component.html',
   styleUrl: './bread-crumb-steps.component.css'
 })

@@ -53,7 +53,11 @@
     "description":"description",
     "enter_description":"Entrez une description",
     "validate":"Valider",
-    "previous":"Précédent"
+    "previous":"Précédent",
+    "modify_logo":"Modifier le logo",
+    "ajouter_logo":"Ajouter un logo",
+    "upload_image":"Importer une image",
+    "update_image":"Mettre à jour l'image"
 
   },
 
@@ -74,7 +78,11 @@
     "delete":"Supprimer",
     "edit_title":"Modifier le laboratoire",
     "delete_title":"Supprimer le laboratoire",
-    "delete-laboratory-confirmation": "Voulez-vous supprimer ce laboratoire ?"
+    "delete-laboratory-confirmation": "Voulez-vous supprimer ce laboratoire ?",
+    "new_laboratory": "Nouveau laboratoire",
+    "create_new": "Créer un nouveau",
+    "no_laboratory":"Aucun laboratoire disponible"
+
 
 
 },
@@ -139,7 +147,33 @@
   "profession": "Profession",
   "role": "Rôle",
   "record": "Enregistrement",
-  "noData":"Aucune donnée à afficher"
+  "noData":"Aucune donnée à afficher",
+  "nom": "Nom",
+  "enter_nom": "Entrez le nom",
+  "prenom": "Prénom",
+  "enter_prenom": "Entrez le prénom",
+  "numTel": "Numéro de téléphone",
+  "enter_numTel": "Entrez le numéro de téléphone",
+  "enter_email": "Entrez l'email",
+  "chercheur": "Chercheur",
+  "medecin": "Médecin",
+  "patient": "Patient",
+  "admin": "Administrateur",
+  "employe": "Employé",
+  "utilisateur": "Utilisateur",
+  "title": "Ajouter un utilisateur",
+  "personnal_information": "Informations personnelles",
+  "personnal_image": "Image personnelle",
+  "next":"Suivant",
+  "roles": "Rôles",
+  "addUser": "Ajouter un utilisateur",
+  "modifyData": "Modifier les données",
+  "deleteUserOrData": "Supprimer des utilisateurs/données",
+  "exportReports": "Exporter des rapports",
+  "noRoles": "Aucun rôle disponible",
+  "modify_logo":"Modifier l'image",
+  "add_logo":"Importer l'image",
+  "previous":"Précédent"
 }
     
 

@@ -3,13 +3,10 @@
     <ol role="list" class="overflow-hidden">
       <li  class="relative flex flex-col justify-center pb-10">
         <div
-        [ngClass]="{
-          'absolute top-4 left-5': currentLang != 'ar',
-          'absolute top-4 right-5': currentLang === 'ar',
-          'bg-primary w-0.5 h-full': step == 1,
-        }"
-        
-        aria-hidden="true"></div>  
+        class="absolute top-4 left-5"
+        [class]="'add-laboratory.bread-crumb-orientation'| translate "
+        [ngClass]="step >= 1 ? 'bg-primary w-0.5 h-full' :'bg-gray-400 w-0.5 h-full' "
+          aria-hidden="true"></div>
 
         <a class="relative flex items-start group">
              <span [ngClass]="step >= 1 ? 'border-primary' :'border-gray-400' " class="h-10 bg-white border-2  rounded-full px-0.5 outline-2 flex items-center" aria-hidden="true">

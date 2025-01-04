@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
 export class ActivitiesCardComponent {
 
   @Input() activities : any[]=[];
-  @Input () card_title:string='';
+  @Input () card_title:string='titre';
 
 
 

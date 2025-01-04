@@ -46,7 +46,7 @@ export class AddLaboratoryComponent implements OnInit {
 
   public step: number = 1;
 
-  public logoPreview:any;
+  public logoPreview:any="";
 
   totalSize = 0;
   totalSizePercent = 0;

@@ -174,7 +174,10 @@
   "modify_logo":"Modifier l'image",
   "add_logo":"Importer l'image",
   "previous":"Précédent",
-  "validate":"Valider"
+  "validate":"Valider",
+   "signature":"Signature",
+    "delete":"Supprimer",
+    "preview":"Aperçu"
 }
     
 

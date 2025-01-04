@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {  Input, ViewChild, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { LaboratoryService } from '../../../../services/home/laboratory/laboratory.service';
 import { SweetAlertService } from '../../../../shared/services/sweet-alert/sweet-alert.service';
@@ -15,6 +16,7 @@ import { SharedModule } from 'primeng/api';
 import { Observable, Subscriber } from 'rxjs';
 import {BreadCrumbStepsComponent} from './component/bread-crumb-steps/bread-crumb-steps.component'
 import { UserService } from '../../../../services/user/user.service';
+import {SigningPadComponent} from './component/signing-pa/signing-pa.component'
 
 @Component({
   selector: 'app-add-user',
@@ -24,17 +26,30 @@ import { UserService } from '../../../../services/user/user.service';
     ReactiveFormsModule,
     BreadCrumbStepsComponent,
     TranslateModule,
-  ],
+  SigningPadComponent ],
   templateUrl: './add-user.component.html',
   styleUrl: './add-user.component.css'
 })
 export class AddUserComponent implements OnInit {
 
-  public showRole: boolean = true;
+
+  signatureImg?: string;
+
+  saveSignature(signature: string): void {
+    this.signatureImg = signature;
+
+    console.log(this.signatureImg);
+  }
+
+ 
+
+  public showRole: boolean = true;  
 
   public step: number = 1;
 
   public logoPreview:any;
+
+ 
 
   totalSize = 0;
   totalSizePercent = 0;
@@ -63,7 +78,7 @@ export class AddUserComponent implements OnInit {
       numTel: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       profession: ['chercheur', Validators.required],
-      role: ['employe'],
+      role: ['employe']
     }); 
 
 
@@ -71,6 +86,13 @@ export class AddUserComponent implements OnInit {
    }
   
    ngOnInit(): void {
+
+
+  
+    
+   
+  
+   
 
     this.onProfessionChange(); // Initialisation
 
@@ -82,6 +104,8 @@ export class AddUserComponent implements OnInit {
 
    
   }
+
+
 
   
   
@@ -139,7 +163,7 @@ export class AddUserComponent implements OnInit {
 
 
   onNextPage() {
-    if (this.step > 2) return;
+    if (this.step > 3) return;
     console.log("here");
   
     if (this.step == 1) {
@@ -151,28 +175,33 @@ export class AddUserComponent implements OnInit {
           control?.markAsTouched({ onlySelf: true });
         });
       }
-    } else if (this.step == 2) {
+    } else if (this.step == 2) { 
+      this.step++;
+    } else if (this.step == 3) {
+
+      console.log(this.signatureImg);
+      const commonReq = {
+        nrc: this.UserFormStepOne.value['nrc'],
+        nom: this.UserFormStepOne.value['nom'],
+        prenom: this.UserFormStepOne.value['prenom'],
+        numTel: this.UserFormStepOne.value['numTel'],
+        email: this.UserFormStepOne.value['email'],
+        role: this.UserFormStepOne.value['role'],
+        image: this.image,
+        signature: this.signatureImg,
+      };
 
         if (this.UserFormStepOne.value['profession'] === 'Patient') { 
-          let patient_req: any = {
-            nrc: this.UserFormStepOne.value['nrc'],
-            nom: this.UserFormStepOne.value['nom'],
-            prenom: this.UserFormStepOne.value['prenom'],
-            numTel: this.UserFormStepOne.value['numTel'],
-            email: this.UserFormStepOne.value['email'],
-            role: this.UserFormStepOne.value['role'],
-        } }
-  
-        let user_req: any = {
-          nrc: this.UserFormStepOne.value['nrc'],
-          nom: this.UserFormStepOne.value['nom'],
-          prenom: this.UserFormStepOne.value['prenom'],
-          numTel: this.UserFormStepOne.value['numTel'],
-          email: this.UserFormStepOne.value['email'],
-          profession: this.UserFormStepOne.value['profession'],
-          role: this.UserFormStepOne.value['role']
-
-        };
+        
+          
+          let patient_req: any = { ...commonReq };
+          
+        }
+          let user_req: any = { 
+            ...commonReq,
+            profession: this.UserFormStepOne.value['profession'],
+          };
+          
 
         console.log(user_req);
         
@@ -182,12 +211,12 @@ export class AddUserComponent implements OnInit {
               this.userService.create(user_req).subscribe(
                 ()=> {
                   this.AlertService.showSuccessAlert('Succes', 'User added succefuly');
-                  this.router.navigate(['/dashboard/Laboratories/liste']);
+                  this.router.navigate(['/dashboard/Users/liste']);
                 } 
               )
             } else  {
               this.AlertService.showSuccessAlert('Succes', 'User added succefuly');
-              this.router.navigate(['/dashboard/Laboratories/liste']);
+              this.router.navigate(['/dashboard/Users/liste']);
             }
            
             

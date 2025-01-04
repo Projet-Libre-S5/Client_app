@@ -181,7 +181,10 @@
        "modify_logo":"Modify image",
        "add_logo":"Import image",
        "previous":"Previous",
-       "validate":"Valider"
+       "validate":"Valider",
+       "signature":"Signature",
+       "delete":"Delete",
+       "preview":"Preview"
       
       }
       }

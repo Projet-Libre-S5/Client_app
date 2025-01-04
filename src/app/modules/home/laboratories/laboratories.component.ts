@@ -75,8 +75,7 @@ export class LaboratoriesComponent implements OnInit {
     private fb: FormBuilder,
     private service:LaboratoryService,
     private AlertService:SweetAlertService,
-    private sanitizer: DomSanitizer,
-    private papa: Papa,
+  
     private laboratoryService:LaboratoryService
   ) {
 
@@ -85,13 +84,7 @@ export class LaboratoriesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.laboratoryForm = this.fb.group({
-      nom: ['', Validators.required],
-      logo: ['', Validators.required],
-      nrc: ['', Validators.required],
-      active: [false],  
-      dateActivation: [''] 
-    });
+ 
 
     this.pagination = {
       current_page: 1,  

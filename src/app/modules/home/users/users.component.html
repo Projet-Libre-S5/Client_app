@@ -1,3 +1,5 @@
+<app-update-modal *ngIf="selected_item" [item]="selected_item" [isVisible]="updateModal" (closeMeEvent)="updateModal=false" (confirmEvent)="OnUpdate($event)"></app-update-modal>
+<app-delete-modal [item]="selected_item" [isVisible]="deleteModal" (closeMeEvent)="deleteModal=false" (confirmEvent)="OnDelete($event)"></app-delete-modal>
 <div class="flex-col space-y-4 justify-center items-center animate__fadeIn animate__animated">
     <div>
       <h1 class="text-3xl poppins-medium text-gray-600">{{'user.users' | translate}}</h1>
@@ -9,7 +11,7 @@
         <p-table
           class="flex-1 overflow-auto "
           styleClass="rounded-2xl text-[15px] montserrat   overflow-hidden"
-          [value]="paginatedUsers || []"
+          [value]="Users || []" 
           [loading]="isLoading$"
           [selection]="[]"
           [rows]="10"
@@ -18,12 +20,13 @@
           <ng-template pTemplate="header">
             <tr >
               <th>{{'user.profil' | translate}}</th>
+              <th>{{'user.nom' | translate}}</th>
+              <th>{{'user.prenom' | translate}}</th>
               <th>{{'user.phoneNumber' | translate}}</th>
               <th>{{'user.email' | translate}}</th>
               <th>{{'user.profession' | translate}}</th>
               <th>{{'user.role' | translate}}</th>
-              <th>{{'user.record' | translate}}</th>
-
+              <th>{{'user.signature' | translate}}</th>
               <th class="text-center">{{'user.action' | translate}}</th>
   
             </tr>
@@ -31,10 +34,31 @@
   
           <ng-template pTemplate="body" let-item>
             <tr>
+              <td class=" flex items-center justify-center"> <img
+                *ngIf="item.image"
+                [src]="'data:image/png;base64,' + item.image"
+                class="h-14 w-14 rounded-full  object-cover group-hover:grayscale"
+                alt="Logo "
+              />
+              <img
+                *ngIf="!item.image"
+                src="assets/blank-user.jpg"
+                class="h-14 w-14  rounded-full object-cover"
+                alt="Default logo Image"
+              /></td>
               <td>{{ item.nom }}</td>
+              <td>{{ item.prenom }}</td>
               <td>{{ item.numTel }}</td>
-              <td>{{ item.fax }}</td>
               <td>{{ item.email }}</td>
+              <td>{{ item.profession }}</td>
+              <td>{{ item.role }}</td>
+              <td>   <img
+                *ngIf="item.signature"
+                [src]="item.signature"
+                class="h-14 w-14 rounded-full  object-cover group-hover:grayscale"
+                alt="Logo "
+              /></td>
+
               <td class="flex justify-center items-center w-3/4 text-slate-300">
                 <button
                   class="h-14 w-9 object-contain text-slate-500 hover:text-slate-500"

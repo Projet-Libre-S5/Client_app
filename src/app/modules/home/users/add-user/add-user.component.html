@@ -1,6 +1,6 @@
 <div class="bg-white rounded-2xl">
     <p class="text-primary-light pt-6 px-10 text-xl font-semibold truncate">
-      {{'add-laboratory.title' | translate}}
+      {{'user.title' | translate}}
     </p>
     <div class="grid grid-cols-6 gap-4 px-10 pt-20 pb-44 h-[70vh]">
       <!-- steps -->
@@ -11,7 +11,7 @@
       </div>
    <ng-container *ngIf="step == 1">
   <!-- form -->
-  <div class="animate__animated m-auto ml-8 py-2 animate__zoomIn col-span-3 xl:col-span-3 max-xl:col-span-4 relative w-full">
+  <div class="animate__animated m-auto ml-8 py-2 animate__zoomIn col-span-3 xl:col-span-3 max-xl:col-span-4 h-72  w-full">
     <form [formGroup]="UserFormStepOne" class="w-full max-w-lg ml-4">
       <!-- Row 1: Nom / Prénom -->
       <div class="grid grid-cols-2 gap-6 mb-6">
@@ -107,7 +107,8 @@
     
 
     <!-- Next Button -->
-    <div class="flex justify-center items-center h-full">
+    <div class="flex justify-center items-center ">
+      
       <button
         [disabled]="!UserFormStepOne.valid"
         class="bg-primary text-white rounded-full px-8 py-2 text-sm md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
@@ -158,13 +159,18 @@
           <div class="absolute bottom-4 right-1 grid grid-cols-3 gap-2">
             
 
-          <div class="flex flex-row space-x-2 justify-center items-center ">
-            <button
+            <div class=" space-x-4 flex justify-center  mx-8 w-full" >
+              <button
+          class="  border-2 border-primary text-primary bg-white rounded-full px-4 py-2 mx-2 text-sm md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
+          (click)="onBackPage()"
+        >
+        {{'add-laboratory.previous' | translate}}
+        </button>            <button
             [disabled]="!image"
             class=" bg-primary  text-white   rounded-full px-3 py-2 text-s md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
             (click)="onNextPage()"
           >
-          {{'user.validate' | translate}}
+          {{'user.next' | translate}}
 
           </button>
           </div>
@@ -173,5 +179,37 @@
         </div>
       </ng-container>
 
+      <ng-container *ngIf="step == 3 ">
+
+        <div class="animate__animated animate__zoomIn max-md:col-span-5 col-span-4 ">
+
+       <app-signing-pad (signatureSaved)="saveSignature($event)"></app-signing-pad>
+
+  <div class="result h-40 ">
+    <span>{{'user.signature' | translate}} : </span>
+    <img *ngIf="signatureImg" [src]="signatureImg" alt="Signature">
+  </div>  
+
+  <div class=" space-x-4 flex justify-center  mx-8 w-full" >
+    <button
+class="  border-2 border-primary text-primary bg-white rounded-full px-4 py-2 mx-2 text-sm md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
+(click)="onBackPage()"
+>
+{{'add-laboratory.previous' | translate}}
+</button>            <button
+  [disabled]="!image"
+  class=" bg-primary  text-white   rounded-full px-3 py-2 text-s md:text-base disabled:bg-gray-300 disabled:cursor-not-allowed"
+  (click)="onNextPage()"
+>
+{{'user.next' | translate}}
+
+</button>
+</div>
+  </div>
+
+
+      </ng-container>
+
     </div>
+    
   </div>
